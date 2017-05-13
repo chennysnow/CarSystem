@@ -65,9 +65,9 @@ namespace WebInfo
                 }
                 catch (Exception ex)
                 {
-                    LogServer.WriteLog("proid:" + item.proid +"error" + ex.Message,"jiexi");
+                    LogServer.WriteLog("proid:" + item.proid + "error" + ex.Message, "jiexi");
                 }
-           
+
             }
 
 
@@ -129,13 +129,15 @@ namespace WebInfo
             var seller= prolist[12].Substring(prolist[12].IndexOf("：") + 1);
             var sellerphone = prolist[14].Substring(prolist[14].IndexOf("：") + 1);
             var selleradress = prolist[13].Substring(prolist[13].IndexOf("：") + 1);
+            var proNum = prolist[1].Substring(prolist[1].IndexOf("：") + 1);
 
-      
+
             CarDetialInfo pro = new CarDetialInfo();
             pro.ProTitle = title;
             pro.CarType = p_sort;
             pro.BrandInfo = bramdName;
             pro.BrandType = tempxinghao;
+            pro.ProNum = proNum;
             pro.OtherParam = "";
             pro.ShangPaiTime = spri; //p_year + "-" + p_month;
             if(brand.BrandNum != null)
@@ -157,6 +159,7 @@ namespace WebInfo
             pro.PaiFangBiaoZhun = p_emissionstandards;
             pro.SellerName = seller;
             pro.SellerPhone = sellerphone;
+            pro.SellerName = proNum.Split(' ')[0];
             pro.CarSellAddress = selleradress;
             new CarDetialInfoDb().AddCarinfo(pro);
         }

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <title></title>
+    <script src="C:/Users/Administrator/Downloads/stock-master/js/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+	<div class="container">
+		<div id="stock">loading...</div>
+		<div id="add" class="add">
+			<input type="button" id="addBtn" value="Add One" />
+		</div>
+	</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+        $.ajax({
+            type: "POST",
+            dataType: 'jsonp',
+            url: "https://service.manmanbuy.com/i.ashx",
+            data: { method: "mmb.service.mmb.tools.chajianspider", json: "ss" },
+            success: function () {
+                console.log('success');
+            }
+        });
+    });
+</script>
+</body>
+</html>

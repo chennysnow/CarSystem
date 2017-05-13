@@ -1,0 +1,53 @@
+{
+  "manifest_version": 2,
+  "name": "mmb spider",
+  "version": "1.0",
+  "description": "a simple info of spider",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "19": "images/icon19.png",
+      "38": "images/icon38.png"
+    },
+    "default_title": "mmb spider",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "js": [ "js/jquery.js", "js/callbackApi.js", "js/taoqianggou.js" ],
+      "matches": [ "*://qiang.taobao.com/*" ],
+      "run_at": "document_end"
+    },
+    {
+      "js": [ "js/jquery.js", "js/callbackApi.js", "js/listtmall.js" ],
+      "matches": [ "https://list.tmall.com/search_product.htm*", "https://login.tmall.com/*", "https://www.tmall.com/*", "https://sec.taobao.com/*", "https://err.tmall.com/*" ],
+      "run_at": "document_end"
+    },
+    {
+      "js": [ "js/jquery.js", "js/callbackApi.js", "js/listtmallqjd.js" ],
+      "matches": [ "https://list.tmall.com/search_shopitem.htm*" ],
+      "run_at": "document_end"
+    },
+    {
+      "js": [ "js/jquery.js", "js/callbackApi.js", "js/alicdn.js" ],
+      "matches": [ "https://g.alicdn.com/*" ],
+      "run_at": "document_end"
+    },
+    {
+      "js": [ "js/jquery.js", "js/callbackApi.js", "js/nbrscdl.js" ],
+      "matches": [ "http://localhost:48684/WebTest.aspx*", "http://www.nb77.cn/dealer/index.php?mod=index&ac=cars&id=*" ],
+      "run_at": "document_end"
+    },
+    {
+      "js": [ "js/jquery.js", "js/callbackApi.js", "js/nbrsc.js" ],
+      "matches": [ "http://www.nb77.cn/dealer/index.php*" ],
+      "run_at": "document_end"
+    }
+  ],
+  "permissions": [ "cookies", "tabs", "http://*/*", "https://*/*" ],
+  "background": { "scripts": [ "js/jquery.js", "js/background.js" ] }
+}

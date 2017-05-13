@@ -9,6 +9,8 @@ namespace Entitys
         [AutoIncrement]
         public int Id { get; set; }
         public string ProTitle { get; set; }
+
+        public string ProNum { get; set; }
         public decimal baojia { get; set; }
         public string CarType { get; set; }
 
@@ -33,6 +35,7 @@ namespace Entitys
         public int ShangPaiMonth{ get; set; }
         public DateTime CreateTime { get; set; }
         public string SellerName { get; set; }
+        public string SellerNumber { get; set; }
         public string SellerPhone { get; set; }
         public string CarSellAddress { get; set; }
     }
