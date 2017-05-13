@@ -1,0 +1,112 @@
+﻿
+@charset "gbk";
+
+body{background:#f4f4f4;}
+a{color:#0066cc;}
+
+
+.usertop{margin-left:auto;margin-right:auto;width:970px;height:43px;}
+.usertopmenu{float:left;height:40px;overflow:hidden;background:url(/static/img/topmenu.gif) repeat-x 0 bottom;}
+.usertopmenu li{float:left;font-size:14px;color:#fff;}
+.usertopmenu li a{float:left;display:block;padding:0 15px;height:40px;line-height:46px;overflow:hidden;background:url(/img/topmenu_line.gif) no-repeat right 13px;color:#fff;font-weight:bold;}
+.usertopmenu li a.selected{background:url(/img/topmenu_selected.gif) repeat-x;color:#fff;font-weight:bold;}
+.usertopmenu li.line{width:1px;height:40px;background:url(/img/line.gif) no-repeat 0 5px;}
+
+.joinus{float:right;width:160px;background:url(/static/img/topmenu.gif) repeat-x 0 bottom;height:36px;border-left:1px solid #ccc;border-right:1px solid #ccc;margin-top:4px;font-size:14px;color:#005596;font-weight:bold;text-align:center;line-height:36px;}
+
+
+.userleft{width:230px; float:left;}
+.usermenu{border:1px solid #d8d8d8;background:#fff;border-bottom:none;}
+.usermenu h3{height:45px;line-height:45px;font-size:14px;color:#005596;font-weight:bold;text-indent:15px;background:#e9e9e9;}
+.commonbox h3{background:#e9e9e9}
+.usermenu ul{padding:10px 15px;}
+.usermenu ul li{float:left;padding-right:6px;white-space:nowrap; }
+.leftsearch{padding:10px;padding-left:5px;background:#fff  no-repeat 6px 14px;border:1px solid #dfdfdf;}
+.leftsearch .input01{width:65px;height:30px;border:1px solid #dfdfdf;}
+.leftsearch select{height:30px;}
+.suggesttext{width:188px;height:80px;border:1px solid #d8d8d8;}
+
+
+.user_notice{border:1px solid #d8d8d8;background:#fff;border-bottom:none;}
+.user_notice h3{height:45px;line-height:45px;font-size:14px;color:#005596;font-weight:bold;text-indent:20px;background:url(/img/usermenubg.gif) repeat-x;}
+.user_notice .box{padding:10px;}
+
+
+
+.userright{ width:730px;float:right;}
+.userright_left{float:left;width:490px;}
+.userright_right{float:right;width:230px;}
+.welcome{width:490px;border:1px solid #d8d8d8;background:#fff;}
+.welcome h3{height:45px;line-height:45px;font-size:14px;color:#005596;font-weight:bold;text-indent:20px;background:url(/img/usermenubg.gif) repeat-x;}
+.welcome .box{padding:20px;}
+.welcomeleft{float:left;width:90px;}
+.welcomeleft .logo{width:82px;height:110px;border:1px solid #eee;padding:3px;}
+.welcomeleft p{width:88px;height:30px;line-height:30px;border:1px solid #e1e1e1;;border-top:none;background:url(/img/usercount.gif) repeat-x;text-align:center;}
+.welcomeright{float:right;width:345px;}
+.usercarcount{border:1px solid #e1e1e1;border-bottom:none;}
+.usercarcount li{height:30px;line-height:30px;padding-left:10px;border-bottom:1px solid #e1e1e1;background:url(/img/usercount.gif) repeat-x;}
+
+.news{width:230px;}
+.listtable{font-size:12px;}
+.listtable th{padding:3px;height:25px;line-height:25px;text-align:center;border-bottom:1px solid #eee;background:#f5f5f5;}
+.listtable td{padding:3px;height:25px;line-height:25px;border-bottom:1px solid #eee;}
+
+.maintable{font-size:12px;}
+.maintable th{width:100px;padding:5px;}
+.maintable td{padding:5px;}
+.maintable .logo{width:130px;height:110px;border:1px solid #eee;padding:3px;}
+.maintable textarea{border:1px solid #ccc;padding:5px;line-height:20px;font-size:12px;}
+.maintable input[type="text"]{border:1px solid #ccc;height:20px;}
+
+.td01{float:left;width:70px;}
+.td02{float:left;width:180px;}
+.td03{float:left;width:250px;}
+
+.opmenu{color:#ccc;}
+
+
+.userinfo{border:1px solid #ffd895;background:#fffbea;padding:15px 20px;}
+.userinfo h3{font-size:14px;font-weight:bold;height:30px;}
+.userinfo ul li{float:left;width:200px;height:30px;line-height:30px;font-size:14px;color:#666;}
+
+
+.comcar{border:1px solid #d8d8d8;background:#fff;padding:15px 20px;}
+.comcar h3{font-size:14px;font-weight:bold;height:30px;}
+.comcar ul li{float:left;padding:10px;}
+.comcar ul li img{width:105px;height:80px;border:1px solid #eee;padding:5px;}
+
+#piclist{padding-top:5px;}
+/*#piclist li{float:left;padding:5px;border:1px solid #ccc;margin:0 5px 5px 0;}
+#piclist li img{width:120px;height:100px;}
+#piclist li p{padding-top:5px;text-align:center;}*/
+#piclist li{float:left;padding:1px;border:1px solid #ccc;margin:0 5px 5px 0;}
+#piclist li img{width:80px;height:55px;}
+#piclist li p{padding-top:0px;text-align:center;}
+
+/*貧勧夕頭*/
+.uploadbut{width:120px;height:31px;background:url(../../img/admin/upload.gif);border:none;font-family:"裏罷囘菜";color:#fff;}
+#piclist2{padding-top:5px;}
+#piclist2 li{float:left;padding:10px;position:relative;}
+#piclist2 li .selected{border:2px solid green;}
+#piclist2 li img{width:80px;height:60px;padding:10px;border:1px solid #eee;}
+#piclist2 li p{padding:5px;text-align:center;}
+#piclist2 li p span{text-decoration:underline;color:#069;cursor:pointer;}
+#piclist2 li .del{position:absolute;top:2px;right:2px;display:block;width:18px;height:18px;background:url(../../img/admin/close.gif);cursor:pointer}
+
+/*��膣�*/
+.usersearch{padding-top:10px;text-align:right;padding-right:10px;}
+.usersearch .usersearchleft{float:left;width:300px;text-align:left;padding-left:10px;color:#ccc;}
+.usersearch .usersearchleft a.selected{font-weight:bold;color:#f60;}
+.usersearch .usersearchright{float:right;width:380px;}
+.usersearch table{font-size:12px;}
+.usersearch .inp01{border:1px solid #d8d8d8;padding:3px 2px}
+
+/*�後����茵�*/
+.photolist li{float:left;width:212px;height:180px;padding:12px;}
+.photolist li img{width:200px;height:130px;padding:5px;border:1px solid #ccc;}
+
+
+/*筝�篌��丞��*/
+.uploadbox{position:relative;}
+.changeupload{position:absolute;top:5px;left:260px;}
+#addupload,.minusupload{cursor:pointer;}

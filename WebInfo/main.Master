@@ -1,0 +1,145 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="main.master.cs" Inherits="WebInfo.main" %>
+
+
+ <!DOCTYPE html PUBLIC "-//W3C//Dtd class="td1" XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/Dtd class="td1"/xhtml1-strict.dtd class="td1"">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>2016年奥迪A6L(已定）私家一手车手自一体,车主报价:33.99万元,2.0T升,外黑内棕,已定，私家车，国五飘全国，现为一手车，谁.</title>
+
+<meta name="keywords" content=" 奥迪A6L(已定）私家一手车 二手车 2016年7月 2.0T 外黑内棕">
+<meta name="description" content="车况说明：已定，私家车，国五飘全国，现为一手车，谁要过谁名下， 外黑内棕，最时尚的配色，爱惜的不得了，全程4S店保养，新车出厂膜很多都没有撕掉，里外成色实在太新了，就是一辆新车，错过机会不再有。车在江东，看车方便">
+    <link href="static/css/base.css" rel="stylesheet" />
+<link href="http://www.nb77.cn/static/css/dealer/dealer_common.css" rel="stylesheet" type="text/css" />
+
+<link href="http://www.nb77.cn/static/css/medium/medium_page_cars.css" rel="stylesheet" type="text/css"/>
+
+    <script src="static/js/jquery-1.7.1.js"></script>
+<script >
+$(function(){
+	//品牌选择
+	$("#brand").click(function(){
+	    $.get("http://www.nb77.cn/index.php?mod=page&ajax=1", {
+			pid :  $("#brand").val() 
+		}, function (data, textStatus){
+            $("#subbrand").html(data); // 把返回的数据添加到页面上
+			}
+		);
+	});
+	$("#brand2").click(function(){
+	    $.get("http://www.nb77.cn/index.php?mod=page&ajax=1", {
+			pid :  $("#brand2").val() 
+		}, function (data, textStatus){
+               $("#subbrand2").html(data); // 把返回的数据添加到页面上
+			}
+		);
+	});
+	$('#dno').click(function(){
+        $('.shortno').show();
+    });
+	$('#close').click(function(){
+        $('.shortno').hide();
+    });
+});
+</script>
+<script type="text/javascript" >
+		//<![CDATA[
+			$(function(){
+				var $div_li =$("div.brand_box ul li");
+				$div_li.mouseover(function(){
+					$(this).addClass("here")            //当前<li>元素高亮
+							  .siblings().removeClass("here");  //去掉其它同辈<li>元素的高亮
+					var index =  $div_li.index(this);  // 获取当前点击的<li>元素 在 全部li元素中的索引。
+					$("div.brandbox > div")   //选取子节点。不选取子节点的话，会引起错误。如果里面还有div 
+							.eq(index).show()   //显示 <li>元素对应的<div>元素
+							.siblings().hide(); //隐藏其它几个同辈的<div>元素
+					}).hover(function(){
+						$(this).addClass("hover");
+					},function(){
+						$(this).removeClass("hover");
+					})
+				})
+			//]]>
+	</script>
+            <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body > 
+
+<script language="JavaScript">
+$(function(){
+/*	$("#showPwd").focus(function() {
+		var text_value = $(this).val();
+		if (text_value == this.defaultValue) {
+			$("#showPwd").hide();
+			$("#password").show().focus();
+		}
+	});
+	$("#password").blur(function() {
+		var text_value = $(this).val();
+		if (text_value == "") {
+			$("#showPwd").show();
+			$("#password").hide();
+		}
+	}); */
+	$(".topmenu ul li a").click(function(){
+		$(".topmenu ul li a").removeClass("here");
+		$(this).addClass("here");
+	});
+});
+</script>
+<script language="JavaScript">
+$(function(){
+	//违章查询
+	$(".wzcx").hover(
+	  function () {
+		$(".wzcxlist").show();
+	  },
+	  function () {
+		$(".wzcxlist").hide();
+	  }
+	);
+});
+</script>
+<div class="head" >
+	<div class="head_box" id="head_box" ><center><p class="pt5">宁波优驰乐途汽车服务有限公司</p><p class="add">宁波市鄞州区嵩江东路501号</p></center>	</div>
+</div>
+<div class="topmenu clearfix">
+	<ul class="clearfix">
+		<li><a href="/" class="here">首页</a></li>
+		<li><a href="/dealer/index.php?mod=index&ac=index&s_type=1">二手车信息</a></li>
+		<li><a href="/dealer/index.php?mod=index&ac=about&id=37">常用表格</a></li>
+		<li><a href="http://www.nb2sc.org/news/news_57_01.html" target="_blank">服务信息</a></li>
+		<li class="wzcx"><a href="#">违章查询</a><div class="wzcxlist hide" style="position:absolute;z-index:999999;background:#62ab00;top:38;width:100px;"><a href="http://ngb.122.gov.cn:9080/violation_query.html" target="_blank">宁波违章查询</a><a href="http://www.zjsgat.gov.cn:8087/was/portals/car_lllegal_query.jsp" target="_blank">浙江违章查询</a></div></li>
+		
+		<div class="toplogin" style="*width:300px;">
+			<form name="loginform" id="loginform" method="post" action="/dealer/index.php?mod=userlogin">
+			<span><input type="text" name="username" style="color:#ccc" value="输入账号" onfocus="if(this.value=='输入账号'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='输入账号'){this.value='输入账号';this.style.color='#ccc';}" class="inp01"/></span> 
+			<span><input name="password_" type="text" id="showPwd_" class="inp02" value="输入密码" style="color:#ccc;display:none;"/><input name="password" type="password" id="password" class="inp02" style="background:#fff  no-repeat left center;" onfocus="this.style.background='#fff';" onblur="if(this.value==''){this.style.background='#fff url(/static/img/inputpass.gif) no-repeat left center';}" title="请输入密码" style="*height:15px;*line-height:15px;" /></span>
+			<span><input type="image" src="http://www.nb77.cn/static/img/show/login.gif"><input type="hidden" name="action" value="login"></span><span class="ml10 fr" style="*margin-top:-25px;*float:right;"><a href="/index.php?mod=logout" style="color:#fff;font-weight:bold;*padding:3px 3px;*line-height:18px;*height:18px;">退出</a></span>
+			</form>
+		</div>
+	</ul>
+</div><!--主体-->
+
+
+
+    
+    
+    
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+<!--主体结束-->
+<!--底部-->
+<div class="footmain">
+	<div class="footer">
+<p><a href="http://www.nb2sc.org" target="_blank"><img src="/static/img/foot_banner.jpg" width="970" height="150" style="border:1px solid #eee;"></a></p>
+		<p>CopyRight @ All Rights Reserved 宁波市二手车经纪行业协会版权所有 <a href="http://www.miitbeian.gov.cn/" target="_blank">浙ICP备14038839号</a><br />
+由宁波市江东柒车商务信息服务有限公司承办  电话（传真）：0574-55845611 公众平台微信号：nb2sc77 <br />
+秘书处地址：宁波市江东区东方商务中心4号楼1119室（火车东站附近）<script src="http://s4.cnzz.com/stat.php?id=1258744815&web_id=1258744815" language="JavaScript"></script></p>
+	</div>
+</div><!--底部结束-->
+</body>
+</html>
+
