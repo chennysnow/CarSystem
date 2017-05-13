@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using DataBase;
 using Entitys;
 using Commons;
+using Newtonsoft.Json.Linq;
 
 namespace WebInfo
 {
@@ -17,6 +18,7 @@ namespace WebInfo
         private List<BandInfo> brandList;
         protected void Page_Load(object sender, EventArgs e)
         {
+
             //var Item = new CarDetialInfo();
             //Item.BianShuQi = "ddd";
             //Item.CreateTime = DateTime.Now;
@@ -32,19 +34,7 @@ namespace WebInfo
             //    ParentCarTypeKey= "1"
             //};
             //db.AddCarinfo(type);
-            brandList = new BandInfoDb().GetBandInfoByParentNum("0");
 
-            foreach (var bandInfo in brandList)
-            {
-                brandReg += bandInfo.BrandName + "|";
-            }
-            brandReg = brandReg.TrimEnd('|');
-
-            var list = new prologDb().GetproLogById(0, 100);
-            foreach (var item in list)
-            {
-                addCar(item);
-            }
             //var brands = new BandInfoDb().GetBandInfoByParentNum("0");
             //foreach (var item in brands)
             //{
@@ -57,20 +47,47 @@ namespace WebInfo
             //}
 
 
+
+            brandList = new BandInfoDb().GetBandInfoByParentNum("0");
+
+            foreach (var bandInfo in brandList)
+            {
+                brandReg += bandInfo.BrandName + "|";
+            }
+            brandReg = brandReg.TrimEnd('|');
+
+            var list = new prologDb().GetproLogById(0, 100);
+            foreach (var item in list)
+            {
+                try
+                {
+                    addCar(item);
+                }
+                catch (Exception ex)
+                {
+                    LogServer.WriteLog("proid:" + item.proid +"error" + ex.Message,"jiexi");
+                }
+           
+            }
+
+
         }
 
         private void addCar(prolog item)
         {
+           
             string detial = item.proName.TrimStart('[').TrimEnd(']').Replace("\"","");
+
+            
             var prolist = detial.Split(',');
 
-            var spri = prolist[0].Substring(prolist[0].IndexOf("：")+1).Replace("年","-").Replace("月","");
-            var Cartype = prolist[1].Substring(prolist[0].IndexOf("：") + 1);
+            var spri = prolist[2].Substring(prolist[2].IndexOf("：")+1).Replace("年","-").Replace("月","");
+            var Cartype = prolist[3].Substring(prolist[3].IndexOf("：") + 1);
             var typeitem = new CarTypeInfoDb().GetCarinfo(new CarTypeInfo { DisplayName = Cartype});
             var p_sort = typeitem.CarTypeKey; //Request.Form["p_sort"];
-            var title = prolist[prolist.Length - 1];
-            title = title.Substring(title.IndexOf("："));
-            title = "奥迪A6L(已定）私家一手车 外黑内棕";
+            var title = prolist[23];
+            title = title.Substring(title.IndexOf("：")+1);
+            
             var bramdName = Regex.Match(title, brandReg, RegexOptions.IgnoreCase).Value;
 
             var brand = brandList.FirstOrDefault(c => c.BrandName == bramdName);
@@ -85,9 +102,10 @@ namespace WebInfo
                 xhReg += xh.BrandName + "|";
             }
             xhReg = xhReg.TrimEnd('|');
+            
 
             var tempxinghao= Regex.Match(title, xhReg, RegexOptions.IgnoreCase).Value;
-
+            var tempbrandtype = catxinghao.FirstOrDefault(c => c.DisplayName == tempxinghao);
             var temppic= "";
             foreach (var propic in prolist)
             {
@@ -97,36 +115,35 @@ namespace WebInfo
                 }
 
             }
-            //[  "上牌日期：2010年11月",  "车辆车型：轿车",  "车辆产地：国产",  "车辆颜色：黑",  "排 气 量：2.3",  "变 速 器：手自一体",  "表显里程：5.10万",  "排放标准：国四",  "燃    料：汽油",  "发布日期：2017-05-12",  "商户名称： 宁波优驰乐途汽车服务有限公司",  "看车地址：宁波市鄞州区嵩江东路501号",  " 联系电话：13732191571",  "http://img.nb77.cn/upload/201704/9603cc4a4a7f22caa4bc2b0fe95aa674.jpg",  "http://img.nb77.cn/upload/201704/5844c62309a21bb7da16fae92e9b3697.jpg",  "http://img.nb77.cn/upload/201704/8b9b66751f87f0129969dff6f37de803.jpg",  "http://img.nb77.cn/upload/201704/983d1c0b3175ef2e71e7768933eb5c6d.jpg",  "http://img.nb77.cn/upload/201704/2dbabf6381f732c96874a3e85b7b5ad7.jpg",  "http://img.nb77.cn/upload/201704/8da71acdb2acd697912702757c00df3d.jpg",  "http://img.nb77.cn/upload/201704/0a94ec9077d3b68cdd443ada3b52d14a.jpg",  "http://img.nb77.cn/upload/201704/02eac494052ad61817e50e63ed3307ab.jpg",  "http://img.nb77.cn/upload/201704/301ca9413a1e2437db1144e28bb30a4c.jpg"]
-            var p_brand = Request.Form["p_brand"];
 
-            var p_name = HttpUtility.UrlDecode(Request.Form["p_name"]);
-            var uptype = Request.Form["uptype"];
-            var pic = Request.Form["p_pics[]"];
-            var mainpic = Request.Form["p_mainpic"];
-            var p_color = Request.Form["p_color"];
-            var p_price = Request.Form["p_price"];
-            var isfixprice = Request.Form["isfixprice"];
-            var p_year = Request.Form["p_year"];
-            var p_month = Request.Form["p_month"];
-            var p_kilometre = Request.Form["p_kilometre"];
-            var p_gas = Request.Form["p_kilometre"];
-            var p_country = Request.Form["p_kilometre"];
-            var p_transmission = Request.Form["p_transmission"];
-            var p_emissionstandards = Request.Form["p_emissionstandards"];
-            var p_fuel = Request.Form["p_fuel"];
-            var p_details = Request.Form["p_details"];
-            var ac = Request.Form["ac"];
-            var id = Request.Form["id"];
-            var pstate = Request.Form["pstate"];
-            var page = Request.Form["page"];
-            var subbrand2 = Request.Form["p_subbrand"];
+            var p_price = Regex.Match(prolist[0], "：(?<x>.*?)万元", RegexOptions.IgnoreCase).Groups["x"].Value;
+            var p_color = prolist[5].Substring(prolist[5].IndexOf("：") + 1);
+            var p_kilometre = prolist[8].Substring(prolist[8].IndexOf("：") + 1).Replace("万","");
+            var p_gas = prolist[6].Substring(prolist[6].IndexOf("：") + 1);
+            var p_country = prolist[4].Substring(prolist[4].IndexOf("：") + 1);
+            var p_transmission = prolist[7].Substring(prolist[7].IndexOf("：") + 1);
+            var p_fuel = prolist[10].Substring(prolist[10].IndexOf("：") + 1);
+            var p_emissionstandards = prolist[9].Substring(prolist[9].IndexOf("：") + 1);
+            var p_details = Regex.Match(detial, "车况说明：(?<x>.*?)$", RegexOptions.IgnoreCase).Groups["x"].Value;
+
+            var seller= prolist[12].Substring(prolist[12].IndexOf("：") + 1);
+            var sellerphone = prolist[14].Substring(prolist[14].IndexOf("：") + 1);
+            var selleradress = prolist[13].Substring(prolist[13].IndexOf("：") + 1);
+
+      
             CarDetialInfo pro = new CarDetialInfo();
+            pro.ProTitle = title;
             pro.CarType = p_sort;
             pro.BrandInfo = bramdName;
             pro.BrandType = tempxinghao;
-            pro.OtherParam = p_name;
+            pro.OtherParam = "";
             pro.ShangPaiTime = spri; //p_year + "-" + p_month;
+            if(brand.BrandNum != null)
+            pro.BrandInfoKey = brand.BrandNum;
+            if (tempbrandtype != null)
+                pro.BrandTypeKey = tempbrandtype.BrandNum;
+            pro.ShangPaiMonth = int.Parse(spri.Split('-')[1]);
+            pro.ShangPaiYear = int.Parse(spri.Split('-')[0]);
             pro.Images = temppic;
             pro.mianimg = "1";
             pro.baojia = decimal.Parse(p_price);
@@ -138,6 +155,9 @@ namespace WebInfo
             pro.RanYou = p_fuel;
             pro.Remark = p_details;
             pro.PaiFangBiaoZhun = p_emissionstandards;
+            pro.SellerName = seller;
+            pro.SellerPhone = sellerphone;
+            pro.CarSellAddress = selleradress;
             new CarDetialInfoDb().AddCarinfo(pro);
         }
 
@@ -171,3 +191,6 @@ namespace WebInfo
         }
     }
 }
+
+
+
