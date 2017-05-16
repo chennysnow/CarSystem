@@ -9,6 +9,8 @@ namespace Entitys
         [AutoIncrement]
         public int Id { get; set; }
         public string CompanyName { get; set; }
+
+        public string CompanyAddress { get; set; }
         public string PhoneNumber { get; set; }
         public string IdCart { get; set; }
         public string BusinessLicense { get; set; }

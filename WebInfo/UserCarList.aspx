@@ -101,7 +101,7 @@
                 <td align="center"><%# Eval("SHANGPAIyEAR")%>年<%# Eval("ShangpaiMonth")%>月</td>
                 <td align="center"><%#Eval("CreateTime", "{0:yyyy-MM-dd}")%></td>
                                  
-                <td align="center" class="opmenu"><a href="AddCar.aspx?method=edit&id=<%# Eval("id")%>">编辑</a>|<a href="AddCar.aspx?method=edit&id=<%# Eval("id")%>" title="如果该车已卖出，从列表中移除">删除</a><span style="display:none;">| <a href="javascript:if(confirm('确实要删除吗?'))location='method=del&id='<%# Eval("id")%>"></a></span>
+                <td align="center" class="opmenu"><a href="AddCar.aspx?method=edit&id=<%# Eval("id")%>">编辑</a>|<a href="AddCar.aspx?method=del&id=<%# Eval("id")%>" title="如果该车已卖出，从列表中移除">删除</a><span style="display:none;">| <a href="javascript:if(confirm('确实要删除吗?'))location='method=del&id='<%# Eval("id")%>"></a></span>
             </td></tr>
                        
         

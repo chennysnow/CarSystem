@@ -40,7 +40,7 @@ namespace DataBase
                         else
                         {
                             //db.SingleById<CarDetialInfo>(item.Id);
-                            db.Update<CarDetialInfo>(item);
+                            db.Update(item);
                         }
               
                     }

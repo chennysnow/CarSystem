@@ -33,23 +33,32 @@ namespace WebInfo
         public string p_details;
         protected void Page_Load(object sender, EventArgs e)
         {
+            string tempid = Request.QueryString["id"];
+            int proid = 0;
+            if (!string.IsNullOrEmpty(tempid))
+            {
+                int.TryParse(tempid, out proid);
+            }
             if (!Page.IsPostBack)
             {
-                string tempid = Request.QueryString["id"];
-                int proid = 0;
-                if(!string.IsNullOrEmpty(tempid))
-                {
-                    int.TryParse(tempid, out proid);
-                }
-                if (Request.Form["method"] == "add")
+          
+          
+                dataBind(proid);
+            }
+            else
+            {
+                if (Request.QueryString["method"] == "add")
                 {
                     addCar();
                 }
-                if (Request.Form["method"] == "edit"&& proid > 0)
+                if (Request.QueryString["method"] == "edit" && proid > 0)
                 {
                     addCar(proid);
                 }
-                dataBind(proid);
+                if (Request.QueryString["method"] == "del" && proid > 0)
+                {
+                    addCar(proid);
+                }
             }
       
 
@@ -267,6 +276,23 @@ namespace WebInfo
             pro.Remark = p_details;
             pro.ProTitle = pro.BrandInfo + " " + pro.BrandType + " " + pro.OtherParam;
             pro.PaiFangBiaoZhun = p_emissionstandards;
+            if (Session["userid"] == null)
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
+            string shopid = Session["userid"].ToString();
+
+            var shopinfo = new ShopInfoDb().getShopinfo(int.Parse(shopid));
+            if (shopid != null)
+            {
+                pro.SellerName = shopinfo.CompanyName;
+                pro.SellerNumber = shopinfo.ShopNum;
+                pro.SellerPhone = shopinfo.PhoneNumber;
+                pro.CarSellAddress = shopinfo.CompanyAddress;
+            }
+
+      
             new CarDetialInfoDb().AddCarinfo(pro);
             Response.Redirect("UserCarList.aspx");
         }
