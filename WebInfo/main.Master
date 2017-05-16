@@ -110,17 +110,17 @@ $(function(){
 	<ul class="clearfix">
 		<li><a href="/" class="here">首页</a></li>
 		<li><a href="Search.aspx">二手车信息</a></li>
-	
-
+		<li><a href="UserCarList.aspx">会员管理</a></li>
+        
 		<li class="wzcx"><a href="#">违章查询</a><div class="wzcxlist hide" style="position:absolute;z-index:999999;background:#62ab00;top:38;width:100px;"><a href="http://ngb.122.gov.cn:9080/violation_query.html" target="_blank">宁波违章查询</a><a href="http://www.zjsgat.gov.cn:8087/was/portals/car_lllegal_query.jsp" target="_blank">浙江违章查询</a></div></li>
 		
-		<div class="toplogin" style="*width:300px;">
+	<%--	<div class="toplogin" style="*width:300px;">
 			<form name="loginform" id="loginform" method="post" action="/dealer/index.php?mod=userlogin">
 			<span><input type="text" name="username" style="color:#ccc" value="输入账号" onfocus="if(this.value=='输入账号'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='输入账号'){this.value='输入账号';this.style.color='#ccc';}" class="inp01"/></span> 
 			<span><input name="password_" type="text" id="showPwd_" class="inp02" value="输入密码" style="color:#ccc;display:none;"/><input name="password" type="password" id="password" class="inp02" style="background:#fff  no-repeat left center;" onfocus="this.style.background='#fff';" onblur="if(this.value==''){this.style.background='#fff url(/static/img/inputpass.gif) no-repeat left center';}" title="请输入密码" style="*height:15px;*line-height:15px;" /></span>
 			<span><input type="image" src="http://www.nb77.cn/static/img/show/login.gif"><input type="hidden" name="action" value="login"></span><span class="ml10 fr" style="*margin-top:-25px;*float:right;"><a href="/index.php?mod=logout" style="color:#fff;font-weight:bold;*padding:3px 3px;*line-height:18px;*height:18px;">退出</a></span>
 			</form>
-		</div>
+		</div>--%>
 	</ul>
 </div><!--主体-->
 

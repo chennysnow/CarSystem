@@ -16,7 +16,14 @@ namespace WebInfo
         {
             string username = Request.Form["username"];
             string pwd = Request.Form["password"];
+
+            if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(username))
+                return;
+
+
             int number;
+
+
 
             if (!int.TryParse(username, out number))
             {
@@ -27,7 +34,7 @@ namespace WebInfo
             var shopitem = new ShopInfoDb().Login(username, pwd);
             if (shopitem == null)
             {
-                msg = "用户名出存在";
+                msg = "用户名或密码错误";
                 return;
             }
 
