@@ -3,7 +3,7 @@ using System.Threading;
 using Commons;
 using Entitys;
 using ServiceStack.OrmLite;
-
+using System.Collections.Generic;
 
 namespace DataBase
 {
@@ -65,6 +65,28 @@ namespace DataBase
             } while (error < 4);
             return null;
 
+        }
+
+        public List<CarDetialInfo> GetCarLIst(string Num)
+        {
+            int error = 0;
+            do
+            {
+                try
+                {
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+                        return db.Select<CarDetialInfo>(c=>c.SellerNumber==Num);
+                    }
+                }
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(10000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+                }
+            } while (error < 4);
+            return null;
         }
     }
 }

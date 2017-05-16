@@ -35,7 +35,7 @@
 			</form>
 		</div>
         
-        <div class="usermenu">
+        <div style="display:none" class="usermenu">
             <h3>帐号管理 &gt;</h3>
             <ul class="clearfix">
                 <li><a href="http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=upinfo">修改资料</a></li>
@@ -301,7 +301,7 @@ function isSubmit()
 				<tr>
 					<th></th>
 					<td>
-						<div class="gray01 lh150"><span class="red fb">注意：</span>发布的车源须做到图片无水印、无车商名，说明中无店铺名、网址、电话。<span><a href="/dealer/index.php?mod=news&amp;ac=view&amp;id=1" class="orange01 unl" target="_blank">发布规范 &gt;&gt;</a></span></div><div class="ml30 pl10">打<span class="red">*</span>号的为必填。</div>
+						<div class="gray01 lh150"><span class="red fb">注意：</span>发布的车源须做到图片无水印、无车商名，说明中无店铺名、网址、电话。<span style="display:none;"><a href="/dealer/index.php?mod=news&amp;ac=view&amp;id=1" class="orange01 unl" target="_blank">发布规范 &gt;&gt;</a></span></div><div class="ml30 pl10">打<span class="red">*</span>号的为必填。</div>
 					</td>
 				</tr>
 				<tr>

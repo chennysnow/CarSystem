@@ -85,6 +85,7 @@
     <Content Include="static\js\swfobject.js" />
     <Content Include="static\css\uploadify.css" />
     <Content Include="static\js\uploadify.swf" />
+    <Content Include="UserCarList.aspx" />
     <Content Include="ValidCode.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebApi.aspx" />
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Include="Search.aspx.designer.cs">
       <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserCarList.aspx.cs">
+      <DependentUpon>UserCarList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCarList.aspx.designer.cs">
+      <DependentUpon>UserCarList.aspx</DependentUpon>
     </Compile>
     <Compile Include="ValidCode.aspx.cs">
       <DependentUpon>ValidCode.aspx</DependentUpon>
