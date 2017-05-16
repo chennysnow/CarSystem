@@ -39,7 +39,8 @@ namespace DataBase
                         }
                         else
                         {
-                            //db.SingleById<CarDetialInfo>(item.Id);
+                            var old = db.SingleById<CarDetialInfo>(item.Id);
+                            item.CreateTime = old.CreateTime;
                             db.Update(item);
                         }
               

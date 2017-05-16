@@ -31,6 +31,9 @@ namespace WebInfo
         public string p_emissionstandards;
         public string p_fuel;
         public string p_details;
+        public string method;
+        public string tempproid;
+        public string ac="0";
         protected void Page_Load(object sender, EventArgs e)
         {
             string tempid = Request.QueryString["id"];
@@ -39,26 +42,47 @@ namespace WebInfo
             {
                 int.TryParse(tempid, out proid);
             }
+           
+
             if (!Page.IsPostBack)
             {
-          
-          
-                dataBind(proid);
+
+                if (Request.Form["ac"] == "1")
+                {
+                    if (Request.Form["method"] == "add")
+                    {
+                        addCar();
+                    }
+                    if (Request.Form["method"] == "edit")
+                    {
+                        tempid = Request.Form["id"];
+                       
+                        if (!string.IsNullOrEmpty(tempid))
+                        {
+                            int.TryParse(tempid, out proid);
+                        }
+                       
+                        addCar(proid);
+                    }
+                    if (Request.Form["method"] == "del" && proid > 0)
+                    {
+                        addCar(proid);
+                    }
+                }
+                else
+                {
+                    method = Request.QueryString["method"];
+                    ac = "1";
+                    tempproid = proid.ToString();
+                    dataBind(proid);
+                }
+                
+     
+         
             }
             else
             {
-                if (Request.QueryString["method"] == "add")
-                {
-                    addCar();
-                }
-                if (Request.QueryString["method"] == "edit" && proid > 0)
-                {
-                    addCar(proid);
-                }
-                if (Request.QueryString["method"] == "del" && proid > 0)
-                {
-                    addCar(proid);
-                }
+              
             }
       
 
