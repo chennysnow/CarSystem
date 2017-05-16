@@ -67,6 +67,7 @@
     <Content Include="Item.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Search.aspx" />
+    <Content Include="ShopCheck.aspx" />
     <Content Include="static\css\base.css" />
     <Content Include="static\css\dealer_common.css" />
     <Content Include="static\css\dealer_user.css" />
@@ -88,6 +89,13 @@
     <Content Include="static\js\jquery-1.7.1.js" />
     <Content Include="static\js\jquery.skygqCheckAjaxform.1.5.js" />
     <Content Include="static\js\jquery.uploadify.v2.1.4.min.js" />
+    <Content Include="static\js\layer.js" />
+    <Content Include="static\js\skin\default\icon-ext.png" />
+    <Content Include="static\js\skin\default\icon.png" />
+    <Content Include="static\js\skin\default\layer.css" />
+    <Content Include="static\js\skin\default\loading-0.gif" />
+    <Content Include="static\js\skin\default\loading-1.gif" />
+    <Content Include="static\js\skin\default\loading-2.gif" />
     <Content Include="static\js\swfobject.js" />
     <Content Include="static\css\uploadify.css" />
     <Content Include="static\js\uploadify.swf" />
@@ -143,6 +151,9 @@
     <Compile Include="main.Master.designer.cs">
       <DependentUpon>main.Master</DependentUpon>
     </Compile>
+    <Compile Include="procedata.ashx.cs">
+      <DependentUpon>procedata.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
@@ -150,6 +161,13 @@
     </Compile>
     <Compile Include="Search.aspx.designer.cs">
       <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShopCheck.aspx.cs">
+      <DependentUpon>ShopCheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShopCheck.aspx.designer.cs">
+      <DependentUpon>ShopCheck.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserCarList.aspx.cs">
       <DependentUpon>UserCarList.aspx</DependentUpon>
@@ -186,6 +204,7 @@
   <ItemGroup>
     <Content Include="main.Master" />
     <Content Include="GetCardetial.ashx" />
+    <Content Include="procedata.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

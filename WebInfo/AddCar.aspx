@@ -147,6 +147,7 @@ function checknull()
 	        imgid += $(b).attr("id")+",";
 	    })
 	    $("#imgs").val(imgid);
+	    $("#ac").val("1");
 		window.document.form1.submit();
 		document.getElementById("submittingb").style.display = '';
 		document.getElementById("submitb").style.display = 'none';
@@ -309,8 +310,9 @@ function isSubmit()
 					<th></th>
 					<td>
 						<div class="buttons"><input type="button" name="Submit" id="submitb" value="编辑车源" class="submit" onclick="checknull()"><div class="submit" id="submittingb" style="display:none;padding:3px 10px;background:#ccc;color:#666;width:100px;">正在提交。。。</div>
-							<input type="hidden" name="ac" value="editcar">
-						
+							<input type="hidden" name="ac" id="ac" value="0">
+						<input type="hidden" name="method" value="<%=method %>">
+                            	<input type="hidden" name="id" value="<%=tempproid %>">
                          
 							<input type="hidden" name="pstate" value="">
                             <input type="hidden" name="imgs" id="imgs" value="">
