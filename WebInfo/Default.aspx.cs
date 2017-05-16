@@ -70,6 +70,16 @@ namespace WebInfo
                 ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入公司名称短号</td></tr>"; //"请刷新页面";
                 return;
             }
+
+            shop.ShopPwd = Request.Form["pwd"];
+      
+            if (!RegexServer.regIsMatch(shop.ShopPwd, "^[A-Za-z0-9]+${6,10}"))
+            {
+                ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入登录密码</td></tr>"; //"请刷新页面";
+                return;
+            }
+            //^[A-Za-z0-9]+$
+
             new ShopInfoDb().AddShopInfo(shop);
 
             ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>您的数据已提交成功</td></tr>"; //"请刷新页面";

@@ -99,7 +99,7 @@
                 <tr>
                     <td width="160" height="40" align="right">法人身份证上传：</td>
                     <td align="left">
-                        <input type="file" class="input" name="pic1" id="pic1" size="30"  accept="image/jpeg" capture="camera" />
+                        <input type="file" class="input" name="pic1" id="pic1" size="30"  />
                         *
                                         <div></div>
                     </td>
@@ -107,7 +107,7 @@
                 <tr>
                     <td width="80" height="40" align="right">营业执照上传：</td>
                     <td align="left">
-                        <input type="file" class="input" name="pic2" id="pic2" size="30"  accept="image/jpeg" capture="camera" />
+                        <input type="file" class="input" name="pic2" id="pic2" size="30"   />
 
                         <div></div>
                     </td>
@@ -134,7 +134,12 @@
             *  编号将在审核通过后作为内网帐号
             <div></div></td>
             </tr>
-
+                <tr>
+                        <td width="80" height="40" align="right">登录密码：</td>
+            <td align="left"><input type="password" name="pwd" id="pwd" size="30"/>
+            * 英文或数字，长度6-10 位
+            <div></div></td>
+            </tr>
 
 
                 <tr>

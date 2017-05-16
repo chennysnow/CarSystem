@@ -14,6 +14,8 @@ namespace Entitys
         public string BusinessLicense { get; set; }
 
         public string ShopNum { get; set; }
+
+        public string ShopPwd { get; set; }
         public DateTime CreateTime { get; set; }
     }
 }

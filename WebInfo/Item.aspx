@@ -729,20 +729,20 @@
 			<div class="img">
 				<!--车源图片-->
 					<div class="bigimg">
-													<div class="issell"><img src="http://www.nb77.cn/static/img/issell.gif"/></div>
-																			<img id="BigImg" src='http://img.nb77.cn/upload/201703/5c2246925294b3b1c8d526c83572b612.jpg' class="bigpic"/>
+								<!--		<div class="issell"><img src="/static/img/issell.gif"/></div>-->
+						<%if (piclist.Count > 0)
+                            {%>				<img id="BigImg" src='<%=piclist[0] %>' class="bigpic"/><%}
+    else
+    { %>
+           <img id="BigImg" src='' class="bigpic"/>             <%} %>
 											</div>
 					<div class="samll_pic_list">
 						<ul class="carpiclist clearfix" >
-																					<li><a onmousemove="javascript:document.getElementById('BigImg').src='http://img.nb77.cn/upload/201703/5c2246925294b3b1c8d526c83572b612.jpg'"><img class="mt10" src="http://img.nb77.cn/upload/201703/5c2246925294b3b1c8d526c83572b612.jpg"/></a></li>
-																												<li><a onmousemove="javascript:document.getElementById('BigImg').src='http://img.nb77.cn/upload/201703/89759257b524cdcb2785ff219424cd0b.jpg'"><img class="mt10" src="http://img.nb77.cn/upload/201703/89759257b524cdcb2785ff219424cd0b.jpg"/></a></li>
-																												<li><a onmousemove="javascript:document.getElementById('BigImg').src='http://img.nb77.cn/upload/201703/d1083f3b3a35832bbd447fbebd4d0b2d.jpg'"><img class="mt10" src="http://img.nb77.cn/upload/201703/d1083f3b3a35832bbd447fbebd4d0b2d.jpg"/></a></li>
-																												<li><a onmousemove="javascript:document.getElementById('BigImg').src='http://img.nb77.cn/upload/201703/3cde0101efa62b1eabeaa71df0d1af1d.jpg'"><img class="mt10" src="http://img.nb77.cn/upload/201703/3cde0101efa62b1eabeaa71df0d1af1d.jpg"/></a></li>
-																												<li><a onmousemove="javascript:document.getElementById('BigImg').src='http://img.nb77.cn/upload/201703/7ca06718c56bfabd4e4c5dad4df8cb71.jpg'"><img class="mt10" src="http://img.nb77.cn/upload/201703/7ca06718c56bfabd4e4c5dad4df8cb71.jpg"/></a></li>
-																												<li><a onmousemove="javascript:document.getElementById('BigImg').src='http://img.nb77.cn/upload/201703/7b7eb1c48d1e52133ebfc27314274845.jpg'"><img class="mt10" src="http://img.nb77.cn/upload/201703/7b7eb1c48d1e52133ebfc27314274845.jpg"/></a></li>
-																												<li><a onmousemove="javascript:document.getElementById('BigImg').src='http://img.nb77.cn/upload/201703/991669d0e3419b13b06a4e5ba07e7de4.jpg'"><img class="mt10" src="http://img.nb77.cn/upload/201703/991669d0e3419b13b06a4e5ba07e7de4.jpg"/></a></li>
-																												<li><a onmousemove="javascript:document.getElementById('BigImg').src='http://img.nb77.cn/upload/201703/ed58a981ac4f1b9d18b75d77340fb99a.jpg'"><img class="mt10" src="http://img.nb77.cn/upload/201703/ed58a981ac4f1b9d18b75d77340fb99a.jpg"/></a></li>
-																				</ul>
+                            <%foreach (var s in piclist)
+                                { %>
+							<li><a onmousemove="javascript:document.getElementById('BigImg').src='<%=s %>'"><img class="mt10" src="<%=s %>"/></a></li>
+					
+																				<%} %></ul>
 					</div>
 	<div class="red">网站声明：本网站系宁波市二手车经纪行业内部网，仅供本行业经本网站注册登记并且确认的网站会员使用，不对外开放。本网所有二手车交易信息均由本网站会员自行发布，本网站无法对该信息真实性负责，一切以二手车交易现场的实际车况为准。特别提醒，表显里程数不等于实际里程。</div>
 				<!--车源图片结束-->
@@ -750,36 +750,38 @@
 			<div class="info">
 				<div class="detailtitle cartitle mt20">车况信息</div>
 				<!--车源详细说明-->
-				<h2>奥迪A6L(已定）私家一手车 外黑内棕</h2>
+				<h2><asp:Literal ID="title" runat="server"></asp:Literal></h2>
+                                    
 				<div class="car_detail01 mt10">
-					<p>售价：<span class="f16 orange01 fb">33.99万元</span><span class="red">（还价不多）</span></p>
-					<p><span class="gray01" id="dno_">编号：<span class="black">60018</span> 6800 662685</span></p>
+					<p>售价：<span class="f16 orange01 fb"><asp:Literal ID="Literal1" runat="server"></asp:Literal></span><span class="red"><asp:Literal ID="huanjia" runat="server"></asp:Literal></span></p>
+					<p><span class="gray01" id="dno_">编号：<span class="black"><asp:Literal ID="sellnumber" runat="server"></asp:Literal></span><asp:Literal ID="ProNum" runat="server"></asp:Literal> </span></p>
 				</div>
 				<div class="car_detail02 mt10">
 					<ul class="clearfix">
-						<li><span>上牌日期：</span>2016年7月</li>
-						<li><span>车辆车型：</span>轿车</li>
-						<li><span>车辆产地：</span>国产</li>
-						<li><span>车辆颜色：</span>外黑内棕</li>
-						<li><span>排 气 量：</span>2.0T</li>
-						<li><span>变 速 器：</span>手自一体</li>
-						<li><span>表显里程：</span>2.00万</li>
-						<li><span>排放标准：</span>国五</li>
-						<li><span>燃    料：</span>汽油</li>
-						<li><span>发布日期：</span>2017-04-21</li>
+						<li><span>上牌日期：</span><asp:Literal ID="shangpaiym" runat="server"></asp:Literal></li>
+						<li><span>车辆车型：</span><asp:Literal ID="cartype" runat="server"></asp:Literal></li>
+						<li><span>车辆产地：</span><asp:Literal ID="country" runat="server"></asp:Literal></li>
+						<li><span>车辆颜色：</span><asp:Literal ID="CarColor" runat="server"></asp:Literal></li>
+						<li><span>排 气 量：</span><asp:Literal ID="PaiLiang" runat="server"></asp:Literal></li>
+						<li><span>变 速 器：</span><asp:Literal ID="BianShuQi" runat="server"></asp:Literal></li>
+						<li><span>表显里程：</span><asp:Literal ID="LiCheng" runat="server"></asp:Literal></li>
+						<li><span>排放标准：</span><asp:Literal ID="PaiFangBiaoZhun" runat="server"></asp:Literal></li>
+						<li><span>燃    料：</span><asp:Literal ID="RanYou" runat="server"></asp:Literal></li>
+						<li><span>发布日期：</span><asp:Literal ID="cdate" runat="server"></asp:Literal></li>
 
 					</ul>
 				</div>
 				<div class="mt10">
 <p class="car_details">
-	<span>车况说明：</span>已定，私家车，国五飘全国，现为一手车，谁要过谁名下， 外黑内棕，最时尚的配色，爱惜的不得了，全程4S店保养，新车出厂膜很多都没有撕掉，里外成色实在太新了，就是一辆新车，错过机会不再有。车在江东，看车方便
+	<span>车况说明：</span><asp:Literal ID="yangqing" runat="server"></asp:Literal>
 </p>	</div>
 
 				<div class="detailtitle contacttitle mt15">联系方式</div>
 				<div class="car_detail02 mt10">
 					<ul class="clearfix">
-						<li style="width:300px;"><span>商户名称：</span> 宁波优驰乐途汽车服务有限公司</li>
-						<li style="width:300px;"><span>看车地址：</span>宁波市鄞州区嵩江东路501号</li><li style="width:300px;"> <span>联系电话：</span>13732191571</li>					</ul>
+						<li style="width:300px;"><span>商户名称：</span> <asp:Literal ID="SellerName" runat="server"></asp:Literal></li>
+						<li style="width:300px;"><span>看车地址：</span><asp:Literal ID="Address" runat="server"></asp:Literal></li><li style="width:300px;"> 
+                            <span>联系电话：</span><asp:Literal ID="tel" runat="server"></asp:Literal></li>					</ul>
 				</div>	
 				<!--车源详细说明结束-->
 			</div>

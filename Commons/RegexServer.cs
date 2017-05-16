@@ -41,7 +41,7 @@ namespace Commons
             }
         }
 
-        public bool regIsMatch(string text, string regInfo)
+        public static bool regIsMatch(string text, string regInfo)
         {
             return Regex.IsMatch(text, regInfo, Ro);
         }

@@ -1,0 +1,47 @@
+@import url('base.css');
+@import url(dealer_common.css);
+
+@charset "gbk";
+/* CSS Document */
+/* ==========================================================
+	* µÇÂ½×¢²á
+	* Copyright (c) 2010, www.mbatrip.com All rights reserved.
+	* Date: 2010/10/22
+	* Name: littelmao
+============================================================*/
+body{font:12px/1.5 'Tahoma','simsun';line-height:1.5em;color:#222; text-align:left;background:#fff;}
+select,input{vertical-align:middle;}
+img{vertical-align:top;}
+
+/*Ä¬ÈÏ³¬Á´½Ó*/
+a{color:#036; text-decoration:none;}
+a:hover{color:#f60;}
+
+/*¹«¸æ*/
+.notice{margin-left:auto;margin-right:auto;width:870px;height:70px;padding:10px;border:1px solid #ffc798;background:#fefbec;font-size:14px;line-height:23px;text-align:left;font-family:"Î¢ÈíÑÅºÚ";color:#666;}
+.notice h3{font-size:18px;color:#f60}
+
+/*Ö÷Ìå*/
+.loginmain{width:100%;background:#f4f4f4;}
+.main{margin-left:auto;margin-right:auto;width:1024px;height:437px;padding:0 0;background:url(/static/img/loginbd.jpg) no-repeat right bottom;position:relative;z-index:1}
+.loginw{position:absolute;top:83px;left:605px;}
+.login{width:361px;height:300px;border:1px solid #ccc;background:#fff url(/static/img/login_box_bg.jpg) repeat-x 0 bottom;}
+.loginbox{padding:10px 5px;}
+.login .title{height:49px;line-height:49px;font-size:14px;font-weight:bold;padding-left:20px;background:url(/static/img/login_title_bg.jpg) repeat-x 0 0;}
+
+.loginbottom{margin-left:auto;margin-right:auto;width:1024px;}
+.importantnews{background:#ff908f;height:320px;width:710px;float:left;padding:15px 15px 15px 20px;color:#000;font-size:12px;}
+.xiehuinews{background:#6f99ff;height:320px;width:240px;float:left;padding:15px 29px 15px 10px;color:#000;}
+
+/*µÇÂ¼±íµ¥*/
+.login-form{width:350px}
+.login-form li.field{height:36px;}
+.login-form li.field div{float:left;}
+.login-form li.field .word{width:60px;height:25px;line-height:25px;font-size:14px;}
+.login-form li.field .input{position:relative;width:245px;font-size:12px;}
+.login-form li.field input{width:120px;padding:5px 0;margin:0 5px;border:1px solid #d8d8d8;font-size:12px;}
+.login-form li .code{line-height:25px;}
+.login-form li .code a{color:#0066cc}
+.login-form li .qq{position:absolute;top:185px;left:180px;}
+
+.homelogo a{position:absolute;left:30px;top:25px;width:100px;height:100px;}

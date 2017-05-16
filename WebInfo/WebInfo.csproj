@@ -65,14 +65,20 @@
     <Content Include="Default.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="Item.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="static\css\base.css" />
     <Content Include="static\css\dealer_common.css" />
     <Content Include="static\css\dealer_user.css" />
     <Content Include="static\css\default.css" />
+    <Content Include="static\css\login.css" />
     <Content Include="static\css\skygq_valid.css" />
     <Content Include="static\img\foot_banner.jpg" />
     <Content Include="static\img\headbg.gif" />
+    <Content Include="static\img\login.gif" />
+    <Content Include="static\img\loginbd.jpg" />
+    <Content Include="static\img\login_box_bg.jpg" />
+    <Content Include="static\img\login_title_bg.jpg" />
     <Content Include="static\img\orderbg.gif" />
     <Content Include="static\img\search05.gif" />
     <Content Include="static\js\ajax.js" />
@@ -122,6 +128,13 @@
     </Compile>
     <Compile Include="Item.aspx.designer.cs">
       <DependentUpon>Item.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="main.Master.cs">
       <DependentUpon>main.Master</DependentUpon>
