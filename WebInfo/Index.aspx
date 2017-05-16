@@ -76,7 +76,7 @@ $(function(){
 	<ul class="clearfix">
 		<li><a href="/" class="here">首页</a></li>
 		<li><a href="/dealer/index.php?mod=index&ac=index&s_type=1">二手车信息</a></li>
-		<li><a href="/dealer/index.php?mod=index&ac=about&id=37">常用表格</a></li>
+
 		<li><a href="http://www.nb2sc.org/news/news_57_01.html" target="_blank">服务信息</a></li>
 		<li class="wzcx"><a href="#">违章查询</a><div class="wzcxlist hide" style="position:absolute;z-index:999999;background:#62ab00;top:38;width:100px;"><a href="http://ngb.122.gov.cn:9080/violation_query.html" target="_blank">宁波违章查询</a><a href="http://www.zjsgat.gov.cn:8087/was/portals/car_lllegal_query.jsp" target="_blank">浙江违章查询</a></div></li>
 		<li style="border-right:1px solid green;"><a href="/dealer/index.php?mod=news&ac=list&id=83" style="color:#fff;background:#ff0000;">换届选举公告</a></li>

@@ -26,7 +26,7 @@
             </ul>
         </div>
 
-		<div class="leftsearch">
+		<div class="leftsearch" style="display:none">
 			<form method="get" action="http://www.nb77.cn/dealer/index.php">
 			<input type="hidden" name="mod" value="user">
 			<input type="hidden" name="ac" value="dealerlist">	<select name="searchsort">

@@ -11,11 +11,12 @@
 		        <div class="usermenu">
             <h3>我的车源管理 &gt;</h3>
             <ul class="clearfix">
+         
                 <li><a href="/AddCar.aspx?method=add" class="orange01 f14">添加车源</a></li>
-                <li><a href="http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=carlist&amp;s_type=1" class="orange01">管理车源</a></li>
+                <li><a href="UserCarList.aspx" class="orange01">管理车源</a></li>
             </ul>
         </div>
-		        <div class="usermenu">
+		        <div class="usermenu" style="display:none">
             <h3>车商资料查询 &gt;</h3>
             <ul class="clearfix">
                 <li><a href="http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=dealerlist" class="orange01 f12">车商列表</a></li>
@@ -24,7 +25,7 @@
             </ul>
         </div>
 
-		<div class="leftsearch">
+		<div class="leftsearch" style="display:none">
 			<form method="get" action="http://www.nb77.cn/dealer/index.php">
 			<input type="hidden" name="mod" value="user">
 			<input type="hidden" name="ac" value="dealerlist">	<select name="searchsort">
@@ -34,7 +35,7 @@
 			</form>
 		</div>
         
-        <div class="usermenu">
+        <div class="usermenu" style="display:none">
             <h3>帐号管理 &gt;</h3>
             <ul class="clearfix">
                 <li><a href="http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=upinfo">修改资料</a></li>
