@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using Commons;
 using System.IO;
+using DataBase;
+using System.Text;
 
 namespace WebInfo
 {
@@ -26,14 +28,23 @@ namespace WebInfo
             }
             else
             {
-                 method = context.Request.Form["method"].ToString();
+                method = context.Request.Form["method"].ToString();
             }
 
 
-       
+
             if (string.IsNullOrEmpty(method))
             {
-                AddImg(context);
+                try
+                {
+                    AddImg(context);
+                }
+                catch (Exception ex)
+                {
+                    context.Response.Write("{\"Error\":\"图片上传失败 " + ex.Message + "\"}");
+                    LogServer.WriteLog(ex);
+                }
+
                 return;
             }
             switch (method)
@@ -44,6 +55,9 @@ namespace WebInfo
                 case "user":
                     AddUserImg(context);
                     break;
+                case "brandType":
+                    brandType(context);
+                    break;
                 default:
                     break;
             }
@@ -53,17 +67,31 @@ namespace WebInfo
 
         }
 
+        private void brandType(HttpContext context)
+        {
+            var id = context.Request.QueryString["brandid"].ToString();
+            if (string.IsNullOrEmpty(id))
+                return;
+            var list = new BandInfoDb().GetBandInfoByParentNum(id);
+            StringBuilder brands = new StringBuilder();
+            brands.Append("<option value=''>请选择型号</option>");
+            foreach (var item in list)
+            {
+                brands.AppendFormat("<option value='{0}'>{1}</option>", item.BrandNum, item.DisplayName);
+            }
+            context.Response.Write(brands.ToString());
 
+        }
 
         private void delImg(HttpContext context)
         {
-            
+
 
             var id = context.Request.Form["id"].ToString();
             if (string.IsNullOrEmpty(id))
                 return;
 
-            string filepath = context.Server.MapPath("/") + "carimg\\load\\"+ id+ "jpg";
+            string filepath = context.Server.MapPath("/") + "carimg\\load\\" + id + "jpg";
             string filepath2 = context.Server.MapPath("/") + "carimg\\small\\" + id + "jpg";
 
             if (File.Exists(filepath))
@@ -82,7 +110,7 @@ namespace WebInfo
             HttpFileCollection files = context.Request.Files;//这里只能用<input type="file" />才能有效果,因为服务器控件是HttpInputFile类型
             string msg = string.Empty;
             string error = string.Empty;
-      
+
             if (files.Count == 0)
             {
                 return;
@@ -102,18 +130,26 @@ namespace WebInfo
             string sourfilepath = filepath + fileName;
             files[0].SaveAs(sourfilepath);
 
+
             var sourImg = System.Drawing.Image.FromFile(sourfilepath);
 
             if (sourImg.Width > 2000 || sourImg.Height > 2000)
             {
                 context.Response.Write("{\"Error\":\"图片太大，超过了 2000*2000\"}");
+                sourImg.Dispose();
                 File.Delete(sourfilepath);
                 return;
             }
             if (sourImg.Width < 600 || sourImg.Height < 450)
             {
                 context.Response.Write("{\"Error\":\"图片太小了，最小宽度600px 最小高度 450px\"}");
-                File.Delete(sourfilepath);
+
+                if (File.Exists(sourfilepath))
+                {
+                    sourImg.Dispose();
+                    File.Delete(sourfilepath);
+                }
+
                 return;
             }
 
@@ -172,7 +208,7 @@ namespace WebInfo
                 File.Delete(sourfilepath);
                 return;
             }
-     
+
             context.Response.Write("{\"img\":\"/carimg/user/" + fileName + "\"}");
             return;
 

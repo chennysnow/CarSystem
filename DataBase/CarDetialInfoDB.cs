@@ -29,9 +29,18 @@ namespace DataBase
                 {
                     using (var db = _dbFactory.OpenDbConnection())
                     {
-                        item.CreateTime=DateTime.Now;
-                  
-                        db.Insert(item);
+                        if (item.Id == 0)
+                        {
+                            item.CreateTime = DateTime.Now;
+
+                            db.Insert(item);
+                        }
+                        else
+                        {
+                            //db.SingleById<CarDetialInfo>(item.Id);
+                            db.Update<CarDetialInfo>(item);
+                        }
+              
                     }
                     break;
                 }
@@ -46,6 +55,8 @@ namespace DataBase
         }
         public CarDetialInfo GetCarinfo(int id)
         {
+            if (id == 0)
+                return null;
             int error = 0;
             do
             {

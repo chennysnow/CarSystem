@@ -11,12 +11,13 @@
     <div class="userleft">
 		        <div class="usermenu">
             <h3>我的车源管理 &gt;</h3>
+                   
             <ul class="clearfix">
                 <li><a href="/AddCar.aspx?carid=addcar" class="orange01 f14">添加车源</a></li>
-                <li><a href="http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=carlist&amp;s_type=1" class="orange01">管理车源</a></li>
+                <li><a href="UserCarList.aspx" class="orange01">管理车源</a></li>
             </ul>
         </div>
-		        <div class="usermenu">
+		        <div style="display:none" class="usermenu">
             <h3>车商资料查询 &gt;</h3>
             <ul class="clearfix">
                 <li><a href="http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=dealerlist" class="orange01 f12">车商列表</a></li>
@@ -184,7 +185,7 @@ function isSubmit()
 					<th>车型选择：</th>
 					<td>
 						<select name="p_sort">
-							<option value="4">轿车</option><option value="28">跑车</option><option value="29">越野车</option><option value="31" selected="">商务车</option><option value="32">皮卡</option><option value="33">面包车</option><option value="34">客车</option><option value="37">货车</option><option value="36">其他</option>
+							<%=p_sort %>
 						</select>
 					</td>
 				</tr>
@@ -195,11 +196,11 @@ function isSubmit()
 							<%=Brandinfo %>
 						</select>
 						<select id="subbrand" name="p_subbrand">
-							
+							<%=subbrand %>
 						</select>
 						<!-- <span id="models">
 																							</span> -->
-						<input type="text" name="p_name" size="25" value=""> <span class="gray">其他参数</span></p>
+						<input type="text" name="p_name" size="25" value="<%=p_name %>"> <span class="gray">其他参数</span></p>
 					</td>
 				</tr>
 				<tr>
@@ -210,9 +211,9 @@ function isSubmit()
                             
                            
 				
-						<ul id="piclist" class="clearfix" style="display:none" ></ul>
+						<ul id="piclist" class="clearfix" >	<%=Imgli %></ul>
                             	
-						
+					
                             
 						</div>
                      
@@ -229,14 +230,14 @@ function isSubmit()
 				<tr>
 					<th>设置主图：</th>
 					<td>
-						<div class="td03">第 <input type="text" name="p_mainpic" size="2" value="1"> 张 <span class="gray01">默认第一张为主图，可换数字选择主图。</span></div>
+						<div class="td03">第 <input type="text" name="p_mainpic" size="2" value="<%=p_mainpic %>"> 张 <span class="gray01">默认第一张为主图，可换数字选择主图。</span></div>
 					</td>
 				</tr>
 				<tr>
 					<th>车体颜色：</th>
 					<td>
 						<div class="td03">
-							<input type="text" name="p_color" value="" size="8">
+							<input type="text" name="p_color" value="<%=p_color %>" size="8">
 							<span class="gray01">如：黑色、白色、香槟色</span>
 						</div>	
 					</td>
@@ -244,8 +245,8 @@ function isSubmit()
 				<tr>
 					<th>车主报价：<span class="red">*</span></th>
 					<td>
-						<div class="td03"><input type="text" name="p_price" size="5" value="">（万元）</div>
-						<div class="td01">还价不多：</div><div class="td02"><input type="radio" name="isfixprice" value="1" checked=""> 是 <input type="radio" name="isfixprice" value="0"> 否
+						<div class="td03"><input type="text" name="p_price" size="5" value="<%=p_price %>">（万元）</div>
+						<div class="td01" style="display:none">还价不多：</div><div class="td02" style="display:none"><input type="radio" name="isfixprice" value="1" checked=""> 是 <input type="radio" name="isfixprice" value="0"> 否
 						</div>
 					</td>
 				</tr>
@@ -258,13 +259,13 @@ function isSubmit()
 				<tr>
 					<th>表显里程：</th>
 					<td>
-						<div class="td02"><input name="p_kilometre" type="text" id="p_kilometre" size="5" value="">&nbsp;(万公里)</div>
+						<div class="td02"><input name="p_kilometre" type="text" id="p_kilometre" size="5" value="<%=p_kilometre %>">&nbsp;(万公里)</div>
 					</td>
 				</tr>
 				<tr>
 					<th>排 气 量：</th>
 					<td>
-						<div class="td02"><input name="p_gas" type="text" id="p_gas" size="5" value="">
+						<div class="td02"><input name="p_gas" type="text" id="p_gas" size="5" value="<%=p_gas %>">
 						&nbsp;(升)</div>
 					</td>
 				</tr>
@@ -277,25 +278,25 @@ function isSubmit()
 				<tr>
 					<th>变 速 器：</th>
 					<td>
-						<input type="radio" name="p_transmission" value="手动档" checked="">手动档 <input type="radio" name="p_transmission" value="自动档" checked="">自动档 <input type="radio" name="p_transmission" value="手自一体">手自一体 
+						<%=p_transmission %>
 					</td>
 				</tr>
 				<tr>
 					<th>排放标准：</th>
 					<td>
-						<select name="p_emissionstandards" id="p_emissionstandards"><option value="">请选择排放标准</option><option value="国一">国一</option><option value="国二">国二</option><option value="国三">国三</option><option value="国三+OBD">国三+OBD</option><option value="国四">国四</option><option value="国五">国五</option></select>
+						<select name="p_emissionstandards" id="p_emissionstandards"><%=p_emissionstandards %></select>
 					</td>
 				</tr>
 				<tr>
 					<th>燃料：</th>
 					<td>
-						<select name="p_fuel" id="p_fuel"><option value="">请选择燃料</option><option value="汽油" >汽油</option><option value="柴油">柴油</option><option value="混动">混动</option><option value="电动">电动</option></select>
+						<select name="p_fuel" id="p_fuel"><%=p_fuel %></select>
 					</td>
 				</tr>
 				<tr>
 					<th>具体说明：<span class="red">*</span></th>
 					<td>
-						<textarea name="p_details" rows="3" cols="60" class="textarea01"></textarea>
+						<textarea name="p_details" rows="3" cols="60" class="textarea01" ><%=p_details %></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -309,8 +310,8 @@ function isSubmit()
 					<td>
 						<div class="buttons"><input type="button" name="Submit" id="submitb" value="编辑车源" class="submit" onclick="checknull()"><div class="submit" id="submittingb" style="display:none;padding:3px 10px;background:#ccc;color:#666;width:100px;">正在提交。。。</div>
 							<input type="hidden" name="ac" value="editcar">
-							<input type="hidden" name="id" value="415104">
-                            <input type="hidden" name="method" value="add">
+						
+                         
 							<input type="hidden" name="pstate" value="">
                             <input type="hidden" name="imgs" id="imgs" value="">
 							<input type="hidden" name="page" value="1">

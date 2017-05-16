@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
-<title></title>
+<title>车源管理 </title>
 
 <meta name="keywords" content=" 奥迪A6L(已定）私家一手车 二手车 2016年7月 2.0T 外黑内棕">
 <meta name="description" content="车况说明：已定，私家车，国五飘全国，现为一手车，谁要过谁名下， 外黑内棕，最时尚的配色，爱惜的不得了，全程4S店保养，新车出厂膜很多都没有撕掉，里外成色实在太新了，就是一辆新车，错过机会不再有。车在江东，看车方便">
@@ -18,21 +18,23 @@
 <script >
 $(function(){
 	//品牌选择
-	$("#brand").click(function(){
-	    $.get("http://www.nb77.cn/index.php?mod=page&ajax=1", {
-			pid :  $("#brand").val() 
+	$("#brand").change(function(){
+	    $.get("/WebApi.ashx?method=brandType", {
+	        brandid: $("#brand").val()
 		}, function (data, textStatus){
             $("#subbrand").html(data); // 把返回的数据添加到页面上
 			}
 		);
 	});
-	$("#brand2").click(function(){
-	    $.get("http://www.nb77.cn/index.php?mod=page&ajax=1", {
-			pid :  $("#brand2").val() 
-		}, function (data, textStatus){
-               $("#subbrand2").html(data); // 把返回的数据添加到页面上
-			}
+	$("#brand2").change(function () {
+
+	    $.get("/WebApi.ashx?method=brandType", {
+	        brandid: $("#brand2").val()
+	    }, function (data, textStatus) {
+	        $("#subbrand2").html(data); // 把返回的数据添加到页面上
+	    }
 		);
+
 	});
 	$('#dno').click(function(){
         $('.shortno').show();

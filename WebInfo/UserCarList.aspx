@@ -11,7 +11,7 @@
 		        <div class="usermenu">
             <h3>我的车源管理 &gt;</h3>
             <ul class="clearfix">
-                <li><a href="/AddCar.aspx?carid=addcar" class="orange01 f14">添加车源</a></li>
+                <li><a href="/AddCar.aspx?method=add" class="orange01 f14">添加车源</a></li>
                 <li><a href="http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=carlist&amp;s_type=1" class="orange01">管理车源</a></li>
             </ul>
         </div>
@@ -100,7 +100,7 @@
                 <td align="center"><%# Eval("SHANGPAIyEAR")%>年<%# Eval("ShangpaiMonth")%>月</td>
                 <td align="center"><%#Eval("CreateTime", "{0:yyyy-MM-dd}")%></td>
                                  
-                <td align="center" class="opmenu"><a href="AddCar.aspx?id=<%# Eval("id")%>">编辑</a>|<a href="AddCar.aspx?method=edit&id=<%# Eval("id")%>" title="如果该车已卖出，从列表中移除">删除</a><span style="display:none;">| <a href="javascript:if(confirm('确实要删除吗?'))location='method=del&id='<%# Eval("id")%>"></a></span>
+                <td align="center" class="opmenu"><a href="AddCar.aspx?method=edit&id=<%# Eval("id")%>">编辑</a>|<a href="AddCar.aspx?method=edit&id=<%# Eval("id")%>" title="如果该车已卖出，从列表中移除">删除</a><span style="display:none;">| <a href="javascript:if(confirm('确实要删除吗?'))location='method=del&id='<%# Eval("id")%>"></a></span>
             </td></tr>
                        
         

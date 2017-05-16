@@ -104,5 +104,29 @@ namespace DataBase
             } while (error < 4);
             return null;
         }
+
+        public BandInfo getBrandByKey(string key)
+        {
+
+            int error = 0;
+            do
+            {
+                try
+                {
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+                        return db.Single<BandInfo>(p => p.BrandNum == key);
+                    }
+
+                }
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(10000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+                }
+            } while (error < 4);
+            return null;
+        }
     }
 }
