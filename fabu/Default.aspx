@@ -99,7 +99,7 @@
                 <tr>
                     <td width="160" height="40" align="right">法人身份证上传：</td>
                     <td align="left">
-                        <input type="file" class="input" name="pic1" id="pic1" size="30" />
+                        <input type="file" class="input" name="pic1" id="pic1" size="30"  accept="image/jpeg" capture="camera" />
                         *
                                         <div></div>
                     </td>
@@ -107,7 +107,7 @@
                 <tr>
                     <td width="80" height="40" align="right">营业执照上传：</td>
                     <td align="left">
-                        <input type="file" class="input" name="pic2" id="pic2" size="30" />
+                        <input type="file" class="input" name="pic2" id="pic2" size="30"  accept="image/jpeg" capture="camera" />
 
                         <div></div>
                     </td>
@@ -128,6 +128,12 @@
                                         <div></div>
                     </td>
                 </tr>
+            <tr>
+            <td width="80" height="40" align="right">手机短号：</td>
+            <td align="left"><input name="netNumber" id="netNumber" size="30"/>
+            *  短号将在审核通过后作为内网编号
+            <div></div></td>
+            </tr>
 
 
                 <tr>
@@ -141,7 +147,7 @@
                     <td width="80" height="40" align="right"></td>
                     <td height="30" align="left">
                         <input type="submit" name="Submit" value="提　交" />
-                        <input type="reset" name="Submit2" value="重　置" /></td>
+                        <input type="reset" value="重　置" /></td>
                 </tr>
                   <%=ErrorMsg %>
             </table>

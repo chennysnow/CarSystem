@@ -106,6 +106,9 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GetCardetial.ashx.cs">
+      <DependentUpon>GetCardetial.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -169,6 +172,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="main.Master" />
+    <Content Include="GetCardetial.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

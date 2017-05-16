@@ -19,6 +19,30 @@ namespace DataBase
                 db.CreateTable<CarTypeInfo>();
             }
         }
+        public List<CarTypeInfo> GetCarinfoList(string p)
+        {
+            int error = 0;
+            do
+            {
+                try
+                {
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+                        return db.Select<CarTypeInfo>(c => c.ParentCarTypeKey == p);
+                    }
+                    break;
+                }
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(10000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+                }
+            } while (error < 4);
+
+            return null;
+
+        }
         public void AddCarinfo(CarTypeInfo item)
         {
             int error = 0;
