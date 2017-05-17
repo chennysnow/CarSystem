@@ -100,6 +100,8 @@
     <Content Include="static\css\uploadify.css" />
     <Content Include="static\js\uploadify.swf" />
     <Content Include="UserCarList.aspx" />
+    <Content Include="Userupdata.aspx" />
+    <Content Include="UserUpdataPwd.aspx" />
     <Content Include="ValidCode.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebApi.aspx" />
@@ -175,6 +177,20 @@
     </Compile>
     <Compile Include="UserCarList.aspx.designer.cs">
       <DependentUpon>UserCarList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Userupdata.aspx.cs">
+      <DependentUpon>Userupdata.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Userupdata.aspx.designer.cs">
+      <DependentUpon>Userupdata.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserUpdataPwd.aspx.cs">
+      <DependentUpon>UserUpdataPwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserUpdataPwd.aspx.designer.cs">
+      <DependentUpon>UserUpdataPwd.aspx</DependentUpon>
     </Compile>
     <Compile Include="ValidCode.aspx.cs">
       <DependentUpon>ValidCode.aspx</DependentUpon>

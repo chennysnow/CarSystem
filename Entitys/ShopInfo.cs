@@ -18,6 +18,10 @@ namespace Entitys
         public string ShopNum { get; set; }
 
         public string ShopPwd { get; set; }
+
+        public string PhoneShopNum { get; set; }
+
+        public int start { get; set; }
         public DateTime CreateTime { get; set; }
     }
 }
