@@ -1,19 +1,20 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/main.Master" AutoEventWireup="true" CodeBehind="AddCar.aspx.cs" Inherits="WebInfo.AddCar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/main.Master" AutoEventWireup="true" CodeBehind="Userupdata.aspx.cs" Inherits="WebInfo.Userupdata" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="/static/css/dealer_user.css" rel="stylesheet" />
+        <link href="/static/css/dealer_user.css" rel="stylesheet" />
     <script src="static/js/common.js"></script>
     <script src="static/js/ajax.js"></script>
     <script src="static/js/ajaxfileupload.js"></script>
-<style type="text/css" media="screen">#file_uploadUploader {visibility:hidden}</style>
+        <script src="static/js/layer.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="main clearfix" style="padding-top:10px ;padding-bottom:10px ">
+
+     <div class="main clearfix" style="padding-top:10px ;padding-bottom:10px ">
     <div class="userleft">
 		        <div class="usermenu">
             <h3>我的车源管理 &gt;</h3>
                    
             <ul class="clearfix">
-                <li><a href="/AddCar.aspx?method=add" class="orange01 f14">添加车源</a></li>
+                <li><a href="/AddCar.aspx?carid=addcar" class="orange01 f14">添加车源</a></li>
                 <li><a href="UserCarList.aspx" class="orange01">管理车源</a></li>
             </ul>
         </div>
@@ -36,12 +37,12 @@
 			</form>
 		</div>
         
-        <div   class="usermenu">
+        <div  class="usermenu">
             <h3>帐号管理 &gt;</h3>
             <ul class="clearfix">
-                <li><a href="Userupdata.aspx">修改资料</a></li>
-                 <li><a href="UserUpdataPwd.aspx">修改密码</a></li>
-              
+                 <li><a href="Userupdata.aspx">修改资料</a></li>
+               <li><a href="UserUpdataPwd.aspx">修改密码</a></li>
+          
             </ul>
         </div>
 		
@@ -96,7 +97,7 @@
 
 		        			    function delimg(tempid) {
 		        			        $.post("/WebApi.ashx", { id: tempid, method: 'delimg' });
-		        			        $("#" + tempid).remove();
+		        			        $("#" + tempid).hide();
 		        			    }
 
 
@@ -176,154 +177,77 @@ function isSubmit()
 	}
 	return true;
 }
+function disppic(src) {
+    layer.open({
+        type: 1,
+        skin: 'layui-layer-rim', //加上边框
+        area: ['800px', '600px'], //宽高
+        content: '<img src="' + src + '" border="0" />'
+    });
+}
 </script>
 <div class="commonbox">
 	<h3>编辑车源</h3>
 	<div class="p10" style=" display:block;  margin-bottom :10px;  ">
-		<form name="form1" id="carform" enctype="multipart/form-data" method="post" action="AddCar.aspx"  >
-			<table cellspacing="0" cellpadding="0" width="100%" class="maintable">
-				<tbody><tr>
-					<th>车型选择：</th>
-					<td>
-						<select name="p_sort">
-							<%=p_sort %>
-						</select>
-					</td>
-				</tr>
-				<tr>
-					<th>品牌型号：<span class="red">*</span></th>
-					<td>
-						<p><select name="p_brand" id="brand">
-							<%=Brandinfo %>
-						</select>
-						<select id="subbrand" name="p_subbrand">
-							<%=subbrand %>
-						</select>
-						<!-- <span id="models">
-																							</span> -->
-						<input type="text" name="p_name" size="25" value="<%=p_name %>"> <span class="gray">其他参数</span></p>
-					</td>
-				</tr>
-				<tr>
-					<th>车源图例：</th>
-					<td>
-						<div class="uploadbox">
-				
-                            
-                           
-				
-						<ul id="piclist" class="clearfix" >	<%=Imgli %></ul>
-                            	
-					
-                            
-						</div>
-                     
-                        	<div  style=" height:20px; clear:both">
-                        
-                  <input type="file" id="file1" name="file" />                
-    <input type="button" id="upimgfile" value="上传图片" />
-                                <input type="hidden" value="0" id="imgcount" />
-                       </div>
+		<form name="form1" id="carform" enctype="multipart/form-data" method="post" action="userupdata.aspx"  >
+            <input type="hidden" id="id" name="id" value="" />
+			<table width="715" border="0" align="center" cellpadding="3" cellspacing="0">
+                <!--<tr>
+                    <td width="160" height="40" align="right">法人身份证：</td>
+                    <td align="left">
+                        <input type="file" class="input" name="pic1" id="pic1" size="30"  />
+                        *<a href="javascript:void(0)" onclick="disppic('<%=shop.BusinessLicense %>')">图片</a>
+                                        <div></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="80" height="40" align="right">营业执照：</td>
+                    <td align="left">
+                        <input type="file" class="input" name="pic2" id="pic2" size="30"   /><a href="javascript:void(0)" onclick="disppic('<%=shop.IdCart %>')">图片</a>
+                        <div></div>
+                    </td>
+                </tr>-->
+                <tr>
+                    <td width="80" height="40" align="right">公司名称：</td>
+                    <td align="left">
+                        <input name="companyName" id="companyName" size="30" value="<%=shop.CompanyName %>" />
+                        *
+                                        <div></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="80" height="40" align="right">手机号：</td>
+                    <td align="left">
+                        <input name="phoneNum" id="phoneNum" size="30" value="<%=shop.PhoneNumber %>" />
+                        *
+                                        <div></div>
+                    </td>
+                </tr>
+            <tr>
+            <td width="80" height="40" align="right">编号：</td>
+            <td align="left"><input name="netNumber" id="netNumber" size="30" value="<%=shop.ShopNum %>" />
+            *  编号将在审核通过后作为内网帐号
+            <div></div></td>
+            </tr>
+            <tr>
+            <td width="80" height="40" align="right">编码：</td>
+            <td align="left"><input name="phoneNumber" id="phoneNumber" size="30" value="<%=shop.PhoneShopNum %>" />
+            *  编号将在审核通过后作为内网帐号
+            <div></div></td>
+            </tr>
+                <tr>
+                    <td width="80" height="40" align="right"></td>
+                    <td height="30" align="left">
+                        <input type="submit" name="Submit" value="提　交" />
+                        <input type="reset" value="重　置" /></td>
+                </tr>
+                   <%=ErrorMsg %>
+            </table>
 
-
-					</td>
-				</tr>
-				<tr>
-					<th>设置主图：</th>
-					<td>
-						<div class="td03">第 <input type="text" name="p_mainpic" size="2" value="<%=p_mainpic %>"> 张 <span class="gray01">默认第一张为主图，可换数字选择主图。</span></div>
-					</td>
-				</tr>
-				<tr>
-					<th>车体颜色：</th>
-					<td>
-						<div class="td03">
-							<input type="text" name="p_color" value="<%=p_color %>" size="8">
-							<span class="gray01">如：黑色、白色、香槟色</span>
-						</div>	
-					</td>
-				</tr>
-				<tr>
-					<th>车主报价：<span class="red">*</span></th>
-					<td>
-						<div class="td03"><input type="text" name="p_price" size="5" value="<%=p_price %>">（万元）</div>
-						<div class="td01" style="display:none">还价不多：</div><div class="td02" style="display:none"><input type="radio" name="isfixprice" value="1" checked=""> 是 <input type="radio" name="isfixprice" value="0"> 否
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<th>上牌日期：<span class="red">*</span></th>
-					<td>
-						<select name="p_year" id="p_year"><%=BuyCarYear %></select>(年) <select name="p_month" id="p_month"><%=BuyCarMonth %></select>(月) 
-					</td>
-				</tr>
-				<tr>
-					<th>表显里程：</th>
-					<td>
-						<div class="td02"><input name="p_kilometre" type="text" id="p_kilometre" size="5" value="<%=p_kilometre %>">&nbsp;(万公里)</div>
-					</td>
-				</tr>
-				<tr>
-					<th>排 气 量：</th>
-					<td>
-						<div class="td02"><input name="p_gas" type="text" id="p_gas" size="5" value="<%=p_gas %>">
-						&nbsp;(升)</div>
-					</td>
-				</tr>
-				<tr>
-					<th>国产进口：</th>
-					<td>
-						<input type="radio" name="p_country" value="国产" checked="">国产 <input type="radio" name="p_country" value="进口" >进口
-					</td>
-				</tr>
-				<tr>
-					<th>变 速 器：</th>
-					<td>
-						<%=p_transmission %>
-					</td>
-				</tr>
-				<tr>
-					<th>排放标准：</th>
-					<td>
-						<select name="p_emissionstandards" id="p_emissionstandards"><%=p_emissionstandards %></select>
-					</td>
-				</tr>
-				<tr>
-					<th>燃料：</th>
-					<td>
-						<select name="p_fuel" id="p_fuel"><%=p_fuel %></select>
-					</td>
-				</tr>
-				<tr>
-					<th>具体说明：<span class="red">*</span></th>
-					<td>
-						<textarea name="p_details" rows="3" cols="60" class="textarea01" ><%=p_details %></textarea>
-					</td>
-				</tr>
-				<tr>
-					<th></th>
-					<td>
-						<div class="gray01 lh150"><span class="red fb">注意：</span>发布的车源须做到图片无水印、无车商名，说明中无店铺名、网址、电话。<span style="display:none;"><a href="/dealer/index.php?mod=news&amp;ac=view&amp;id=1" class="orange01 unl" target="_blank">发布规范 &gt;&gt;</a></span></div><div class="ml30 pl10">打<span class="red">*</span>号的为必填。</div>
-					</td>
-				</tr>
-				<tr>
-					<th></th>
-					<td>
-						<div class="buttons"><input type="button" name="Submit" id="submitb" value="编辑车源" class="submit" onclick="checknull()"><div class="submit" id="submittingb" style="display:none;padding:3px 10px;background:#ccc;color:#666;width:100px;">正在提交。。。</div>
-							<input type="hidden" name="ac" id="ac" value="0">
-						<input type="hidden" name="method" value="<%=method %>">
-                            	<input type="hidden" name="id" value="<%=tempproid %>">
-                         
-							<input type="hidden" name="pstate" value="">
-                            <input type="hidden" name="imgs" id="imgs" value="">
-							<input type="hidden" name="page" value="1">
-						</div>
-					</td>
-				</tr>
-			</tbody></table>
 			
 		</form>
 	</div>
 </div>        				        														    </div>
 </div>
-    </asp:Content>
+
+</asp:Content>

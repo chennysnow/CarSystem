@@ -46,12 +46,12 @@
 			</form>
 		</div>
         
-        <div class="usermenu" style="display:none">
+        <div class="usermenu" >
             <h3>帐号管理 &gt;</h3>
             <ul class="clearfix">
-                <li><a href="http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=upinfo">修改资料</a></li>
-                <li><a href="http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=uppwd">修改密码</a></li>
-                <li><a href="http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=editcertimg" class="red">认证资料上传</a></li>
+                <li><a href="Userupdata.aspx">修改资料</a></li>
+                  <li><a href="UserUpdataPwd.aspx">修改密码</a></li>
+            
             </ul>
         </div>
 		
