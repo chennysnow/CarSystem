@@ -54,7 +54,7 @@
 
 		        			    $(function () {
 		        			        $("#upimgfile").click(function () {
-		        			            var imgcount = parseInt($("#imgcount").val());
+		        			            var imgcount = $("#piclist li").length;
 		        			            if (imgcount >7)
 		        			            {
 		        			                alert("最多只能上传8张图片");
