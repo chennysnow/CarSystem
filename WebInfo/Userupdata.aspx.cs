@@ -34,11 +34,11 @@ namespace WebInfo
                 }
                 if (Request.RequestType.ToUpper() == "POST")
                 {
-                    var IdCart = Request.Form["userCompany"];
-                    if (!string.IsNullOrEmpty(IdCart))
-                    {
-                        shop.IdCart = IdCart;
-                    }
+                    //var IdCart = Request.Form["userCompany"];
+                    //if (!string.IsNullOrEmpty(IdCart))
+                    //{
+                    //    shop.IdCart = IdCart;
+                    //}
                     shop.PhoneNumber = Request.Form["phoneNum"];
                     if (string.IsNullOrEmpty(shop.PhoneNumber))
                     {
@@ -52,11 +52,11 @@ namespace WebInfo
                         return;
                     }
 
-                    var BusinessLicense = Request.Form["CompanyLisent"];
-                    if (!string.IsNullOrEmpty(BusinessLicense))
-                    {
-                        shop.BusinessLicense = BusinessLicense;
-                    }
+                    //var BusinessLicense = Request.Form["CompanyLisent"];
+                    //if (!string.IsNullOrEmpty(BusinessLicense))
+                    //{
+                    //    shop.BusinessLicense = BusinessLicense;
+                    //}
 
                     shop.CompanyName = Request.Form["companyName"];
                     if (string.IsNullOrEmpty(shop.CompanyName))
@@ -72,11 +72,11 @@ namespace WebInfo
                         return;
                     }
 
-                    shop.ShopPwd = Request.Form["phoneNumber"];
+                    shop.PhoneShopNum = Request.Form["phoneNumber"];
 
-                    if (string.IsNullOrEmpty(shop.ShopNum))
+                    if (string.IsNullOrEmpty(shop.PhoneShopNum))
                     {
-                        ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入登录密码</td></tr>"; //"请刷新页面";
+                        ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入公司名称短码</td></tr>"; //"请刷新页面";
                         return;
                     }
                     //^[A-Za-z0-9]+$

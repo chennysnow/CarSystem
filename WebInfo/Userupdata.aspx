@@ -192,7 +192,7 @@ function disppic(src) {
 		<form name="form1" id="carform" enctype="multipart/form-data" method="post" action="userupdata.aspx"  >
             <input type="hidden" id="id" name="id" value="" />
 			<table width="715" border="0" align="center" cellpadding="3" cellspacing="0">
-                <tr>
+                <!--<tr>
                     <td width="160" height="40" align="right">法人身份证：</td>
                     <td align="left">
                         <input type="file" class="input" name="pic1" id="pic1" size="30"  />
@@ -206,7 +206,7 @@ function disppic(src) {
                         <input type="file" class="input" name="pic2" id="pic2" size="30"   /><a href="javascript:void(0)" onclick="disppic('<%=shop.IdCart %>')">图片</a>
                         <div></div>
                     </td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td width="80" height="40" align="right">公司名称：</td>
                     <td align="left">
