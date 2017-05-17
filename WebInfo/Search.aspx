@@ -66,6 +66,11 @@
                     $(dd[i]).remove();
                 }              
                 for (var i = 0; i < data.length && i < 25; i++) {
+
+                    var pronum = data[i].ProNum;
+                    if (pronum == null)
+                        pronum = '';
+
                     tu = data[i].pic1 != "" ? '<span class="red">（图）</span>' : "";
                     txt = '<tr bgcolor="#ffffff" onmouseover="style.backgroundColor=\'#FCE6BF\'" onmouseout="style.backgroundColor=\'#ffffff\'" style="background-color: rgb(255, 255, 255);">\
                         <td align= "center" >'+ data[i].SellerNumber + '</td ><td align="left"><a href="/item.aspx?id=' + data[i].Id + '" target="_blank">' + data[i].ProTitle +'</a><span class="red">（图）</span></td>\
@@ -75,7 +80,7 @@
                                 <td align="center"><a href="/Item.aspx?id=' + data[i].Id + '" target="_blank"><span class="red">' + data[i].baojia + '<span class="black">万</span></span></a></td>\
                                 <td align="center"><a href="/Item.aspx?id=' + data[i].Id + '" target="_blank">' + data[i].BianShuQi + '</a></td>\
                                 <td align="center"><a href="/Item.aspx?id=' + data[i].Id + '" target="_blank">' + data[i].CreateTime + '</a></td>\
-                                <td align="center"><a href="/Item.aspx?id=' + data[i].Id + '" target="_blank">' + data[i].ProNum + '</a></td></tr >';
+                                <td align="center"><a href="/Item.aspx?id=' + data[i].Id + '" target="_blank">' + pronum + '</a></td></tr >';
 
                     $("table[data-lx='table']").append(txt);
                 }
