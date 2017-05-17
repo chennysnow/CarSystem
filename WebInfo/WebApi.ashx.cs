@@ -199,7 +199,7 @@ namespace WebInfo
 
             string sourfilepath = filepath + fileName;
             files[0].SaveAs(sourfilepath);
-
+       
             //var sourImg = System.Drawing.Image.FromFile(sourfilepath);
 
             //if (sourImg.Width > 2000 || sourImg.Height > 2000)

@@ -30,50 +30,37 @@
             document.form_add.code.focus();
             return false;
         }
-   
+        ajaxFileUpload("pic1");
+        ajaxFileUpload("pic2");
         return true;
 
 
     }
 
+
     $(function () {
 
+        $("#companyName").focus(function () {
+            debugger;
+            if ($("#pic1").val() != '' && $("#userCompany").val() == '') {
+                ajaxFileUpload("pic1");
+            }
 
-        $("#pic1").click(function () {
-        //$("#pic1").click(function () {
-            ajaxFileUpload("pic1");
         });
-        $("#pic1").click(function () {
-           //   $("#pic2").click(function () {
-            ajaxFileUpload("pic2");
+        $("#phoneNum").focus(function () {
+
+            if ($("#pic2").val() != '' && $("#CompanyLisent").val() == '') {
+                ajaxFileUpload("pic2");
+            }
+
         });
-        //$("#pic2").change(function () {
-        //    alert("ddd");
-        //    debugger;
-        //    ajaxFileUpload("pic1")
-        //});
-
-        //$("#pic1").change(function () {
-        //    ajaxFileUpload("pic2")
-        //});
 
 
-
-
+        
     });
-  
  
     //$('#pic1').live('change', function () {
 
-    //$("#pic2").change(function () {
-    //    alert("ddd");
-    //    debugger;
-    //    ajaxFileUpload("pic1")
-    //});
-
-    //$("#pic1").change(function () {
-    //    ajaxFileUpload("pic2")
-    //});
 
     function ajaxFileUpload(itemid) {
         $.ajaxFileUpload

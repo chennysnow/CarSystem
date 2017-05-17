@@ -15,6 +15,7 @@ namespace WebInfo
         protected void Page_Load(object sender, EventArgs e)
         {
 
+
             if (Request.Form["companyName"] == null)
                 return;
 
