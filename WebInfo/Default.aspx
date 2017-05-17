@@ -36,15 +36,15 @@
 
     }
 
-    $(document).ready(function () {
+    $(function () {
 
 
-        //$('#pic1').live('change', function () {
         $("#pic1").click(function () {
+        //$("#pic1").click(function () {
             ajaxFileUpload("pic1");
         });
-        // $('#pic2').live('change', function () {
-        $("#pic2").click(function () {
+        $("#pic1").click(function () {
+           //   $("#pic2").click(function () {
             ajaxFileUpload("pic2");
         });
         //$("#pic2").change(function () {
@@ -56,7 +56,8 @@
         //$("#pic1").change(function () {
         //    ajaxFileUpload("pic2")
         //});
-
+
+
 
 
     });
@@ -105,7 +106,8 @@
             }
         )
         return false;
-    }
+    }
+
 </script>
 <body>
 
