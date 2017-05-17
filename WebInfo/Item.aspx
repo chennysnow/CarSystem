@@ -731,7 +731,7 @@
 					<div class="bigimg">
 								<!--		<div class="issell"><img src="/static/img/issell.gif"/></div>-->
 						<%if (piclist.Count > 0)
-                            {%>				<img id="BigImg" style=" width:950px;height:445px;" src='<%=piclist[0].Replace("small","load") %>' class="bigpic"/><%}
+                            {%>				<img id="BigImg" src='<%=piclist[0].Replace("small","load") %>' class="bigpic"/><%}
     else
     { %>
            <img id="BigImg" src='' class="bigpic"/>             <%} %>

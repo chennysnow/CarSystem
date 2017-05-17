@@ -266,7 +266,7 @@ namespace WebInfo
             var p_emissionstandards = Request.Form["p_emissionstandards"];
             var p_fuel = Request.Form["p_fuel"];
             var p_details = Request.Form["p_details"];
-            var p_img = Request.Form[""];
+   
             var ac = Request.Form["ac"];
          
             var pstate = Request.Form["pstate"];

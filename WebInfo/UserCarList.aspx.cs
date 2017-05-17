@@ -12,6 +12,7 @@ namespace WebInfo
     public partial class UserCarList : System.Web.UI.Page
     {
         public string pagenum = "";
+        public string keyword = "";
         public static List<CarTypeInfo> catTypeList;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -60,9 +61,19 @@ namespace WebInfo
             string query = "";
             if (Request.QueryString["key"] != null)
             {
-                key = Request.QueryString["key"];
-                query = "&key=" + key;
+                key = HttpUtility.HtmlDecode(Request.QueryString["key"]);
+                keyword = key;
+                query = "&key=" + HttpUtility.UrlEncode(key);
             }
+
+            string cartype = "";
+
+            if (Request.QueryString["cartype"] != null)
+            {
+                cartype = Request.QueryString["cartype"];
+                query = "&cartype=" + cartype;
+            }
+
             if (currentPage <= 0)
                 currentPage = 1;
 
@@ -71,12 +82,18 @@ namespace WebInfo
             string shopid = Session["userid"].ToString();
 
             var shopinfo = new ShopInfoDb().getShopinfo(int.Parse(shopid));
-            var list = new CarDetialInfoDb().GetCarLIst(shopinfo.ShopNum);
-
-            if(!string.IsNullOrEmpty(key))
+            IEnumerable<CarDetialInfo> querys = new CarDetialInfoDb().GetCarLIst(shopinfo.ShopNum);
+     
+            if (!string.IsNullOrEmpty(key))
             {
-                list = list.Where(c => c.ProTitle.Contains(key)).ToList();
+                 querys = querys.Where(c => c.ProTitle.Contains(key));
             }
+            if(!string.IsNullOrEmpty(cartype))
+            {
+                querys = querys.Where(c => c.CarType== cartype);
+            }
+
+           var list = querys.ToList();
             int pagesize = 10;
             int totalCount = list.Count();
             int index = (currentPage - 1) * pagesize;

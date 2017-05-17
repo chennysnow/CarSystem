@@ -207,10 +207,30 @@ function disppic(src) {
                         <div></div>
                     </td>
                 </tr>-->
+                          <tr>
+            <td width="80" height="40" align="right">编号：</td>
+            <td align="left"><input name="netNumber" id="netNumber" disabled="true" size="30" value="<%=shop.ShopNum %>" />
+              编号作为内网帐号
+            <div></div></td>
+            </tr>
+            <tr>
+            <td width="80" height="40" align="right">编码：</td>
+            <td align="left"><input name="phoneNumber" id="phoneNumber" size="30" value="<%=shop.PhoneShopNum %>" />
+            *  联盟手机短号，可以多个空格分割
+            <div></div></td>
+            </tr>
                 <tr>
                     <td width="80" height="40" align="right">公司名称：</td>
                     <td align="left">
                         <input name="companyName" id="companyName" size="30" value="<%=shop.CompanyName %>" />
+                        *
+                                        <div></div>
+                    </td>
+                </tr>
+                         <tr>
+                    <td width="80" height="40" align="right">公司地址：</td>
+                    <td align="left">
+                        <input name="CompanyAddress" id="CompanyAddress" size="30" value="<%=shop.CompanyAddress %>" />
                         *
                                         <div></div>
                     </td>
@@ -223,18 +243,7 @@ function disppic(src) {
                                         <div></div>
                     </td>
                 </tr>
-            <tr>
-            <td width="80" height="40" align="right">编号：</td>
-            <td align="left"><input name="netNumber" id="netNumber" size="30" value="<%=shop.ShopNum %>" />
-            *  编号将在审核通过后作为内网帐号
-            <div></div></td>
-            </tr>
-            <tr>
-            <td width="80" height="40" align="right">编码：</td>
-            <td align="left"><input name="phoneNumber" id="phoneNumber" size="30" value="<%=shop.PhoneShopNum %>" />
-            *  编号将在审核通过后作为内网帐号
-            <div></div></td>
-            </tr>
+  
                 <tr>
                     <td width="80" height="40" align="right"></td>
                     <td height="30" align="left">

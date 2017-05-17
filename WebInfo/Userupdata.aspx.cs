@@ -64,13 +64,19 @@ namespace WebInfo
                         ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入公司名称</td></tr>"; //"请刷新页面";
                         return;
                     }
-
-                    shop.ShopNum = Request.Form["netNumber"];
-                    if (string.IsNullOrEmpty(shop.ShopNum))
+                    shop.CompanyAddress = Request.Form["CompanyAddress"];
+                    if (string.IsNullOrEmpty(shop.CompanyAddress))
                     {
-                        ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入公司名称短号</td></tr>"; //"请刷新页面";
+                        ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入公司地址</td></tr>"; //"请刷新页面";
                         return;
                     }
+
+                    //shop.ShopNum = Request.Form["netNumber"];
+                    //if (string.IsNullOrEmpty(shop.ShopNum))
+                    //{
+                    //    ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入公司名称短号</td></tr>"; //"请刷新页面";
+                    //    return;
+                    //}
 
                     shop.PhoneShopNum = Request.Form["phoneNumber"];
 
@@ -85,7 +91,6 @@ namespace WebInfo
 
                     ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>您的数据已提交成功</td></tr>"; //"请刷新页面";
 
-                    Response.Redirect("Login.aspx");
                 }
             }
         }

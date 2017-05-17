@@ -13,6 +13,32 @@
                 document.location.href = "UserCarList.aspx?del=" + proid;
             }
         }
+
+        $(document).ready(function () { 
+        $("#btnsearch").click(function () {
+            debugger;
+            var query = "";
+            var carsort = $("#carsort").val();
+            if (carsort != "")
+                query = "?cartype=" + carsort;
+
+            var keywords = $("#searchkey").val();
+
+            if (keywords != "") {
+                if (query != "")
+                    query += "&key=" + encodeURIComponent(keywords);
+                else
+                    query = "?key=" + encodeURIComponent(keywords);
+
+
+            }
+            if (query == "")
+                location.href = "UserCarList.aspx";
+            else
+            location.href = query;
+                //encodeURIs
+        })
+        });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -69,16 +95,14 @@
 			<a href="#" >昨日新增车源</a>-->
 		</div>
 		<div class="usersearchright">
-			<form action="index.php" method="get" name="form2">
-				<input type="hidden" name="mod" value="user">
-				<input type="hidden" name="ac" value="carlist">
-				编号：<input type="text" name="pno" id="searchkey" value="" size="10" style="width:50px;" class="inp01">
-				<select name="carsort">
+			
+				
+				<select name="carsort" id="carsort">
 				<option value="">请选择车型</option><option value="4">轿车</option><option value="28">跑车</option><option value="29">越野车</option><option value="31">商务车</option><option value="32">皮卡</option><option value="33">面包车</option><option value="34">客车</option><option value="37">货车</option><option value="36">其他</option>
 				</select>
-				<input type="text" name="keywords" id="searchkey" value="" size="16" class="inp01">
-				<span class="buttons"><input type="submit" name="filtersubmit" value="查询"></span>
-			</form>
+				<input type="text" name="keywords" id="searchkey" value="<%=keyword %>" size="16" class="inp01">
+				<span class="buttons"><input type="submit" id="btnsearch" name="filtersubmit" value="查询"></span>
+		
 		</div>
 	</div>
 	<div class="p10">

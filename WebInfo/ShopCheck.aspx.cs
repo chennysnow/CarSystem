@@ -18,7 +18,13 @@ namespace WebInfo
         public int Npage = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            var pages = Request["page"];
+
+            if (Session["userid"] == null || Session["userid"].ToString()!= "99999")
+            {
+                Response.Redirect("Login.aspx");
+            }
+
+                var pages = Request["page"];
             int page;
             int.TryParse(pages, out page);
             Ppage = page > 1 ? page-- : 1;
