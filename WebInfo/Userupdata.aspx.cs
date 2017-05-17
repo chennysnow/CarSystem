@@ -80,12 +80,8 @@ namespace WebInfo
                         return;
                     }
                     //^[A-Za-z0-9]+$
-
                     new ShopInfoDb().UpdateData(shop);
-
                     ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>您的数据已提交成功</td></tr>"; //"请刷新页面";
-
-                    Response.Redirect("Login.aspx");
                 }
             }
         }

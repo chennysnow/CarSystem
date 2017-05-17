@@ -14,12 +14,12 @@ namespace WebInfo
         public List<ShopInfo> Shoplist =null;
         public int TotalRecord=0;
         public int TotalPage=0;
-        public int Ppage = 0;
-        public int Npage = 0;
+        public int Ppage = 1;
+        public int page = 1;
+        public int Npage = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
-            var pages = Request["page"];
-            int page;
+            var pages = Request["page"];            
             int.TryParse(pages, out page);
             Ppage = page > 1 ? page-- : 1;
             Npage = page >= TotalPage ? TotalPage : page++;

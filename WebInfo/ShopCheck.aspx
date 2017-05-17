@@ -136,7 +136,7 @@
 
 
 
-                <div class="listpage"><span id="page1"> 共15793条&nbsp;&nbsp;1/632页&nbsp;&nbsp;</span>
+                <div class="listpage"><span id="page1"> 共<%=TotalRecord %>条&nbsp;&nbsp;<%=page %>/632页&nbsp;&nbsp;</span>
                  <%if (Ppage > 1) {%>
                 <a href="/search.aspx?page=1">首页</a>
                 <%} else { %>首页 <%} %>&nbsp;&nbsp;
