@@ -13,7 +13,7 @@
             <h3>我的车源管理 &gt;</h3>
                    
             <ul class="clearfix">
-                <li><a href="/AddCar.aspx?carid=addcar" class="orange01 f14">添加车源</a></li>
+                <li><a href="/AddCar.aspx?method=add" class="orange01 f14">添加车源</a></li>
                 <li><a href="UserCarList.aspx" class="orange01">管理车源</a></li>
             </ul>
         </div>
@@ -96,7 +96,7 @@
 
 		        			    function delimg(tempid) {
 		        			        $.post("/WebApi.ashx", { id: tempid, method: 'delimg' });
-		        			        $("#" + tempid).hide();
+		        			        $("#" + tempid).remove();
 		        			    }
 
 

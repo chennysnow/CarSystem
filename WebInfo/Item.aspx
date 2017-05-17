@@ -731,7 +731,7 @@
 					<div class="bigimg">
 								<!--		<div class="issell"><img src="/static/img/issell.gif"/></div>-->
 						<%if (piclist.Count > 0)
-                            {%>				<img id="BigImg" src='<%=piclist[0] %>' class="bigpic"/><%}
+                            {%>				<img id="BigImg" style=" width:950px;height:445px;" src='<%=piclist[0].Replace("small","load") %>' class="bigpic"/><%}
     else
     { %>
            <img id="BigImg" src='' class="bigpic"/>             <%} %>
@@ -740,7 +740,7 @@
 						<ul class="carpiclist clearfix" >
                             <%foreach (var s in piclist)
                                 { %>
-							<li><a onmousemove="javascript:document.getElementById('BigImg').src='<%=s %>'"><img class="mt10" src="<%=s %>"/></a></li>
+							<li><a onmousemove="javascript:document.getElementById('BigImg').src='<%=s.Replace("small","load") %>'"><img class="mt10" src="<%=s.Replace("small","load") %>"/></a></li>
 					
 																				<%} %></ul>
 					</div>

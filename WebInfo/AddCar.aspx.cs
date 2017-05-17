@@ -120,9 +120,10 @@ namespace WebInfo
                 var imgs = proinfo.Images.Split(';');
                 foreach (var img in imgs)
                 {
-                    var imgid = Regex.Match(img, "/carimg/small/(?<x>\\d+).jpg", RegexOptions.IgnoreCase).Value;
+                    var imgid = Regex.Match(img, "(?<x>\\d+)", RegexOptions.IgnoreCase).Value;
                     if (string.IsNullOrEmpty(imgid))
                         imgid = "0";
+                    if(img.Length>1)
                     Imgli += string.Format( "<li id='{0}'><img name='p_pics' src='{1}'><p><a href=\"javascript:delimg('{0}')\"> 删除</a></p></li>",imgid,img);
                 }
 
@@ -242,14 +243,16 @@ namespace WebInfo
             var p_name = HttpUtility.UrlDecode(Request.Form["p_name"]);
             var uptype = Request.Form["uptype"];
             var pic = Request.Form["imgs"];
-            var piclist = pic.Split(',');
+            var piclist = pic.TrimEnd(',').Split(',');
+            StringBuilder picimglist = new StringBuilder();
             var priallimg = "";
 
             foreach (var tempimg in piclist)
             {
-                priallimg = priallimg + string.Format("/carimg/small/{0}.jpg;", pic);
+                if (tempimg.Length > 0)
+                    picimglist.AppendFormat("/carimg/small/{0}.jpg;", tempimg);
             }
-
+            priallimg = picimglist.ToString().TrimEnd(';');
             var mainpic = Request.Form["p_mainpic"];
             var p_color = Request.Form["p_color"];
             var p_price = Request.Form["p_price"];

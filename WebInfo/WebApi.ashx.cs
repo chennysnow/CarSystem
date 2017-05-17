@@ -200,14 +200,14 @@ namespace WebInfo
             string sourfilepath = filepath + fileName;
             files[0].SaveAs(sourfilepath);
 
-            var sourImg = System.Drawing.Image.FromFile(sourfilepath);
+            //var sourImg = System.Drawing.Image.FromFile(sourfilepath);
 
-            if (sourImg.Width > 2000 || sourImg.Height > 2000)
-            {
-                context.Response.Write("{\"Error\":\"图片太大，超过了 2000*2000\"}");
-                File.Delete(sourfilepath);
-                return;
-            }
+            //if (sourImg.Width > 2000 || sourImg.Height > 2000)
+            //{
+            //    context.Response.Write("{\"Error\":\"图片太大，超过了 2000*2000\"}");
+            //    File.Delete(sourfilepath);
+            //    return;
+            //}
 
             context.Response.Write("{\"img\":\"/carimg/user/" + fileName + "\"}");
             return;

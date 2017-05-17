@@ -39,6 +39,7 @@ namespace WebInfo
             }
 
             Session["userid"] = shopitem.Id;
+            Session["ShopNum"] = shopitem.ShopNum;
 
             Response.Redirect("Search.aspx");
 

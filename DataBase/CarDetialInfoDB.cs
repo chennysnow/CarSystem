@@ -81,6 +81,38 @@ namespace DataBase
 
         }
 
+
+
+        public void DelCarinfo(string shopnum, int id)
+        {
+            int error = 0;
+            do
+            {
+                try
+                {
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+                        var itempro= db.Single<CarDetialInfo>(c => c.Id == id);
+                        if (itempro == null)
+                            return;
+
+                        if (itempro.SellerNumber != shopnum)
+                            return;
+
+                        db.DeleteById<CarDetialInfo>(id);
+
+                    }
+                }
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(10000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+                }
+            } while (error < 4);
+        }
+
+
         public List<CarDetialInfo> GetCarLIst(string Num)
         {
             int error = 0;
@@ -90,7 +122,8 @@ namespace DataBase
                 {
                     using (var db = _dbFactory.OpenDbConnection())
                     {
-                        return db.Select<CarDetialInfo>(c=>c.SellerNumber==Num);
+                        var query= db.From<CarDetialInfo>().Where(c => c.SellerNumber == Num).OrderByDescending(c => c.Id);
+                        return db.Select(query);
                     }
                 }
                 catch (Exception ex1)

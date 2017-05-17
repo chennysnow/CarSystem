@@ -23,10 +23,27 @@ namespace WebInfo
             string shopid = Session["userid"].ToString();
 
             var shopinfo = new ShopInfoDb().getShopinfo(int.Parse(shopid));
-            if (shopinfo.ShopNum == "123456")
+        
+
+            if(Request.QueryString["del"]!=null)
             {
-                shopinfo.ShopNum = "90002";
+                int proid;
+                string delid = Request.QueryString["del"];
+                if (int.TryParse(delid, out proid))
+                {
+
+                    if (Session["ShopNum"] != null)
+                    {
+                        string shopnum = Session["ShopNum"].ToString();
+                        new CarDetialInfoDb().DelCarinfo(shopnum, proid);
+                        Response.Redirect("UserCarList.aspx");
+                    }
+
+                }
+
             }
+
+
             //
             var list = new CarDetialInfoDb().GetCarLIst(shopinfo.ShopNum);
             if (catTypeList == null)

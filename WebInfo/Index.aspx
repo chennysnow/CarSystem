@@ -68,7 +68,7 @@
                 for (var i = 0; i < data.length && i < 25; i++) {
                     tu = data[i].pic1 != "" ? '<span class="red">（图）</span>' : "";
                     txt = '<tr bgcolor="#ffffff" onmouseover="style.backgroundColor=\'#FCE6BF\'" onmouseout="style.backgroundColor=\'#ffffff\'" style="background-color: rgb(255, 255, 255);">\
-                        <td align= "center" >'+ data[i].SellerNumber + '</td ><td align="left"><a href="/item.asp?id=' + data[i].Id + '" target="_blank">' + data[i].ProTitle +'</a><span class="red">（图）</span></td>\
+                        <td align= "center" >'+ data[i].SellerNumber + '</td ><td align="left"><a href="/item.aspx?id=' + data[i].Id + '" target="_blank">' + data[i].ProTitle +'</a><span class="red">（图）</span></td>\
                                 <td align="center"><a href="/Item.aspx?id=' + data[i].Id + '" target="_blank">' + data[i].Carname + '</a></td>\
                                 <td align="center"><a href="/Item.aspx?id=' + data[i].Id + '" target="_blank">' + data[i].ShangPaiTime + '</a></td>\
                                 <td align="center"><a href="/Item.aspx?id=' + data[i].Id + '" target="_blank">' + data[i].CarColor + '</a></td>\

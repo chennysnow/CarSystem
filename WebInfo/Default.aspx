@@ -35,13 +35,35 @@
 
 
     }
+
+    $(document).ready(function () {
+
+
+        //$('#pic1').live('change', function () {
+        $("#pic1").click(function () {
+            ajaxFileUpload("pic1");
+        });
+        // $('#pic2').live('change', function () {
+        $("#pic2").click(function () {
+            ajaxFileUpload("pic2");
+        });
+        //$("#pic2").change(function () {
+        //    alert("ddd");
+        //    debugger;
+        //    ajaxFileUpload("pic1")
+        //});
+
+        //$("#pic1").change(function () {
+        //    ajaxFileUpload("pic2")
+        //});
+
+
+
+    });
   
  
-    $('#pic1').live('change', function () {
-     
-        ajaxFileUpload("pic1");
-    });
-    $('#pic2').live('change', function () { ajaxFileUpload("pic2"); });
+    //$('#pic1').live('change', function () {
+
     //$("#pic2").change(function () {
     //    alert("ddd");
     //    debugger;
@@ -62,8 +84,7 @@
                 dataType: 'json', //返回值类型 一般设置为json
                 success: function (data, status)  //服务器成功响应处理函数
                 {
-                    if (itemid == "pic1")
-                    {
+                    if (itemid == "pic1") {
                         $("#userCompany").val(data["img"]);
                         $("#pic1").val(data["img"]);
                     }
@@ -84,7 +105,7 @@
             }
         )
         return false;
-    }
+    }
 </script>
 <body>
 

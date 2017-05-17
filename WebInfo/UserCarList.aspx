@@ -4,12 +4,23 @@
     <script src="static/js/common.js"></script>
     <script src="static/js/ajax.js"></script>
     <script src="static/js/ajaxfileupload.js"></script>
+    <script>
+
+        function delpro(proid)
+        {
+            if(confirm("确定要删除这条记录吗？"))
+            {
+                document.location.href = "UserCarList.aspx?del=" + proid;
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <div class="main clearfix" style="padding-top:10px ;padding-bottom:10px ">
     <div class="userleft">
 		        <div class="usermenu">
             <h3>我的车源管理 &gt;</h3>
+                    
             <ul class="clearfix">
          
                 <li><a href="/AddCar.aspx?method=add" class="orange01 f14">添加车源</a></li>
@@ -96,12 +107,12 @@
 				
                 <td align="center"><%# Eval("SellerNumber")%></td>
                 <td align="center"><%# GetCatType(Eval("CarType")) %></td>
-                <td align="center"><a href="#" target="_blank"><%# Eval("ProTitle") %></a><span class="red">(图)</span><span class="red"></span></td>
+                <td align="center"><a href="/Item.aspx?id=<%# Eval("id") %>" target="_blank"><%# Eval("ProTitle") %></a><span class="red">(图)</span><span class="red"></span></td>
                 <td align="center"><%# Eval("baojia","{0:0.00}") %>万 </td>
                 <td align="center"><%# Eval("SHANGPAIyEAR")%>年<%# Eval("ShangpaiMonth")%>月</td>
                 <td align="center"><%#Eval("CreateTime", "{0:yyyy-MM-dd}")%></td>
                                  
-                <td align="center" class="opmenu"><a href="AddCar.aspx?method=edit&id=<%# Eval("id")%>">编辑</a>|<a href="AddCar.aspx?method=del&id=<%# Eval("id")%>" title="如果该车已卖出，从列表中移除">删除</a><span style="display:none;">| <a href="javascript:if(confirm('确实要删除吗?'))location='method=del&id='<%# Eval("id")%>"></a></span>
+                <td align="center" class="opmenu"><a href="AddCar.aspx?method=edit&id=<%# Eval("id")%>">编辑</a>|<a href="javascript:delpro(<%# Eval("id")%>);" title="如果该车已卖出，从列表中移除">删除</a><span ></span>
             </td></tr>
                        
         
