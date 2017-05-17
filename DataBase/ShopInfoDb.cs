@@ -70,6 +70,31 @@ namespace DataBase
             return null;
         }
 
+        public ShopInfo GetShopinfo(string number)
+        {
+            int error = 0;
+            do
+            {
+                try
+                {
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+
+                        return db.Single<ShopInfo>(c => c.ShopNum == number);
+                    }
+                    break;
+                }
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(10000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+
+                }
+            } while (error < 4);
+            return null;
+        }
+
 
         public ShopInfo getShopinfo(int id)
         {

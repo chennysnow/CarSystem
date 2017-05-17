@@ -80,6 +80,7 @@
     <Content Include="static\img\login_box_bg.jpg" />
     <Content Include="static\img\login_title_bg.jpg" />
     <Content Include="static\img\orderbg.gif" />
+    <Content Include="static\img\reg.jpg" />
     <Content Include="static\img\search05.gif" />
     <Content Include="static\js\ajax.js" />
     <Content Include="static\js\ajaxfileupload.js" />

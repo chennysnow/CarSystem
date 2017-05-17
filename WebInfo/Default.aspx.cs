@@ -65,9 +65,24 @@ namespace WebInfo
             }
 
             shop.ShopNum = Request.Form["netNumber"];
-            if (string.IsNullOrEmpty(shop.ShopNum))
+            int tempnum = 0;
+            if (string.IsNullOrEmpty(shop.ShopNum)||!int.TryParse(shop.ShopNum, out tempnum))
             {
-                ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入公司名称短号</td></tr>"; //"请刷新页面";
+                ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入短号</td></tr>"; //"请刷新页面";
+                return;
+            }
+
+            if(shop.ShopNum.Length!=5&& shop.ShopNum.Length != 6)
+            {
+                ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>短号为5，6位纯数学</td></tr>"; //"请刷新页面";
+                return;
+            }
+            
+
+            var tempshopinfo = new ShopInfoDb().GetShopinfo(shop.ShopNum);
+            if (tempshopinfo != null)
+            {
+                ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>此短号已被注册</td></tr>"; //"请刷新页面";
                 return;
             }
 

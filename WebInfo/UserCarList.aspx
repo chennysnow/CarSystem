@@ -129,7 +129,7 @@
       
 		</form>
 		<div class="listpage">
-			共26条&nbsp;&nbsp;1/2页&nbsp;&nbsp;<a href="/dealer/index.php?mod=user&amp;ac=carlist&amp;s_type=1&amp;page=1">首页</a>&nbsp;&nbsp;上一页&nbsp;&nbsp;<a href="/dealer/index.php?mod=user&amp;ac=carlist&amp;s_type=1&amp;page=2">下一页</a>&nbsp;&nbsp;<a href="/dealer/index.php?mod=user&amp;ac=carlist&amp;s_type=1&amp;page=2">尾页</a>&nbsp;&nbsp; <select onchange="location.href='/dealer/index.php?mod=user&amp;ac=carlist&amp;s_type=1&amp;page='+this.value"><option value="1" selected="">1</option><option value="2">2</option></select>
+			<%=pagenum %>
 		</div>
 	</div>
 </div>                				        														    </div>

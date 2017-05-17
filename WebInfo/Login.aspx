@@ -70,6 +70,10 @@ function set_favorite(title, url) {
 						</form>
 					</div>
 				</div>
+                 <div style="
+    text-align: right;
+    padding-right: 40px;
+"> <a href="Default.aspx"> <img src="static/img/reg.jpg" style="width:auto;height:auto;border:0px;padding:0px;margin-left:23px;*margin-left:20px;"> </a></div>
 			</div>
 		</div>
 	</div>

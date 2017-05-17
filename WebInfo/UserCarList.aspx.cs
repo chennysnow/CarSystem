@@ -11,6 +11,7 @@ namespace WebInfo
 {
     public partial class UserCarList : System.Web.UI.Page
     {
+        public string pagenum = "";
         public static List<CarTypeInfo> catTypeList;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,9 +21,7 @@ namespace WebInfo
                 Response.Redirect("Login.aspx");
                 return;
             }
-            string shopid = Session["userid"].ToString();
-
-            var shopinfo = new ShopInfoDb().getShopinfo(int.Parse(shopid));
+         
         
 
             if(Request.QueryString["del"]!=null)
@@ -40,17 +39,86 @@ namespace WebInfo
                     }
 
                 }
+                return;
 
             }
-
+            DataBing();
 
             //
+
+        }
+
+
+        private void DataBing()
+        {
+            int currentPage = 0;
+            string key = "";
+            if (Request.QueryString["pageid"] != null)
+            {
+                int.TryParse(Request.QueryString["pageid"].ToString(), out currentPage);
+            }
+            string query = "";
+            if (Request.QueryString["key"] != null)
+            {
+                key = Request.QueryString["key"];
+                query = "&key=" + key;
+            }
+            if (currentPage <= 0)
+                currentPage = 1;
+
+            
+
+            string shopid = Session["userid"].ToString();
+
+            var shopinfo = new ShopInfoDb().getShopinfo(int.Parse(shopid));
             var list = new CarDetialInfoDb().GetCarLIst(shopinfo.ShopNum);
+
+            if(!string.IsNullOrEmpty(key))
+            {
+                list = list.Where(c => c.ProTitle.Contains(key)).ToList();
+            }
+            int pagesize = 10;
+            int totalCount = list.Count();
+            int index = (currentPage - 1) * pagesize;
+
+            list = list.Skip(index).Take(pagesize).ToList();
+
+            string url = "UserCarList.aspx";
+         
+
+
             if (catTypeList == null)
             {
                 catTypeList = new CarTypeInfoDb().GetAllCarType();
             }
-     
+
+            int totalpage = totalCount / pagesize;
+            if (totalCount % pagesize > 0)
+                totalpage = totalpage + 1;
+            string syyurl = url;
+            string xyyurl = url;
+            string wyurl= url + "?pageid=" + (currentPage + 1)+ query;
+            if (currentPage>1)
+            {
+                syyurl = url + "?pageid=" + (currentPage - 1)+ query;
+                if (currentPage < totalpage)
+                {
+                    xyyurl = url + "?pageid=" + totalpage+ query;
+                }
+            }
+            else
+            {
+                if (currentPage < totalpage)
+                {
+                    xyyurl = url + "?pageid=" + totalpage + query;
+                }
+            }
+           
+
+
+
+            pagenum = string.Format("共{0}条&nbsp;&nbsp;{1}/{5}页&nbsp;&nbsp;<a href=\"UserCarList.aspx?/" + url + "\">首页</a>&nbsp;&nbsp;<a href='{2}'>上一页</a>&nbsp;&nbsp;<a href='{3}'>下一页</a>&nbsp;&nbsp;<a href='{4}'>尾页</a>&nbsp;&nbsp; ", totalCount, currentPage,syyurl, xyyurl, wyurl, totalpage);
+
             repCarlist.DataSource = list;
             repCarlist.DataBind();
         }
