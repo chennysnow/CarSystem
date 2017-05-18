@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddCar.aspx" />
+    <Content Include="admin\Prolist.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="Item.aspx" />
@@ -113,6 +114,13 @@
     </Compile>
     <Compile Include="AddCar.aspx.designer.cs">
       <DependentUpon>AddCar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Prolist.aspx.cs">
+      <DependentUpon>Prolist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Prolist.aspx.designer.cs">
+      <DependentUpon>Prolist.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

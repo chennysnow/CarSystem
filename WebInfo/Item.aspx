@@ -755,7 +755,7 @@
                                     
 				<div class="car_detail01 mt10">
 					<p>售价：<span class="f16 orange01 fb"><asp:Literal ID="Literal1" runat="server"></asp:Literal></span>万<span class="red"><asp:Literal ID="huanjia" runat="server"></asp:Literal></span></p>
-					<p><span class="gray01" id="dno_">编号：<span class="black"><asp:Literal ID="sellnumber" runat="server"></asp:Literal></span><asp:Literal ID="ProNum" runat="server"></asp:Literal> </span></p>
+					<p><span class="gray01" id="dno_">编号：<span class="black"><asp:Literal ID="sellnumber" runat="server"></asp:Literal></span> <asp:Literal ID="ProNum" runat="server"></asp:Literal> </span></p>
 				</div>
 				<div class="car_detail02 mt10">
 					<ul class="clearfix">
