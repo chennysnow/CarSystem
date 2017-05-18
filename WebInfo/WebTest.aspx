@@ -29,9 +29,10 @@
                     uploader: 'WebApi.ashx',
                     uploadLimit: 8,
                     onUploadSuccess: function (file, data, response) {
+                        debugger;
                         data = JSON.parse(data);
                         if (data.Error!=null) {
-                            alert('The file ' + file.name + ' ' + response + ':' + data);
+                            alert('The file ' + file.name + ' ' + response + ':' + data.Error);
                         } else {
                             var tempid = data.img.substring(data.img.lastIndexOf('/') + 1, data.img.indexOf('.'));
                             var li = "<li id='" + tempid + "'><img name='p_pics' src='" + data.img + "' /><p><a href=\"javascript:delimg('" + tempid + "')\" > 删除</a></p></li>";

@@ -3,7 +3,13 @@
     <link href="/static/css/dealer_user.css" rel="stylesheet" />
     <script src="static/js/common.js"></script>
     <script src="static/js/ajax.js"></script>
-    <script src="static/js/ajaxfileupload.js"></script>
+
+    
+    
+    <link href="static/uploadify/uploadify.css" rel="stylesheet" />
+    <script src="static/js/jquery-1.7.1.js"></script>
+    <script src="static/uploadify/jquery.uploadify.min.js"></script>
+
 <style type="text/css" media="screen">#file_uploadUploader {visibility:hidden}</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -52,47 +58,39 @@
 
 		        			<script type="text/javascript">
 
-		        			    $(function () {
-		        			        $("#upimgfile").click(function () {
-		        			            var imgcount = $("#piclist li").length;
-		        			            if (imgcount >7)
-		        			            {
-		        			                alert("最多只能上传8张图片");
-		        			                return;
-		        			            }
-		        			            $("#imgcount").val(imgcount + 1);
-		        			            ajaxFileUpload();
-		        			            $("#piclist").show();
-		        			        })
+		        			    $(document).ready(function () {
+
+		        			        $(function () {
+		        			            $("#upimgfile").uploadify({
+		        			                buttonText: '上传文件',
+
+		        			                auto: true,
+		        			                multi: true,
+		        			                fileDesc: '支持格式:jpg,gif,jpeg,png,bmp',
+		        			                fileExt: '*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.JPG;*.GIF;*.JPEG;*.PNG;*.BMP;',
+		        			                height: 20,
+		        			                width: 58,
+		        			                swf: 'static/uploadify/uploadify.swf',
+		        			                uploader: 'WebApi.ashx',
+		        			                uploadLimit: 8,
+		        			                onUploadSuccess: function (file, data, response) {
+		        			                    debugger;
+		        			                    data = JSON.parse(data);
+		        			                    if (data.Error != null) {
+		        			                        alert('The file ' + file.name + ' ' + response + ':' + data.Error);
+		        			                    } else {
+		        			                        var tempid = data.img.substring(data.img.lastIndexOf('/') + 1, data.img.indexOf('.'));
+		        			                        var li = "<li id='" + tempid + "'><img name='p_pics' src='" + data.img + "' /><p><a href=\"javascript:delimg('" + tempid + "')\" > 删除</a></p></li>";
+		        			                        $("#piclist").append(li);
+		        			                    }
+
+
+		        			                }
+		        			            });
+		        			        });
 		        			    });
-		        			    function ajaxFileUpload() {
-		        			        $.ajaxFileUpload
-                                    (
-                                        {
-                                            url: '/WebApi.ashx', //用于文件上传的服务器端请求地址
-                                            secureuri: false, //一般设置为false
-                                            fileElementId: 'file1', //文件上传空间的id属性  <input type="file" id="file" name="file" />
-                                            dataType: 'json', //返回值类型 一般设置为json
-                                            success: function (data, status)  //服务器成功响应处理函数
-                                            {
-                                                if (data["Error"] != null)
-                                                {
-                                                    alert(data["Error"]);
-                                                    return;
-                                                }
-                                                var tempid = data.img.substring(data.img.lastIndexOf('/')+1, data.img.indexOf('.'));
-                                                var li = "<li id='" + tempid + "'><img name='p_pics' src='" + data.img + "' /><p><a href=\"javascript:delimg('" + tempid + "')\" > 删除</a></p></li>";
-                                                $("#piclist").append(li);
-                                           
-                                            },
-                                            error: function (data, status, e)//服务器响应失败处理函数
-                                            {
-                                                alert(e);
-                                            }
-                                        }
-                                    )
-		        			        return false;
-		        			    }
+
+		    
 
 		        			    function delimg(tempid) {
 		        			        $.post("/WebApi.ashx", { id: tempid, method: 'delimg' });
@@ -219,8 +217,7 @@ function isSubmit()
 						</div>
                      
                         	<div  style=" height:20px; clear:both">
-                        
-                  <input type="file" id="file1" name="file" />                
+                                
     <input type="button" id="upimgfile" value="上传图片" />
                                 <input type="hidden" value="0" id="imgcount" />
                        </div>
