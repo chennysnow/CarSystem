@@ -769,7 +769,6 @@
 						<li><span>排放标准：</span><asp:Literal ID="PaiFangBiaoZhun" runat="server"></asp:Literal></li>
 						<li><span>燃    料：</span><asp:Literal ID="RanYou" runat="server"></asp:Literal></li>
 						<li><span>发布日期：</span><asp:Literal ID="cdate" runat="server"></asp:Literal></li>
-
 					</ul>
 				</div>
 				<div class="mt10">
