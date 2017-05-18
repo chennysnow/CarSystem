@@ -135,6 +135,28 @@ namespace DataBase
             } while (error < 4);
             return null;
         }
+        public int ExecSql(string sql)
+        {
+            int error = 0;
+            do
+            {
+                try
+                {
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+                        return db.ExecuteNonQuery(sql);
+                    }
+                }
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(10000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+                }
+            } while (error < 4);
+            return 0;
+        }
+
 
         public IEnumerable<CarDetialInfo> Exec(string where, int page, int pagecount, string order, int orderby, out int TotalRecord, out int TotalPage)
         {

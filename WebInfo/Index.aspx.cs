@@ -22,7 +22,7 @@ namespace WebInfo
             var cdi = new CarDetialInfoDb();
             foreach (var v in carlist)
             {
-               cdlist= cdi.Exec("" , 1, 10,"Id", 1, out TotalRecord, out TotalPage).ToList();
+               cdlist= cdi.Exec(" where cartype='"+v.CarTypeKey+"'" , 1, 10,"Id", 1, out TotalRecord, out TotalPage).ToList();
                 if (cdlist.Count > 0)
                 {
                     cardic.Add(v, cdlist);
