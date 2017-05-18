@@ -754,7 +754,7 @@
 				<h2><asp:Literal ID="title" runat="server"></asp:Literal></h2>
                                     
 				<div class="car_detail01 mt10">
-					<p>售价：<span class="f16 orange01 fb"><asp:Literal ID="Literal1" runat="server"></asp:Literal></span><span class="red"><asp:Literal ID="huanjia" runat="server"></asp:Literal></span></p>
+					<p>售价：<span class="f16 orange01 fb"><asp:Literal ID="Literal1" runat="server"></asp:Literal></span>万<span class="red"><asp:Literal ID="huanjia" runat="server"></asp:Literal></span></p>
 					<p><span class="gray01" id="dno_">编号：<span class="black"><asp:Literal ID="sellnumber" runat="server"></asp:Literal></span><asp:Literal ID="ProNum" runat="server"></asp:Literal> </span></p>
 				</div>
 				<div class="car_detail02 mt10">
@@ -765,11 +765,10 @@
 						<li><span>车辆颜色：</span><asp:Literal ID="CarColor" runat="server"></asp:Literal></li>
 						<li><span>排 气 量：</span><asp:Literal ID="PaiLiang" runat="server"></asp:Literal></li>
 						<li><span>变 速 器：</span><asp:Literal ID="BianShuQi" runat="server"></asp:Literal></li>
-						<li><span>表显里程：</span><asp:Literal ID="LiCheng" runat="server"></asp:Literal></li>
+						<li><span>表显里程：</span><asp:Literal ID="LiCheng" runat="server"></asp:Literal>万</li>
 						<li><span>排放标准：</span><asp:Literal ID="PaiFangBiaoZhun" runat="server"></asp:Literal></li>
 						<li><span>燃    料：</span><asp:Literal ID="RanYou" runat="server"></asp:Literal></li>
 						<li><span>发布日期：</span><asp:Literal ID="cdate" runat="server"></asp:Literal></li>
-
 					</ul>
 				</div>
 				<div class="mt10">
