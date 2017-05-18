@@ -141,7 +141,7 @@
             <tr>
             <td width="80" height="40" align="right">编号：</td>
             <td align="left"><input name="netNumber" id="netNumber" size="30"/>
-            *  编号将在审核通过后作为内网帐号
+            *  编号将在审核通过后作为内网帐号,限五位数字
             <div></div></td>
             </tr>
                 <tr>

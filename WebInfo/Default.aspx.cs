@@ -73,9 +73,9 @@ namespace WebInfo
                 return;
             }
 
-            if(shop.ShopNum.Length!=5&& shop.ShopNum.Length != 6)
+            if(shop.ShopNum.Length!=5)
             {
-                ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>短号为5，6位纯数学</td></tr>"; //"请刷新页面";
+                ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>短号为5位纯数学</td></tr>"; //"请刷新页面";
                 return;
             }
             

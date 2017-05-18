@@ -316,6 +316,7 @@ namespace WebInfo
                 pro.SellerName = shopinfo.CompanyName;
                 pro.SellerNumber = shopinfo.ShopNum;
                 pro.SellerPhone = shopinfo.PhoneNumber;
+                pro.ProNum = shopinfo.PhoneShopNum;
                 pro.CarSellAddress = shopinfo.CompanyAddress;
             }
 
