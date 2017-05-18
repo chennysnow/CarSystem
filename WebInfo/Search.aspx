@@ -12,7 +12,7 @@
 <!--品牌关键词-->
 <script type="text/javascript">
     var show = "text";
-    var order = "";
+    var order = "1";
     var winfo = "<%=winfo%>";
     var page = "1";
     var r = 0, p = 0;
@@ -137,6 +137,30 @@
                 tmp = getdata();                
                 var dat = JSON.parse(tmp);
                 GetJsonData( p, dat);
+            }
+            function orderbybutton(i) {
+                if (i == 1)
+                {
+                    if (order == 2)
+                        order = 1;
+                    else
+                        order = 2;
+                }else
+                if (i == 2)
+                {
+                    if (order == 4)
+                        order = 3;
+                    else
+                        order = 4;
+                }else
+                if (i == 3)
+                {
+                    if (order == 8)
+                        order = 7;
+                    else
+                        order = 8;
+                }
+                finddata();
             }
 
 			//]]>
@@ -862,7 +886,11 @@
 				<li class="dpbox_li1"><a href="/Search.aspx?mod=index&ac=index&show=list">列表</a></li>
 				<li class="dpbox_li2"><a href="/Search.aspx?mod=index&ac=index&show=pic">大图</a></li>
 				<li class="dpbox_li3"><a href="/Search.aspx?mod=index&ac=index&show=word" class="selected">文字</a></li>
-				<li class="clearfix"><span>排序方式：</span><a href="/Search.aspx?mod=index&ac=index&order=2" class="orderbox03">时间</a> <a href="/Search.aspx?mod=index&ac=index&order=3" class="orderbox03">价格</a> <a href="/Search.aspx?mod=index&ac=index&order=9" class="orderbox03">品牌</a><span class="hide"> <a href="/Search.aspx?mod=index&ac=index&s_type=1&order=11" class="orderbox03">今增</a> <a href="/Search.aspx?mod=index&ac=index&s_type=1&order=13" class="orderbox03">昨增</a></span></li>
+				<li class="clearfix"><span>排序方式：</span><a href="javascript:void(0);" onclick="orderbybutton(1)" class="orderbox03">时间</a> 
+                    <a href="javascript:void(0);" onclick="orderbybutton(2)" class="orderbox03">价格</a>
+                    <a href="javascript:void(0);" onclick="orderbybutton(3)" class="orderbox03">品牌</a>
+                    <span class="hide"> <a href="/Search.aspx?mod=index&ac=index&s_type=1&order=11" class="orderbox03">今增</a>
+                        <a href="/Search.aspx?mod=index&ac=index&s_type=1&order=13" class="orderbox03">昨增</a></span></li>
 				<li class="hide">
 					<select name="order" onchange="if(this.options[this.selectedIndex].value!=&quot;&quot;) location.href=this.options[this.selectedIndex].value;">
 						<option value="0" selected="">选择排列显示方式</option>

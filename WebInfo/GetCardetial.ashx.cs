@@ -164,6 +164,15 @@ namespace WebInfo
                     order = "ShangPaiTime";
                     orderby = 0;
                     break;
+                case "7":
+                    order = "BrandInfo";
+                    orderby = 1;
+                    break;
+                case "8":
+                    order = "BrandInfo";
+                    orderby = 0;
+                    break;
+
                 default:
                     order = "id";
                     orderby = 1;
