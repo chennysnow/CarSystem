@@ -48,27 +48,27 @@ namespace WebInfo
 
 
 
-            brandList = new BandInfoDb().GetBandInfoByParentNum("0");
+            //brandList = new BandInfoDb().GetBandInfoByParentNum("0");
 
-            foreach (var bandInfo in brandList)
-            {
-                brandReg += bandInfo.BrandName + "|";
-            }
-            brandReg = brandReg.TrimEnd('|');
+            //foreach (var bandInfo in brandList)
+            //{
+            //    brandReg += bandInfo.BrandName + "|";
+            //}
+            //brandReg = brandReg.TrimEnd('|');
 
-            var list = new prologDb().GetproLogById(0, 100);
-            foreach (var item in list)
-            {
-                try
-                {
-                    addCar(item);
-                }
-                catch (Exception ex)
-                {
-                    LogServer.WriteLog("proid:" + item.proid + "error" + ex.Message, "jiexi");
-                }
+            //var list = new prologDb().GetproLogById(0, 100);
+            //foreach (var item in list)
+            //{
+            //    try
+            //    {
+            //        addCar(item);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        LogServer.WriteLog("proid:" + item.proid + "error" + ex.Message, "jiexi");
+            //    }
 
-            }
+            //}
 
 
         }
