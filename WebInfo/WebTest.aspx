@@ -17,10 +17,29 @@
        
             $(function () {
                 $("#uploadify").uploadify({
+                    buttonText: '上传文件',
+             
+                    auto: true,
+                    multi: true,
+                    fileDesc: '支持格式:jpg,gif,jpeg,png,bmp',
+                    fileExt: '*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.JPG;*.GIF;*.JPEG;*.PNG;*.BMP;',
                     height: 30,
+                    width: 120,
                     swf: 'static/uploadify/uploadify.swf',
                     uploader: 'WebApi.ashx',
-                    width: 120
+                    uploadLimit: 8,
+                    onUploadSuccess: function (file, data, response) {
+                        data = JSON.parse(data);
+                        if (data.Error!=null) {
+                            alert('The file ' + file.name + ' ' + response + ':' + data);
+                        } else {
+                            var tempid = data.img.substring(data.img.lastIndexOf('/') + 1, data.img.indexOf('.'));
+                            var li = "<li id='" + tempid + "'><img name='p_pics' src='" + data.img + "' /><p><a href=\"javascript:delimg('" + tempid + "')\" > 删除</a></p></li>";
+                            $("#piclist").append(li);
+                        }
+
+ 
+                    }
                 });
             });
         });
@@ -29,7 +48,7 @@
 <body>
   
     <input type="file" name="uploadify" id="uploadify" />
-   
+   <ul id="piclist" class="clearfix" >	</ul>
 </body>
 </html>
 
