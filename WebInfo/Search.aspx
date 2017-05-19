@@ -923,7 +923,7 @@
 							</tbody></table>
 			 
 			<!--上一页，下一页-->
-			<div class="listpage"><span id="page1"> 共15793条&nbsp;&nbsp;1/632页&nbsp;&nbsp;</span>
+			<div class="listpage"><span id="page1"> 共0条&nbsp;&nbsp;1/1页&nbsp;&nbsp;</span>
                 <a href="javascript:void(0)" onclick="clickpage(-1)">首页</a>&nbsp;&nbsp;
                 <a href="javascript:void(0)" onclick="clickpage(-2)">上一页</a>&nbsp;&nbsp;
                 <a href="javascript:void(0)" onclick="clickpage(0)">下一页</a>&nbsp;&nbsp;
