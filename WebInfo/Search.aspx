@@ -167,13 +167,13 @@
 	</script>
 <div class="brand_box">
     <ul class="brand_tab clearfix common_bg">
-        <li class="">热门车型</li>
+        <li class="here">热门车型</li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=4&s_type=1">轿车</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=28&s_type=1">跑车</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=31&s_type=1">商务车</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=29&s_type=1">越野车</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=33&s_type=1">蓝牌面包车</a></li>
-        <li class="here"><a href="/Search.aspx?mod=index&ac=index&carsort=34&s_type=1">黄牌客车</a></li>
+        <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=34&s_type=1">黄牌客车</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=32&s_type=1">皮卡</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=37&s_type=1">货车</a></li>
     </ul>

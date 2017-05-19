@@ -122,7 +122,7 @@ namespace WebInfo
             str = Request["keywords"];
             if (!string.IsNullOrEmpty(str))
             {
-                sb.Append(" BrandType ='" + str + "' and");
+                sb.Append(" BrandType ='" + str + "' or   Brandinfo = '"+ str +"'  and");
             }
             str = Request["s_type"];
 
