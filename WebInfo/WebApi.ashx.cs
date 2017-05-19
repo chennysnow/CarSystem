@@ -140,9 +140,9 @@ namespace WebInfo
                 File.Delete(sourfilepath);
                 return;
             }
-            if (sourImg.Width < 600 || sourImg.Height < 450)
+            if (sourImg.Width < 400 || sourImg.Height < 400)
             {
-                context.Response.Write("{\"Error\":\"图片太小了，最小宽度600px 最小高度 450px\"}");
+                context.Response.Write("{\"Error\":\"图片太小了，最小宽度400px 最小高度 400px\"}");
 
                 if (File.Exists(sourfilepath))
                 {

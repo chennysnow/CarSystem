@@ -242,3 +242,6 @@ ModelManifest.xml
 .fake/
 /WebInfo/carImg/load
 /WebInfo/carImg/small
+/WebInfo/admin/Prolist.aspx.designer.cs
+/WebInfo/admin/Prolist.aspx.cs
+/WebInfo/admin/Prolist.aspx
