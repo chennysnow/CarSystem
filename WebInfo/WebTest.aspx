@@ -10,7 +10,20 @@
 <link href="static/uploadify/uploadify.css" rel="stylesheet" />
     <script src="static/js/jquery-1.7.1.js"></script>
     <script src="static/uploadify/jquery.uploadify.min.js"></script>
-
+    <style type="text/css">
+body{
+ margin:0px;
+ padding:0px;
+}
+.d1{
+position:absolute; 
+ left:0px;
+ top:0px; 
+ width:100%; 
+ height:100%;
+ z-index:-1;
+}
+</style>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -46,10 +59,11 @@
         });
     </script>
 </head>
-<body>
+<body  >
+    
+    <div class="d1" ><img src="\static\img\loginbj.jpg" width="100%" height="100%"/>
   
-    <input type="file" name="uploadify" id="uploadify" />
-   <ul id="piclist" class="clearfix" >	</ul>
+        </div>
 </body>
 </html>
 
