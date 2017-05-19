@@ -167,13 +167,13 @@
 	</script>
 <div class="brand_box">
     <ul class="brand_tab clearfix common_bg">
-        <li class="">热门车型</li>
+        <li class="here">热门车型</li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=4&s_type=1">轿车</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=28&s_type=1">跑车</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=31&s_type=1">商务车</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=29&s_type=1">越野车</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=33&s_type=1">蓝牌面包车</a></li>
-        <li class="here"><a href="/Search.aspx?mod=index&ac=index&carsort=34&s_type=1">黄牌客车</a></li>
+        <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=34&s_type=1">黄牌客车</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=32&s_type=1">皮卡</a></li>
         <li class=""><a href="/Search.aspx?mod=index&ac=index&carsort=37&s_type=1">货车</a></li>
     </ul>
@@ -881,11 +881,7 @@
 		</div>
 	</div>	<div>
 		<div class="car_order">
-			<ul class="clearfix">
-				<li style="padding-right:0">显示方式：</li>
-				<li class="dpbox_li1"><a href="/Search.aspx?mod=index&ac=index&show=list">列表</a></li>
-				<li class="dpbox_li2"><a href="/Search.aspx?mod=index&ac=index&show=pic">大图</a></li>
-				<li class="dpbox_li3"><a href="/Search.aspx?mod=index&ac=index&show=word" class="selected">文字</a></li>
+			<ul class="clearfix">				
 				<li class="clearfix"><span>排序方式：</span><a href="javascript:void(0);" onclick="orderbybutton(1)" class="orderbox03">时间</a> 
                     <a href="javascript:void(0);" onclick="orderbybutton(2)" class="orderbox03">价格</a>
                     <a href="javascript:void(0);" onclick="orderbybutton(3)" class="orderbox03">品牌</a>
