@@ -16,18 +16,19 @@ namespace WebInfo
         public string sssss = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            int  TotalRecord, TotalPage;
-            List<CarDetialInfo> cdlist;
-               carlist = new CarTypeInfoDb().GetCarinfoList("0");
-            var cdi = new CarDetialInfoDb();
-            foreach (var v in carlist)
-            {
-               cdlist= cdi.Exec(" where cartype='"+v.CarTypeKey+"'" , 1, 10,"Id", 1, out TotalRecord, out TotalPage).ToList();
-                if (cdlist.Count > 0)
-                {
-                    cardic.Add(v, cdlist);
-                }
-            }
+            Response.Redirect("Search.aspx");
+            //int  TotalRecord, TotalPage;
+            //List<CarDetialInfo> cdlist;
+            //   carlist = new CarTypeInfoDb().GetCarinfoList("0");
+            //var cdi = new CarDetialInfoDb();
+            //foreach (var v in carlist)
+            //{
+            //   cdlist= cdi.Exec(" where cartype='"+v.CarTypeKey+"'" , 1, 10,"Id", 1, out TotalRecord, out TotalPage).ToList();
+            //    if (cdlist.Count > 0)
+            //    {
+            //        cardic.Add(v, cdlist);
+            //    }
+            //}
         }
     }
 }
