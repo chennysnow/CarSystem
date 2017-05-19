@@ -19,7 +19,7 @@ namespace WebInfo
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Session["userid"] == null || Session["userid"].ToString()!= "99999")
+            if (Session["userid"] == null || Session["userid"].ToString()!= "23")
             {
                 Response.Redirect("Login.aspx");
             }
