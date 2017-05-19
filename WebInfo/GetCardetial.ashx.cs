@@ -82,35 +82,50 @@ namespace WebInfo
                 sb.Append(" SellerNumber='" + str + "' and");
 
             }
+
+
             str = Request["p_brand"];
-            if (!string.IsNullOrEmpty(str))
+            var str1 = Request["p_subbrand"];
+            if(!string.IsNullOrEmpty(str) || !string.IsNullOrEmpty(str1))
             {
-                sb.Append(" BrandInfo='" + str + "' and");
+                if (!string.IsNullOrEmpty(str1))
+                    str = str1;
+                BandInfo binfo = new BandInfoDb().getBrandByKey(str);
+                sb.Append(" ( BrandType ='" + binfo.BrandName + "' or   Brandinfo = '" + binfo.BrandName + "')  and");
             }
-            str = Request["p_subbrand"];
-            if (!string.IsNullOrEmpty(str))
-            {
-                sb.Append(" BrandType='" + str + "' and");
-            }
+
+ 
+
+
+
             str = Request["startprice"];
-            if (!string.IsNullOrEmpty(str))
+            str1 = Request["endprice"];
+            if (!string.IsNullOrEmpty(str) || !string.IsNullOrEmpty(str1))
             {
-                sb.Append(" baojia>=" + str + " and");
+                if (!string.IsNullOrEmpty(str) && !string.IsNullOrEmpty(str1))
+                {
+                    sb.Append(" ( baojia>=" + str + " and  baojia<=" + str1 + " ) and");
+                }
+                else if (!string.IsNullOrEmpty(str))
+                {
+                    sb.Append(" baojia>=" + str + " and");
+                }
+                else if (!string.IsNullOrEmpty(str1))
+                {
+                    sb.Append(" baojia<=" + str1 + " and");
+                }
             }
-            str = Request["endprice"];
-            if (!string.IsNullOrEmpty(str))
-            {
-                sb.Append(" baojia<=" + str + " and");
-            }
+           
             str = Request["startage"];
-            if (!string.IsNullOrEmpty(str))
+            str1 = Request["endage"];
+            if (!string.IsNullOrEmpty(str) || !string.IsNullOrEmpty(str1))
             {
-                sb.Append(" ShangPaiYear>=" + str + " and");
-            }
-            str = Request["endage"];
-            if (!string.IsNullOrEmpty(str))
-            {
-                sb.Append(" ShangPaiYear<=" + str + " and");
+                if (!string.IsNullOrEmpty(str) && !string.IsNullOrEmpty(str1))
+                    sb.Append(" ( ShangPaiYear>=" + str + " and  ShangPaiYear<=" + str1 + ") and");
+                else if (!string.IsNullOrEmpty(str))
+                    sb.Append(" ShangPaiYear>=" + str + " and");
+                else if (!string.IsNullOrEmpty(str1))
+                    sb.Append(" ShangPaiYear<=" + str1 + " and");
             }
 
 
@@ -122,7 +137,7 @@ namespace WebInfo
             str = Request["keywords"];
             if (!string.IsNullOrEmpty(str))
             {
-                sb.Append(" BrandType ='" + str + "' or   Brandinfo = '"+ str +"'  and");
+                sb.Append("( BrandType ='" + str + "' or   Brandinfo = '"+ str +"' ) and");
             }
             str = Request["s_type"];
 
