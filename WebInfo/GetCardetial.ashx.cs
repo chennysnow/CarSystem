@@ -93,11 +93,6 @@ namespace WebInfo
                 BandInfo binfo = new BandInfoDb().getBrandByKey(str);
                 sb.Append(" ( BrandType ='" + binfo.BrandName + "' or   Brandinfo = '" + binfo.BrandName + "')  and");
             }
-
- 
-
-
-
             str = Request["startprice"];
             str1 = Request["endprice"];
             if (!string.IsNullOrEmpty(str) || !string.IsNullOrEmpty(str1))
