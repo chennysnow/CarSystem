@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.SessionState;
 
 namespace WebInfo
 {
     /// <summary>
     /// GetCardetial 的摘要说明
     /// </summary>
-    public class GetCardetial : IHttpHandler
+    public class GetCardetial : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
