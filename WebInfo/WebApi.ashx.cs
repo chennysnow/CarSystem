@@ -6,13 +6,14 @@ using Commons;
 using System.IO;
 using DataBase;
 using System.Text;
+using System.Web.SessionState;
 
 namespace WebInfo
 {
     /// <summary>
     /// WebApi 的摘要说明
     /// </summary>
-    public class WebApi : IHttpHandler
+    public class WebApi : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
@@ -92,7 +93,7 @@ namespace WebInfo
             var id = context.Request.Form["id"];
             if (string.IsNullOrEmpty(id))
                 return;
-            if (context.Session["carimgs"] == null)
+            if (context.Session["carimgs"] == null|| context.Session["userid"] == null)
             {
                 return;
             }
@@ -102,33 +103,46 @@ namespace WebInfo
                 return;
             }
 
-            string filepath = context.Server.MapPath("/") + "carimg\\load\\" + id + "jpg";
-            string filepath2 = context.Server.MapPath("/") + "carimg\\small\\" + id + "jpg";
+            var userid = context.Session["userid"].ToString();
+            string filepath = context.Server.MapPath("/") + "carimg\\load\\" + userid + "\\" + id + ".jpg";
+            string filepath2 = context.Server.MapPath("/") + "carimg\\small\\" + userid + "\\" + id + ".jpg";
+
+            string oldfilepath = context.Server.MapPath("/") + "carimg\\load\\" + id + ".jpg";
+            string oldfilepath2 = context.Server.MapPath("/") + "carimg\\small\\" + id + ".jpg";
+
+
+          
 
             if (File.Exists(filepath))
             {
                 File.Delete(filepath);
             }
+            else if (File.Exists(oldfilepath))
+            {
+                File.Delete(oldfilepath);
+            }
             if (File.Exists(filepath2))
             {
                 File.Delete(filepath2);
+            }
+            else if (File.Exists(oldfilepath2))
+            {
+                File.Delete(oldfilepath2);
             }
         }
 
         private void AddImg(HttpContext context)
         {
-
-            HttpFileCollection files = context.Request.Files;//这里只能用<input type="file" />才能有效果,因为服务器控件是HttpInputFile类型
-
-
-            if (files.Count == 0)
-            {
-                return;
-            }
-
+            var files = context.Request.Files;//这里只能用<input type="file" />才能有效果,因为服务器控件是HttpInputFile类型
             
-            string filepath = context.Server.MapPath("/") + "carimg\\load\\";
-            string filepath2 = context.Server.MapPath("/") + "carimg\\small\\";
+            if (files.Count == 0|| context.Session["userid"] == null)
+                return;
+
+            var userid = context.Session["userid"].ToString();
+            string filepath = context.Server.MapPath("/") + "carimg\\load\\"+ userid +"\\";
+            string filepath2 = context.Server.MapPath("/") + "carimg\\small\\" + userid + "\\";
+
+
             string fileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             fileName += new Random().Next(99).ToString("00") + ".jpg";
 
@@ -137,13 +151,12 @@ namespace WebInfo
                 Directory.CreateDirectory(filepath);
             }
 
-
             string sourfilepath = filepath + fileName;
             files[0].SaveAs(sourfilepath);
 
 
             var sourImg = System.Drawing.Image.FromFile(sourfilepath);
-
+           
             if (sourImg.Width > 2000 || sourImg.Height > 2000)
             {
                 context.Response.Write("{\"Error\":\"图片太大，超过了 2000*2000\"}");
@@ -154,16 +167,15 @@ namespace WebInfo
             if (sourImg.Width < 400 || sourImg.Height < 400)
             {
                 context.Response.Write("{\"Error\":\"图片太小了，最小宽度400px 最小高度 400px\"}");
-
+                sourImg.Dispose();
                 if (File.Exists(sourfilepath))
                 {
-                    sourImg.Dispose();
                     File.Delete(sourfilepath);
                 }
 
                 return;
             }
-
+            sourImg.Dispose();
 
             //files[0].SaveAs(Server.MapPath("/") + System.IO.Path.GetFileName(files[0].FileName));
             //msg = " 成功! 文件大小为:" + files[0].ContentLength;
@@ -183,28 +195,18 @@ namespace WebInfo
                 context.Session["carimgs"] = context.Session["carimgs"] + ";" + fileName;
             }
             var imgserver = new ImageServer();
-            //imgserver.myGetThumbnailImage(sourfilepath, filepath1+ fileName, 700, 700, null);
             imgserver.MakeThumbnail(sourfilepath, filepath2 + fileName, 94, 75, null);
 
-            context.Response.Write("{\"img\":\"/carimg/small/" + fileName + "\"}");
-
-
-
-
+            context.Response.Write("{\"img\":\"/carimg/small/" + userid+"/" + fileName + "\"}");
         }
 
         private void AddUserImg(HttpContext context)
         {
-
             HttpFileCollection files = context.Request.Files;
-            string msg = string.Empty;
-            string error = string.Empty;
-
             if (files.Count == 0)
             {
                 return;
             }
-            string filename = System.IO.Path.GetFileName(files[0].FileName);
             string filepath = context.Server.MapPath("/") + "carimg\\user\\";
             string fileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             fileName += new Random().Next(99).ToString("00") + ".jpg";
@@ -214,24 +216,9 @@ namespace WebInfo
                 Directory.CreateDirectory(filepath);
             }
 
-
             string sourfilepath = filepath + fileName;
             files[0].SaveAs(sourfilepath);
-       
-            //var sourImg = System.Drawing.Image.FromFile(sourfilepath);
-
-            //if (sourImg.Width > 2000 || sourImg.Height > 2000)
-            //{
-            //    context.Response.Write("{\"Error\":\"图片太大，超过了 2000*2000\"}");
-            //    File.Delete(sourfilepath);
-            //    return;
-            //}
-
             context.Response.Write("{\"img\":\"/carimg/user/" + fileName + "\"}");
-            return;
-
-
-
         }
 
         public bool IsReusable

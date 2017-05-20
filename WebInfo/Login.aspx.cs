@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,6 +13,7 @@ namespace WebInfo
     public partial class Login : System.Web.UI.Page
     {
         public string msg = "";
+        [WebMethod(EnableSession = true)]
         protected void Page_Load(object sender, EventArgs e)
         {
             string username = Request.Form["username"];

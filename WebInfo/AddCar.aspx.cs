@@ -244,6 +244,7 @@ namespace WebInfo
 
         private void addCar(int id=0)
         {
+            var userid = Session["userid"].ToString();
             ///static/carImg/load
             var p_sort = Request.Form["p_sort"];
             var p_brand = Request.Form["p_brand"];
@@ -255,7 +256,7 @@ namespace WebInfo
             }
 
             var p_name = HttpUtility.UrlDecode(Request.Form["p_name"]);
-            var uptype = Request.Form["uptype"];
+  
             var pic = Request.Form["imgs"];
             var piclist = pic.TrimEnd(',').Split(',');
             StringBuilder picimglist = new StringBuilder();
@@ -264,7 +265,7 @@ namespace WebInfo
             foreach (var tempimg in piclist)
             {
                 if (tempimg.Length > 0)
-                    picimglist.AppendFormat("/carimg/small/{0}.jpg;", tempimg);
+                    picimglist.AppendFormat("/carimg/small/{0}/{1}.jpg;", userid, tempimg);
             }
             priallimg = picimglist.ToString().TrimEnd(';');
             var mainpic = Request.Form["p_mainpic"];
@@ -281,10 +282,7 @@ namespace WebInfo
             var p_fuel = Request.Form["p_fuel"];
             var p_details = Request.Form["p_details"];
    
-            var ac = Request.Form["ac"];
-         
-            var pstate = Request.Form["pstate"];
-            var page = Request.Form["page"];
+
             var subbrand2 = Request.Form["p_subbrand"];
             string subbrandName="";
             var prosubbrand = new BandInfoDb().getBrandByKey(subbrand2);
