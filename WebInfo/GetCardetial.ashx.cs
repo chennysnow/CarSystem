@@ -19,6 +19,13 @@ namespace WebInfo
         {
             int TotalRecord; int TotalPage;
             JObject o;
+            context.Response.ContentType = "text/plain";
+            var userid =context.Session["userid"];
+            if(userid==null)
+            {
+                context.Response.Write("{ }");
+                return;
+            }
             var ls = GetDbData(context.Request, out  TotalRecord,out TotalPage);
             var carlist = new CarTypeInfoDb().GetCarinfoList("0");
             StringBuilder sb = new StringBuilder();
@@ -45,7 +52,7 @@ namespace WebInfo
                 o["p"] = TotalPage.ToString();
                 ar.Add(o);
             }
-            context.Response.ContentType = "text/plain";
+
             context.Response.Write(ar.ToString());
         }
 

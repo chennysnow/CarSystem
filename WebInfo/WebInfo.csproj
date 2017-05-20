@@ -128,6 +128,9 @@
     <Compile Include="GetCardetial.ashx.cs">
       <DependentUpon>GetCardetial.ashx</DependentUpon>
     </Compile>
+    <Compile Include="GetCarinfo.ashx.cs">
+      <DependentUpon>GetCarinfo.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -224,6 +227,7 @@
     <Content Include="main.Master" />
     <Content Include="GetCardetial.ashx" />
     <Content Include="procedata.ashx" />
+    <Content Include="GetCarinfo.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

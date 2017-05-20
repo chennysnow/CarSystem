@@ -156,7 +156,31 @@ namespace DataBase
             } while (error < 4);
             return 0;
         }
-
+        public List<CarDetialInfo> GetDBSql(string sql)
+        {
+            List<CarDetialInfo> ls = new List<CarDetialInfo>();
+            int error = 0;
+            do
+            {
+                try
+                {
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+                        var list2 = db.QueryMultiple(sql, commandType: CommandType.Text);
+                        IEnumerable<CarDetialInfo> firstSet = list2.Read<CarDetialInfo>();
+                        ls.AddRange(firstSet);
+                        return ls;
+                    }
+                }
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(10000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+                }
+            } while (error < 4);
+            return ls;
+        }
 
         public IEnumerable<CarDetialInfo> Exec(string where, int page, int pagecount, string order, int orderby, out int TotalRecord, out int TotalPage)
         {
