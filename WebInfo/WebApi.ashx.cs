@@ -106,13 +106,8 @@ namespace WebInfo
             var userid = context.Session["userid"].ToString();
             string filepath = context.Server.MapPath("/") + "carimg\\load\\" + userid + "\\" + id + ".jpg";
             string filepath2 = context.Server.MapPath("/") + "carimg\\small\\" + userid + "\\" + id + ".jpg";
-
             string oldfilepath = context.Server.MapPath("/") + "carimg\\load\\" + id + ".jpg";
             string oldfilepath2 = context.Server.MapPath("/") + "carimg\\small\\" + id + ".jpg";
-
-
-          
-
             if (File.Exists(filepath))
             {
                 File.Delete(filepath);
@@ -141,7 +136,7 @@ namespace WebInfo
             var userid = context.Session["userid"].ToString();
             string filepath = context.Server.MapPath("/") + "carimg\\load\\"+ userid +"\\";
             string filepath2 = context.Server.MapPath("/") + "carimg\\small\\" + userid + "\\";
-
+            string shuiyinpath= context.Server.MapPath("/") + "static\\img\\" ;
 
             string fileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             fileName += new Random().Next(99).ToString("00") + ".jpg";
@@ -175,7 +170,13 @@ namespace WebInfo
 
                 return;
             }
+
+            //ImageServer.ImageWaterMarkPic(sourImg, "shuiyin.png", shuiyinpath + "shuiyin.png", 9, 50,3);
+
+
             sourImg.Dispose();
+
+
 
             //files[0].SaveAs(Server.MapPath("/") + System.IO.Path.GetFileName(files[0].FileName));
             //msg = " 成功! 文件大小为:" + files[0].ContentLength;

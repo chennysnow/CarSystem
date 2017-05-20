@@ -25,10 +25,7 @@ namespace WebInfo
             if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(username))
                 return;
 
-
             int number;
-
-
             if (!int.TryParse(username, out number))
             {
                 msg = "您输入的编号有误";

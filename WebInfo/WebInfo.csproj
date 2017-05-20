@@ -87,6 +87,7 @@
     <Content Include="static\img\orderbg.gif" />
     <Content Include="static\img\reg.jpg" />
     <Content Include="static\img\search05.gif" />
+    <Content Include="static\img\shuiyin.png" />
     <Content Include="static\js\ajax.js" />
     <Content Include="static\js\ajaxfileupload.js" />
     <Content Include="static\js\common.js" />
