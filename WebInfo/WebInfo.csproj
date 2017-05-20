@@ -80,6 +80,8 @@
     <Content Include="static\img\login.gif" />
     <Content Include="static\img\loginbd.jpg" />
     <Content Include="static\img\loginbj.jpg" />
+    <Content Include="static\img\loginform.jpg" />
+    <Content Include="static\img\loginform.png" />
     <Content Include="static\img\login_box_bg.jpg" />
     <Content Include="static\img\login_title_bg.jpg" />
     <Content Include="static\img\orderbg.gif" />

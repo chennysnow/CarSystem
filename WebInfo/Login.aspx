@@ -9,7 +9,23 @@
 <meta name="keywords" content="91二手车 二手车交易信息网">
 <meta name="description" content="91二手车 二手车交易信息网">
 
-    <link href="static/css/login.css" rel="stylesheet" />
+<style type="text/css">
+       html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,img {margin:0;padding:0;}
+   body{ overflow-x: visible; overflow-y: visible;}
+        .d1{
+           overflow-x: visible; overflow-y: visible;
+            position:absolute; 
+            left:0px;
+            top:0px; 
+            width:100%; 
+            height:100%;
+            z-index:-1;
+        }
+        .username{width: 126px; height:26px;position:relative;left: 190px;top: -140px;border: 0px; float: left;z-index: 3;line-height: 26px;}
+        .password{width: 126px; height:26px;position:relative;left: 65px;top: -81px;border: 0px;float: left;z-index: 3;line-height: 26px; }
+       .error{position:relative;left: -145px;top: -42px;border: 0px;float: left;z-index: 3;color:#e6e61c;}
+          #loginform{ width: 480px;height: 217px; position: absolute;top:25%; left: 25%; right: auto;  bottom: auto;}
+    </style>
 <script src="static/js/jquery-1.7.1.js"></script>
 <script language="JavaScript">
 
@@ -29,57 +45,16 @@ function set_favorite(title, url) {
 
 
 </head>
-<body style="background-color:#f4f4f4">
-<!--主体-->
-<div class="loginmain clearfix">
-	<div class="main">
-		<div class="homelogo"><a href="http://www.nb2sc.org" target="_blank">&nbsp;</a></div>
-	
-		<div class="loginw">
-			<div class="login">
-				<div class="title">
-                
-				<a href="Default.aspx" target="_blank" class="blue f12 fn mr20">注册</a>
-				</div>
-				<div class="loginbox">
-					<div>
-						<form name="loginform" id="loginform" method="post" >
-						<div class="login-form">
-							<ul>
-							
-								<li class="field ml20 mt10">
-									<div class="word">帐&nbsp;&nbsp;&nbsp;号：
-									</div>
-									<div class="input">
-										<input type="text" name="username" style="color:#ccc" value="" onfocus="if(this.value==''){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value==''){this.value='';this.style.color='#ccc';}"/>
-									</div>
-								</li>
-								<li class="field ml20">
-                                    
-									<div class="word">密&nbsp;&nbsp;&nbsp;码：
-									</div>
-									<div class="input">
-										<input type="password" id="password" name="password"/> <input type="image" src="/static/img/login.gif" style="width:auto;height:auto;border:0px;padding:0px;margin-left:23px;*margin-left:20px;" />
-									</div>
-                                    <div style=" color:red" ><%=msg %></div>
-								</li>
-
-							
-							</ul>
-						</div>
-						</form>
-					</div>
-				</div>
-                 <div style="
-    text-align: right;
-    padding-right: 40px;
-"> <a href="Default.aspx"> <img src="static/img/reg.jpg" style="width:auto;height:auto;border:0px;padding:0px;margin-left:23px;*margin-left:20px;"> </a></div>
-			</div>
-		</div>
-	</div>
-<!--主体结束--> 
-</div>
-
-	
+<body  >
+			<form name="loginform" id="loginform" method="post" action="Login.aspx" >
+			    <img  src="static/img/loginform.png"style="z-index: 2; width: 480px; height: 217px; " usemap="#phly"/> <input type="text"  name="username"  class="username"/> 
+         	<input type="password" id="password" name="password" class="password"/>
+      <map name="phly" id="phly">
+          <area shape="rect" coords="360,77,437,113" onclick="javasript:window.document.loginform.submit();" style="z-index: 4;cursor:hand"/>
+  <area shape="rect" coords="360,140,437,175" href ="Default.aspx"  style="z-index: 4;"/>
+    </map>  
+                <div class="error"><%=msg %></div>
+               </form>
+    <div class="d1" ><img src="\static\img\loginbj.jpg" style="z-index: 1;" width="100%" height="100%"/></div>
 </body>
 </html>

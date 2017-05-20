@@ -11,19 +11,22 @@
     <script src="static/js/jquery-1.7.1.js"></script>
     <script src="static/uploadify/jquery.uploadify.min.js"></script>
     <style type="text/css">
-body{
- margin:0px;
- padding:0px;
-}
-.d1{
-position:absolute; 
- left:0px;
- top:0px; 
- width:100%; 
- height:100%;
- z-index:-1;
-}
-</style>
+       html,body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td,img {margin:0;padding:0;}
+   body{ overflow-x: visible; overflow-y: visible;}
+        .d1{
+           overflow-x: visible; overflow-y: visible;
+            position:absolute; 
+            left:0px;
+            top:0px; 
+            width:100%; 
+            height:100%;
+            z-index:-1;
+        }
+        .username{width: 126px; height:26px;position:relative;left: 190px;top: -143px;border: 0px; float: left;z-index: 3;line-height: 26px;}
+        .password{width: 126px; height:26px;position:relative;left: 65px;top: -85px;border: 0px;float: left;z-index: 3;line-height: 26px; }
+       .error{position:relative;left: -145px;top: -42px;border: 0px;float: left;z-index: 3;color:#e6e61c;}
+          #loginform{ width: 480px;height: 217px; position: absolute;top:25%; left: 25%; right: auto;  bottom: auto;}
+    </style>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -59,11 +62,18 @@ position:absolute;
         });
     </script>
 </head>
+
 <body  >
-    
-    <div class="d1" ><img src="\static\img\loginbj.jpg" width="100%" height="100%"/>
-  
-        </div>
+			<form name="loginform" id="loginform" method="post" action="Login.aspx" >
+			    <img  src="static/img/loginform.png"style="z-index: 2; width: 480px; height: 217px; " usemap="#phly"/> <input type="text"  name="username"  class="username"/> 
+         	<input type="password" id="password" name="password" class="password"/>
+      <map name="phly" id="phly">
+          <area shape="rect" coords="360,77,437,113" onclick="javasript:window.document.loginform.submit();" style="z-index: 4;cursor:hand"/>
+  <area shape="rect" coords="360,140,437,175" href ="Default.aspx"  style="z-index: 4;"/>
+    </map>  
+                <div class="error"> 您输入的编号有误</div>
+               </form>
+    <div class="d1" ><img src="\static\img\loginbj.jpg" style="z-index: 1;" width="100%" height="100%"/></div>
 </body>
 </html>
 
