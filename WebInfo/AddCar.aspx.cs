@@ -42,7 +42,10 @@ namespace WebInfo
             {
                 int.TryParse(tempid, out proid);
             }
-           
+            if (Session["ShopNum"] == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
 
             if (!Page.IsPostBack)
             {
@@ -74,6 +77,7 @@ namespace WebInfo
                     method = Request.QueryString["method"];
                     ac = "1";
                     tempproid = proid.ToString();
+                    
                     dataBind(proid);
                 }
                 
@@ -103,6 +107,12 @@ namespace WebInfo
             p_country = "<input type='radio' name='p_country' value='国产' checked='checked'>国产 <input type='radio' name='p_country' value='进口' >进口";
             if (proinfo!=null)
             {
+
+                if (Session["ShopNum"] == null || Session["ShopNum"].ToString() != proinfo.SellerNumber)
+                {
+                    Response.Redirect("UserCarList.aspx");
+                }
+                Session["carimgs"] = null;
                 brandBind = proinfo.BrandInfo;
                 yearBind = proinfo.ShangPaiYear;
                 monthBind = proinfo.ShangPaiMonth;
@@ -118,14 +128,18 @@ namespace WebInfo
                     p_country = "<input type='radio' name='p_country' value='国产' >国产 <input type='radio' name='p_country' checked='checked' value='进口' >进口";
                 }
                 var imgs = proinfo.Images.Split(';');
+                StringBuilder carimgs = new StringBuilder();
                 foreach (var img in imgs)
                 {
                     var imgid = Regex.Match(img, "(?<x>\\d+)", RegexOptions.IgnoreCase).Value;
                     if (string.IsNullOrEmpty(imgid))
-                        imgid = "0";
-                    if(img.Length>1)
+                       continue;
+                    carimgs.Append(imgid);
+                    carimgs.Append(";");
+                    if (img.Length>1)
                     Imgli += string.Format( "<li id='{0}'><img name='p_pics' src='{1}'><p><a href=\"javascript:delimg('{0}')\"> 删除</a></p></li>",imgid,img);
                 }
+                Session["carimgs"] = carimgs.ToString().TrimEnd(';');
 
                 var secBrand=new BandInfoDb().GetBandInfoByParentNum(proinfo.BrandInfoKey);
                 foreach (var item in secBrand)

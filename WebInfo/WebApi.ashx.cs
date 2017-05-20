@@ -17,6 +17,10 @@ namespace WebInfo
 
         public void ProcessRequest(HttpContext context)
         {
+            if (context.Session["userid"] == null)
+            {
+                context.Response.Redirect("Login.aspx");
+            }
 
             var method = "";
             if (context.Request.Form["method"] == null)
@@ -85,11 +89,18 @@ namespace WebInfo
 
         private void delImg(HttpContext context)
         {
-
-
-            var id = context.Request.Form["id"].ToString();
+            var id = context.Request.Form["id"];
             if (string.IsNullOrEmpty(id))
                 return;
+            if (context.Session["carimgs"] == null)
+            {
+                return;
+            }
+
+            if (!context.Session["carimgs"].ToString().Contains(id))
+            {
+                return;
+            }
 
             string filepath = context.Server.MapPath("/") + "carimg\\load\\" + id + "jpg";
             string filepath2 = context.Server.MapPath("/") + "carimg\\small\\" + id + "jpg";
@@ -108,14 +119,14 @@ namespace WebInfo
         {
 
             HttpFileCollection files = context.Request.Files;//这里只能用<input type="file" />才能有效果,因为服务器控件是HttpInputFile类型
-            string msg = string.Empty;
-            string error = string.Empty;
+
 
             if (files.Count == 0)
             {
                 return;
             }
-            string filename = System.IO.Path.GetFileName(files[0].FileName);
+
+            
             string filepath = context.Server.MapPath("/") + "carimg\\load\\";
             string filepath2 = context.Server.MapPath("/") + "carimg\\small\\";
             string fileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
@@ -155,7 +166,7 @@ namespace WebInfo
 
 
             //files[0].SaveAs(Server.MapPath("/") + System.IO.Path.GetFileName(files[0].FileName));
-            msg = " 成功! 文件大小为:" + files[0].ContentLength;
+            //msg = " 成功! 文件大小为:" + files[0].ContentLength;
             if (files[0].ContentLength > 1024 * 1024 * 5)
             {
                 context.Response.Write("{\"Error\":\"上传文件最大为5m\"}");
@@ -163,13 +174,20 @@ namespace WebInfo
                 return;
             }
 
-
+            if (context.Session["carimgs"] == null)
+            {
+                context.Session["carimgs"] = fileName;
+            }
+            else
+            {
+                context.Session["carimgs"] = context.Session["carimgs"] + ";" + fileName;
+            }
             var imgserver = new ImageServer();
             //imgserver.myGetThumbnailImage(sourfilepath, filepath1+ fileName, 700, 700, null);
             imgserver.MakeThumbnail(sourfilepath, filepath2 + fileName, 94, 75, null);
 
             context.Response.Write("{\"img\":\"/carimg/small/" + fileName + "\"}");
-            return;
+
 
 
 

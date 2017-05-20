@@ -17,12 +17,14 @@ namespace WebInfo
             string username = Request.Form["username"];
             string pwd = Request.Form["password"];
 
+            Session["userid"] = null;
+            Session["ShopNum"] = null;
+
             if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(username))
                 return;
 
 
             int number;
-
 
 
             if (!int.TryParse(username, out number))
