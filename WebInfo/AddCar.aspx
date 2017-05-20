@@ -1,16 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/main.Master" AutoEventWireup="true" CodeBehind="AddCar.aspx.cs" Inherits="WebInfo.AddCar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="/static/css/dealer_user.css" rel="stylesheet" />
-    <script src="static/js/common.js"></script>
-    <script src="static/js/ajax.js"></script>
-
-    
-    
     <link href="static/uploadify/uploadify.css" rel="stylesheet" />
+     <script src="static/js/common.js"></script>
     <script src="static/js/jquery-1.7.1.js"></script>
     <script src="static/uploadify/jquery.uploadify.min.js"></script>
 
-<style type="text/css" media="screen">#file_uploadUploader {visibility:hidden}</style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="main clearfix" style="padding-top:10px ;padding-bottom:10px ">
@@ -26,14 +22,14 @@
 		        <div style="display:none" class="usermenu">
             <h3>车商资料查询 &gt;</h3>
             <ul class="clearfix">
-                <li><a href="http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=dealerlist" class="orange01 f12">车商列表</a></li>
-                <li><a href="http://www.nb77.cn/dealer/index.php?mod=index&amp;ac=about&amp;id=36" target="_blank" class="blue f12">联系卡下载</a></li>
+                <li><a href="/index.php?mod=user&amp;ac=dealerlist" class="orange01 f12">车商列表</a></li>
+                <li><a href="/dealer/index.php?mod=index&amp;ac=about&amp;id=36" target="_blank" class="blue f12">联系卡下载</a></li>
                
             </ul>
         </div>
 
 		<div class="leftsearch" style="display:none">
-			<form method="get" action="http://www.nb77.cn/dealer/index.php">
+			<form method="get" action="/dealer/index.php">
 			<input type="hidden" name="mod" value="user">
 			<input type="hidden" name="ac" value="dealerlist">	<select name="searchsort">
 				<option value="">请选择</option><option value="1">车商</option><option value="2">编号</option><option value="3">虚拟号</option>
@@ -63,7 +59,6 @@
 		        			        $(function () {
 		        			            $("#upimgfile").uploadify({
 		        			                buttonText: '上传文件',
-
 		        			                auto: true,
 		        			                multi: true,
 		        			                fileDesc: '支持格式:jpg,gif,jpeg,png,bmp',
@@ -72,9 +67,8 @@
 		        			                width: 58,
 		        			                swf: 'static/uploadify/uploadify.swf',
 		        			                uploader: 'WebApi.ashx',
-		        			                uploadLimit: 8,
+		        			                uploadLimit:15,
 		        			                onUploadSuccess: function (file, data, response) {
-		        			                    debugger;
 		        			                    data = JSON.parse(data);
 		        			                    if (data.Error != null) {
 		        			                        alert('The file ' + file.name + ' ' + response + ':' + data.Error);
@@ -140,10 +134,10 @@ function checknull()
 		}
 	else {
 	    var imgid = "";
-	    $("#piclist li").each(function (a, b) {
+	    $("#piclist li").each(function(a, b) {
 
-	        imgid += $(b).attr("id")+",";
-	    })
+	        imgid += $(b).attr("id") + ",";
+	    });
 	    $("#imgs").val(imgid);
 	    $("#ac").val("1");
 		window.document.form1.submit();
