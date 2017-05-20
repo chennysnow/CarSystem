@@ -20,10 +20,10 @@ namespace WebInfo
             int id1 = 0;
             StringBuilder sb = new StringBuilder();
             if (id == null)
-            {//找最新的id
+            {//找最新的id 
                 var ls1 = new CarDetialInfoDb().GetDBSql("select top 1 * from CarDetialInfo order by id desc");
                 if(ls1.Count>0)
-                    sb.Append("{\"id\":" + ls1[0].Id + "}");
+                    sb.Append("\"id\":"+ ls1[0].Id );
             }
             else
             {
@@ -36,8 +36,11 @@ namespace WebInfo
                     var ls1 = new CarDetialInfoDb().GetDBSql("select top 1 * from CarDetialInfo where id>"+id1.ToString());
                     if (ls1 != null && ls1.Count > 0)
                     {
+                        int i;
+                        int.TryParse(ls1[0].mianimg,out i);
                         var strs = ls1[0].Images.Split(';');
-                        sb.Append($"\"ProTitle\":\""+ls1[0].ProTitle+ "\",\"Baishuqi\":\"" + ls1[0].BianShuQi + "\",\"baojia\":\"" + ls1[0].baojia + "\",\"id\":\"" + ls1[0].Id + "\",\"img\":\"" + (strs.Length>0?strs[0]:"") + "\",\"pronum\":\"" + ls1[0].ProNum + "\",\"sellernumber\":\"" + ls1[0].SellerNumber + "\",\"shangpaitime\":\"" + ls1[0].ShangPaiTime + "\"");
+
+                        sb.Append($"\"ProTitle\":\""+ls1[0].ProTitle+ "\",\"Baishuqi\":\"" + ls1[0].BianShuQi + "\",\"baojia\":\"" + ls1[0].baojia + "\",\"id\":\"" + ls1[0].Id + "\",\"img\":\"" + (strs.Length>i?strs[i]:"") + "\",\"pronum\":\"" + ls1[0].ProNum + "\",\"sellernumber\":\"" + ls1[0].SellerNumber + "\",\"shangpaitime\":\"" + ls1[0].ShangPaiTime + "\"");
                     }
                 }
             }
