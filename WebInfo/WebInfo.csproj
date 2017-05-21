@@ -184,6 +184,13 @@
     <Compile Include="UserCarList.aspx.designer.cs">
       <DependentUpon>UserCarList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserCenter.Master.cs">
+      <DependentUpon>UserCenter.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCenter.Master.designer.cs">
+      <DependentUpon>UserCenter.Master</DependentUpon>
+    </Compile>
     <Compile Include="Userupdata.aspx.cs">
       <DependentUpon>Userupdata.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -228,6 +235,7 @@
     <Content Include="GetCardetial.ashx" />
     <Content Include="procedata.ashx" />
     <Content Include="GetCarinfo.ashx" />
+    <Content Include="UserCenter.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

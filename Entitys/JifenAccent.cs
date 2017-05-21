@@ -13,6 +13,8 @@ namespace Entitys
         public int ditial { get; set; }
         public int lessJifen { get; set; }
 
+        public string fromType { get; set; }
+
         public DateTime CreateDate { get; set; }
 
     }

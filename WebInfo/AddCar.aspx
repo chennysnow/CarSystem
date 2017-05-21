@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/main.Master" AutoEventWireup="true" CodeBehind="AddCar.aspx.cs" Inherits="WebInfo.AddCar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserCenter.Master" AutoEventWireup="true" CodeBehind="AddCar.aspx.cs" Inherits="WebInfo.AddCar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="/static/css/dealer_user.css" rel="stylesheet" />
     <link href="static/uploadify/uploadify.css" rel="stylesheet" />
@@ -9,46 +9,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="main clearfix" style="padding-top:10px ;padding-bottom:10px ">
-    <div class="userleft">
-		        <div class="usermenu">
-            <h3>我的车源管理 &gt;</h3>
-                   
-            <ul class="clearfix">
-                <li><a href="/AddCar.aspx?method=add" class="orange01 f14">添加车源</a></li>
-                <li><a href="UserCarList.aspx" class="orange01">管理车源</a></li>
-            </ul>
-        </div>
-		        <div style="display:none" class="usermenu">
-            <h3>车商资料查询 &gt;</h3>
-            <ul class="clearfix">
-                <li><a href="/index.php?mod=user&amp;ac=dealerlist" class="orange01 f12">车商列表</a></li>
-                <li><a href="/dealer/index.php?mod=index&amp;ac=about&amp;id=36" target="_blank" class="blue f12">联系卡下载</a></li>
-               
-            </ul>
-        </div>
 
-		<div class="leftsearch" style="display:none">
-			<form method="get" action="/dealer/index.php">
-			<input type="hidden" name="mod" value="user">
-			<input type="hidden" name="ac" value="dealerlist">	<select name="searchsort">
-				<option value="">请选择</option><option value="1">车商</option><option value="2">编号</option><option value="3">虚拟号</option>
-				</select>
-			<input type="text" name="keywords" class="input01"> <input type="image" src="static/img/search05.gif">
-			</form>
-		</div>
-        
-        <div   class="usermenu">
-            <h3>帐号管理 &gt;</h3>
-            <ul class="clearfix">
-                <li><a href="Userupdata.aspx">修改资料</a></li>
-                 <li><a href="UserUpdataPwd.aspx">修改密码</a></li>
-              
-            </ul>
-        </div>
-		
-    </div>
-    <div class="userright">
 	
 
 
@@ -315,6 +276,5 @@ function isSubmit()
 			
 		</form>
 	</div>
-</div>        				        														    </div>
-</div>
+</div>        				        														   
     </asp:Content>
