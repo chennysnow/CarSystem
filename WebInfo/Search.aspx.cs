@@ -15,22 +15,59 @@ namespace WebInfo
         public string winfo = "";
         public string rd = "";
         public string pg = "";
+public string carsort = "";
+public string p_no          = "";
+public string p_brand       = "";
+public string p_subbrand    = "";
+public string startprice    = "";
+public string endprice      = "";
+public string startage      = "";
+public string endage        = "";
+public string p_transmission= "";
+public string keywords = "";
+        public int year = 2017;
+        public List<BandInfo> mlist = new List<BandInfo>();
+        public List<BandInfo> clist = new List<BandInfo>();
+        public List<CarTypeInfo> tlist = new List<CarTypeInfo>();
+        public List<CarTypeInfo> blist = new List<CarTypeInfo>();
         protected void Page_Load(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
+            year = DateTime.Now.Year;
+
             var str = Request["ac"];
+
+            carsort = Request["carsort"] ?? "";
+            p_no = Request["p_no"] ?? "";
+            p_brand = Request["p_brand"] ?? "";
+            p_subbrand = Request["p_subbrand"] ?? "";
+            startprice = Request["startprice"] ?? "";
+            endprice = Request["endprice"] ?? "";
+            startage = Request["startage"] ?? "";
+            endage = Request["endage"] ?? "";
+            p_transmission = Request["p_transmission"] ?? "";
+            keywords = Request["keywords"] ?? "";
+
+            var binfo = new BandInfoDb();
+            mlist = binfo.GetBandInfoByParentNum("0");
+            if (p_brand!="")
+                clist= binfo.GetBandInfoByParentNum(p_brand);
+            var carinfo = new CarTypeInfoDb();
+            tlist = carinfo.GetCarinfoList("0");           
+            blist = carinfo.GetCarinfoList("1");
+
             sb.Append("ac=");
             if (!string.IsNullOrEmpty(str))
                 sb.Append(str);
 
-            str = Request["keywords"];
+            //str = Request["keywords"];
 
-            //str= HttpUtility.UrlDecode(str,Encoding.Default);
-            string tmp1 = System.Web.HttpUtility.UrlDecode(str, Encoding.GetEncoding("gb2312"));
-            sb.Append("&keywords=");
-            if (!string.IsNullOrEmpty(str))
-                sb.Append(str);
-            winfo = sb.ToString();
+            ////str= HttpUtility.UrlDecode(str,Encoding.Default);
+            //string tmp1 = System.Web.HttpUtility.UrlDecode(str, Encoding.GetEncoding("gb2312"));
+            //sb.Append("&keywords=");
+            //if (!string.IsNullOrEmpty(str))
+            //    sb.Append(str);
+            //winfo = sb.ToString();
             Response.ContentEncoding = System.Text.Encoding.GetEncoding("utf-8");
         }
         private List<CarDetialInfo> GetDbData(out int TotalRecord, out int TotalPage)

@@ -13,6 +13,7 @@ namespace WebInfo
     {
         public CarDetialInfo cinfo = null;
         public List<string> piclist =null;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             var id=Request["id"];
