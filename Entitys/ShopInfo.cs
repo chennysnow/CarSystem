@@ -22,6 +22,7 @@ namespace Entitys
         public string PhoneShopNum { get; set; }
 
         public int start { get; set; }
+        public int jifen { get; set; }
         public DateTime CreateTime { get; set; }
     }
 }
