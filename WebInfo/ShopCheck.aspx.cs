@@ -19,7 +19,7 @@ namespace WebInfo
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Session["userid"] == null || Session["userid"].ToString()!= "23")
+            if (Session["userid"] == null || Session["userid"].ToString()!= "2")
             {
                 Response.Redirect("Login.aspx");
             }
@@ -29,7 +29,7 @@ namespace WebInfo
             int.TryParse(pages, out page);
             Ppage = page > 1 ? page-- : 1;
             Npage = page >= TotalPage ? TotalPage : page++;
-            Shoplist =new ShopInfoDb().ExecDB("",page, 15, "id", 1, out TotalRecord, out TotalPage).ToList();
+            Shoplist =new ShopInfoDb().ExecDB("",page, 200, "id", 1, out TotalRecord, out TotalPage).ToList();
             if (Shoplist == null)
                 Shoplist = new List<ShopInfo>();
             var del = Request["del"];
