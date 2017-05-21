@@ -59,6 +59,7 @@
                 return "{"+ txt + "}";
             }
             function disptable(dat) {
+
                 var r1, p1;
                 var txt = "",tu="";
                 var data = JSON.parse(dat);
@@ -88,7 +89,7 @@
                 if (data.length > 0) {
                     r1 = data[0].r;
                     p1 = data[0].p;
-                    txt = "共" + r + "条 " + page + " / " + p1 + "页 ";
+                    txt = "共" + r1 + "条 " + page + " / " + p1 + "页 ";
                     $("span#page1").text(txt);
                     if (r1 != r) {
                         r = r1;

@@ -108,7 +108,9 @@
 </script>
         <table border="0" cellspacing="0" cellpadding="0" class="wordlist" align="center" data-lx="table">
 				<tbody><tr>
+                      <th align="left">序号</th>
 					<th>编码</th>
+                  
 					<th align="left">公司名称</th>
 					<th align="center">营业执照</th>
 					<th align="center">身份证</th>
@@ -120,8 +122,11 @@
 				</tr>
                     <%foreach (var v in Shoplist)
                         { %>
-				<tr><td><%=v.ShopNum %></td>
-
+                    
+				<tr>
+                     <td align="left"><%=v.Id %></td>
+                    <td><%=v.ShopNum %></td>
+                   
 					<td align="left"><%=v.CompanyName %></td>
 					<td align="center"><a href="javascript:void(0);" onclick="disppic(this)" class="big-link" data-reveal-id="myModal"><img src="<%=v.BusinessLicense %>" width="20" /></a></td>
 					<td align="center"><a href="javascript:void(0);" onclick="disppic(this)" class="big-link" data-reveal-id="myModal"><img src="<%=v.IdCart %>" width="20" /></a></td>	
@@ -136,7 +141,7 @@
 
 
 
-                <div class="listpage"><span id="page1"> 共15793条&nbsp;&nbsp;1/632页&nbsp;&nbsp;</span>
+                <div class="listpage"><span id="page1"> 共<%=TotalRecord %>条&nbsp;&nbsp;<%=Npage %>/<%=TotalPage %>页&nbsp;&nbsp;</span>
                  <%if (Ppage > 1) {%>
                 <a href="/search.aspx?page=1">首页</a>
                 <%} else { %>首页 <%} %>&nbsp;&nbsp;

@@ -18,10 +18,7 @@ namespace WebInfo
 
         public void ProcessRequest(HttpContext context)
         {
-            if (context.Session["userid"] == null)
-            {
-                context.Response.Redirect("Login.aspx");
-            }
+      
 
             var method = "";
             if (context.Request.Form["method"] == null)
@@ -35,7 +32,13 @@ namespace WebInfo
             {
                 method = context.Request.Form["method"].ToString();
             }
-
+            if (method != "user")
+            {
+                if (context.Session["userid"] == null)
+                {
+                    context.Response.Redirect("Login.aspx");
+                }
+            }
 
 
             if (string.IsNullOrEmpty(method))
