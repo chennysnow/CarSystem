@@ -78,17 +78,49 @@ namespace WebInfo
                     //    return;
                     //}
 
-                    shop.PhoneShopNum = Request.Form["phoneNumber"];
+                   var shortnum  = Request.Form["phoneNumber"]; 
 
-                    if (string.IsNullOrEmpty(shop.PhoneShopNum))
+                    if (string.IsNullOrEmpty(shortnum))
                     {
                         ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入公司名称短码</td></tr>"; //"请刷新页面";
                         return;
                     }
+
+                    var numlist = shortnum.Replace("、"," ").Replace("，", " ").Replace("；", " ").Replace(",", " ").Replace(";", " ").Split(' ');
+               
+                    List<string> resultnum = new List<string>();
+
+                    foreach (var item in numlist)
+                    {
+                        var  tempitem = item.Trim(' ');
+                        if (tempitem == "" || tempitem.Length < 3)
+                            continue;
+                        int tempnum;
+                        if(int.TryParse(tempitem,out tempnum))
+                        {
+                            resultnum.Add(tempitem);
+                        }
+
+                    }
+
+                    var PhoneShopNum = string.Join(" ",resultnum);
+
+                    if (string.IsNullOrEmpty(PhoneShopNum))
+                    {
+                        ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>请输入公司名称短码</td></tr>"; //"请刷新页面";
+                        return;
+                    }
+
+                    if (shop.PhoneShopNum != PhoneShopNum)
+                    {
+                        shop.PhoneShopNum = PhoneShopNum;
+                        new CarDetialInfoDb().UpdateCarinfoByShopnum(shop.PhoneShopNum, shop.ShopNum);
+                    }
+
                     //^[A-Za-z0-9]+$
 
                     new ShopInfoDb().UpdateData(shop);
-                    new CarDetialInfoDb().ExecSql("update CarDetialInfo set ProNum='" + shop.PhoneShopNum + "' where SellerNumber='" + shop.ShopNum + "' and  pronum is NULL ");
+                  //  new CarDetialInfoDb().ExecSql("update CarDetialInfo set ProNum='" + shop.PhoneShopNum + "' where SellerNumber='" + shop.ShopNum + "' and  pronum is NULL ");
                     ErrorMsg = "<tr><td width=\'80\' height=\'40\' align=\'right\'></td><td style=\'color:red;\'>您的数据已提交成功</td></tr>"; //"请刷新页面";
 
                 }

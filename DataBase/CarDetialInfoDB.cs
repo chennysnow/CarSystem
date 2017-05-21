@@ -21,6 +21,33 @@ namespace DataBase
                 db.CreateTable<CarDetialInfo>();
             }
         }
+        /// <summary>
+        /// 修改商户防部的信息的短号
+        /// </summary>
+        /// <param name="shortNum"></param>
+        /// <param name="shopnum"></param>
+        public void UpdateCarinfoByShopnum(string shortNum,string shopnum)
+        {
+            int error = 0;
+            do
+            {
+                try
+                {
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+                        db.Update<CarDetialInfo>(new { proNum = shortNum }, p => p.SellerNumber == shopnum);
+                        return;
+                    }
+                }
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(10000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+                }
+            } while (error < 4);
+           
+        }
 
         public void AddCarinfo(CarDetialInfo item)
         {
@@ -81,8 +108,6 @@ namespace DataBase
 
         }
 
-
-
         public void DelCarinfo(string shopnum, int id)
         {
             int error = 0;
@@ -111,7 +136,6 @@ namespace DataBase
                 }
             } while (error < 4);
         }
-
 
         public List<CarDetialInfo> GetCarLIst(string Num)
         {

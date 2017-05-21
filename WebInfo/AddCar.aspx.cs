@@ -269,6 +269,17 @@ namespace WebInfo
             }
             priallimg = picimglist.ToString().TrimEnd(';');
             var mainpic = Request.Form["p_mainpic"];
+            int tempmainpid = 0;
+
+            if (string.IsNullOrEmpty(mainpic) || int.TryParse(mainpic, out tempmainpid))
+            {
+                mainpic = "1";
+            }
+            else if (tempmainpid > piclist.Length)
+            {
+                mainpic = "1";
+            }
+
             var p_color = Request.Form["p_color"];
             var p_price = Request.Form["p_price"];
             var isfixprice = Request.Form["isfixprice"];
