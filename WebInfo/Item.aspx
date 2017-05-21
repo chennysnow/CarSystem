@@ -649,7 +649,7 @@
 				<span class="word black">编号</span>
 				<span>
 				<div class="selectww">
-					<input type="text" name="p_no" id="p_no" value="" style="background:#fff url(/static/img/inputs.gif) no-repeat -5px -5px;" onfocus="this.style.background='#fff';" onblur="if(this.value==''){this.style.background='#fff url(/static/img/inputs.gif) no-repeat -5px -5px';}" class="searchinput03"/>
+					<input type="text" name="p_no" id="p_no" value="" style="background:#fff  no-repeat -5px -5px;" onfocus="this.style.background='#fff';" onblur="if(this.value==''){this.style.background='#fff url(/static/img/inputs.gif) no-repeat -5px -5px';}" class="searchinput03"/>
 				</div>
 				</span>
 				<span class="word black hide">品牌</span>
@@ -708,7 +708,7 @@
 				</div>
 				
 				<div class="selectww">
-					<input type="text" name="keywords" id="keywords" value="" style="background:#fff url(/static/img/inputs.gif) no-repeat -5px -28px;*width:90px;" onfocus="this.style.background='#fff';" onblur="if(this.value==''){this.style.background='#fff url(/static/img/inputs.gif) no-repeat -5px -28px';}" class="searchinput"/>
+					<input type="text" name="keywords" id="keywords" value="" style="background:#fff  no-repeat -5px -28px;*width:90px;" onfocus="this.style.background='#fff';" onblur="if(this.value==''){this.style.background='#fff url(/static/img/inputs.gif) no-repeat -5px -28px';}" class="searchinput"/>
 				</div>		
 				<input type="hidden" name="s_type" value="1">
 				<input type="image" class="hide" src="http://www.nb77.cn/static/img/show/search.gif" onFocus="if(form2.p_no.value==form2.p_no.defaultValue){form2.p_no.value='';};if(form2.keywords.value==form2.keywords.defaultValue){form2.keywords.value='';}" />
@@ -750,8 +750,8 @@
 				<h2><asp:Literal ID="title" runat="server"></asp:Literal></h2>
                                     
 				<div class="car_detail01 mt10">
-					<p>售价：<span class="f16 orange01 fb"><asp:Literal ID="Literal1" runat="server"></asp:Literal></span>万<span class="red"><asp:Literal ID="huanjia" runat="server"></asp:Literal></span></p>
-					<p><span class="gray01" id="dno_">编号：<span class="black" style="padding-right:10px;"><asp:Literal ID="sellnumber" runat="server"></asp:Literal></span>短号： <asp:Literal ID="ProNum" runat="server"></asp:Literal></span></p>
+					<p>售价：<span class="f16 orange01 fb"><asp:Literal ID="Literal1" runat="server"></asp:Literal></span> 万<span class="red"><asp:Literal ID="huanjia" runat="server"></asp:Literal></span></p>
+					<p><span  id="dno_">编号：<span class="black" style="padding-right:10px;"><asp:Literal ID="sellnumber" runat="server"></asp:Literal></span>短号： <asp:Literal ID="ProNum" runat="server"></asp:Literal></span></p>
 				</div>
 				<div class="car_detail02 mt10">
 					<ul class="clearfix">

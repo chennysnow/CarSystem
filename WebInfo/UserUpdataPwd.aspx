@@ -13,7 +13,7 @@
   
 	
 <div class="commonbox">
-	<h3>修改<%=shop.CompanyName %>登陆密码</h3>
+	<h3>修改 <%=shop.CompanyName %> 登陆密码</h3>
 	<div class="p10" style=" display:block;  margin-bottom :10px;  ">
 		<form name="form1" id="carform" enctype="multipart/form-data" method="post" action="UserUpdataPwd.aspx"  >
             <input type="hidden" id="id" name="id" value="" />
