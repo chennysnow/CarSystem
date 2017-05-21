@@ -16,20 +16,15 @@ namespace WebInfo
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            var id=Request["id"];
+            var id = Request["id"];
             var ids = 0;
             int.TryParse(id, out ids);
-           cinfo = new CarDetialInfoDb().GetCarinfo(ids);
-            if (cinfo != null)
+            cinfo = new CarDetialInfoDb().GetCarinfo(ids);
+            if (cinfo == null)
             {
-                piclist = cinfo.Images.Split(new char[] { ';' } ,StringSplitOptions.RemoveEmptyEntries).ToList();
-
+                Response.Redirect("Search.aspx");
             }
-            else
-            {
-                cinfo = new CarDetialInfo();
-                piclist = new List<string>();
-            }
+            piclist = cinfo.Images.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             disp(cinfo);
         }
         private void disp(CarDetialInfo c)

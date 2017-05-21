@@ -802,7 +802,7 @@
 					<th  align="center">交易报价</th>
 					<th align="center">变速器</th>
 					<th  align="center">发布日期</th>
-					<th  align="center">编码</th>
+					<th  align="center">短号</th>
 				</tr>
                 <%var pic = "";
                     foreach (var v in k.Value)

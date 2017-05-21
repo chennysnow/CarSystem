@@ -66,7 +66,7 @@
         <table border="0" cellspacing="0" cellpadding="0" class="wordlist" align="center" data-lx="table">
 				<tbody><tr>
                       <th align="left">序号</th>
-					<th>编码</th>
+					<th>短号</th>
                   
 					<th align="left">公司名称</th>
 					<th align="center">营业执照</th>
