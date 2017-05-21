@@ -41,8 +41,9 @@
     $(function () {
 
         $("#companyName").focus(function () {
-            debugger;
+ 
             if ($("#pic1").val() != '' && $("#userCompany").val() == '') {
+                if ($("#userCompany").val()=='')
                 ajaxFileUpload("pic1");
             }
 
@@ -50,6 +51,7 @@
         $("#phoneNum").focus(function () {
 
             if ($("#pic2").val() != '' && $("#CompanyLisent").val() == '') {
+                if ($("#CompanyLisent").val() == '')
                 ajaxFileUpload("pic2");
             }
 
