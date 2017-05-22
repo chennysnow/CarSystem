@@ -157,11 +157,11 @@ namespace WebInfo
             switch (str)
             {
                 case "1":
-                    order = "CreateTime";
+                    order = "shangpaitime";
                     orderby = 1;
                     break;
                 case "2":
-                    order = "CreateTime";
+                    order = "shangpaitime";
                     orderby = 0;
                     break;
 

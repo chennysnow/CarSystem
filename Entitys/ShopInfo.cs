@@ -1,5 +1,4 @@
 ﻿using System;
-using System;
 using ServiceStack.DataAnnotations;
 
 namespace Entitys
