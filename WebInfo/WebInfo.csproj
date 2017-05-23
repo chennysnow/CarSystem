@@ -102,6 +102,10 @@
     <Content Include="static\uploadify\uploadify-cancel.png" />
     <Content Include="static\uploadify\uploadify.css" />
     <Content Include="static\uploadify\uploadify.swf" />
+    <Content Include="static\webuploader\getting-started.js" />
+    <Content Include="static\webuploader\Uploader.swf" />
+    <Content Include="static\webuploader\webuploader.css" />
+    <Content Include="static\webuploader\webuploader.min.js" />
     <Content Include="UserCarList.aspx" />
     <Content Include="Userupdata.aspx" />
     <Content Include="UserUpdataPwd.aspx" />

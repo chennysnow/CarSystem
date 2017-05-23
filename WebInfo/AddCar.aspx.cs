@@ -131,7 +131,7 @@ namespace WebInfo
                 StringBuilder carimgs = new StringBuilder();
                 foreach (var img in imgs)
                 {
-                    var imgid = Regex.Match(img, "(?<x>\\d+)", RegexOptions.IgnoreCase).Value;
+                    var imgid = Regex.Match(img, "/\\w+/\\w+/\\d+/(?<x>\\d+)", RegexOptions.IgnoreCase).Groups["x"].Value;
                     if (string.IsNullOrEmpty(imgid))
                        continue;
                     carimgs.Append(imgid);
