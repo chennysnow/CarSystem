@@ -23,8 +23,13 @@
             function checkuser(id) {
                 layer.confirm('是否对客户进行验证通过？', {
                   btn: ['是的', '不需要'] //按钮
-                }, function () {
-                    layer.msg('验证通过', { icon: 1 });
+                }, function () {                    
+                    $.get("/procedata.ashx?type=chkuser", { id=id }, function (result) {
+                        var data = JSON.parse(result);
+                        if (data.ret == "ok") {
+                            layer.msg('验证通过', { icon: 1 });
+                        }
+                    });
 
                 },function () {
                   layer.msg('不进行验证', {
@@ -39,8 +44,12 @@
                 layer.confirm('是否删除客户', {
                   btn: ['是的', '不要'] //按钮
                 }, function () {
-                    layer.msg('已删除客户', { icon: 1 });
-
+                    $.get("/procedata.ashx?type=deluser", { id=id }, function (result) {
+                        var data = JSON.parse(result);
+                        if (data.ret == "ok") {
+                            layer.msg('已删除客户', { icon: 1 });
+                        }
+                    });
                 },function () {
                   layer.msg('不删除', {
                     time: 20000, //20s后自动关闭

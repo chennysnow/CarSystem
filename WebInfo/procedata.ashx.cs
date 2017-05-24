@@ -14,7 +14,11 @@ namespace WebInfo
 
         public void ProcessRequest(HttpContext context)
         {
-            var type = context.Request["type"];
+            if(context.Session["userid"]==null)
+            {
+                context.Response.Write("{}");
+            }
+                var type = context.Request["type"];
             var dbid = context.Request["id"];
             var retstr = "";
             int id,ii;
