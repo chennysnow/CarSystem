@@ -18,7 +18,7 @@ namespace WebInfo
         private List<BandInfo> brandList;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //new CnAreaCodeDb().AddCnAreaCode();
             //var Item = new CarDetialInfo();
             //Item.BianShuQi = "ddd";
             //Item.CreateTime = DateTime.Now;
