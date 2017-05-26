@@ -228,12 +228,12 @@ namespace Commons
                 WebClient myWebClient = new WebClient();
                 myWebClient.DownloadFile(surl, wlfile);
 
-                int[] list = { 32, 60, 80, 100, 160, 220, 360 };
-                foreach (var type in list)
-                {
-                    String wlfile2 = wlDir2 + "\\" + type + sfile;
-                    myGetThumbnailImage(wlfile, wlfile2, type, type, null);
-                }
+                //int[] list = { 32, 60, 80, 100, 160, 220, 360 };
+                //foreach (var type in list)
+                //{
+                //    String wlfile2 = wlDir2 + "\\" + type + sfile;
+                //    myGetThumbnailImage(wlfile, wlfile2, type, type, null);
+                //}
 
                 return sfile;
             }

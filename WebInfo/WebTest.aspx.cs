@@ -18,6 +18,46 @@ namespace WebInfo
         private List<BandInfo> brandList;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //var json = DocumentServer.ReadFileInfo(@"F:\getonelevelbrand.json");
+
+
+            //m.che168.com/zhejiang/list/  m.che168.com/carlist/FilterSeries.aspx?brandid=33&prov=330000&safe=0&v=20170302184056
+            var page = HtmlAnalysis.Gethtmlcode("http://m.che168.com/china/list/");
+            var conten = RegexServer.RegGroupsX<string>(page, "<h3 id=\"brand-jump-all\"(?<x>.*?)</section>");
+
+            var area = RegexServer.RegGroupCollection(conten, "<h3(?<x>.*?)</ul>");
+            var db = new BrandFullDb();
+            foreach (Match match in area)
+            {
+                var info = match.Groups["x"].Value;
+                var latter = RegexServer.RegGroupsX<string>(info, "data-tips=\"(?<x>.*?)\"");
+                var templist = RegexServer.RegGroupCollection(info, "<li(?<x>.*?)</li>");
+                var brands = new List<AutoHomeBrand>();
+                foreach (Match item in templist)
+                {
+                    var iteminfo = item.Groups["x"].Value;
+                    AutoHomeBrand brand = new AutoHomeBrand
+                    {
+                        Pid = 0,
+                        Level = 0,
+                        Title = RegexServer.RegGroupsX<string>(iteminfo, "title=\"(?<x>.*?)\""),
+                        Letter = latter,
+                        CountryCode = "brandid="+ RegexServer.RegGroupsX<string>(iteminfo, "data-brandid=\"(?<x>.*?)\""),
+                   
+                        CarType = "",
+                        Logo = "",
+                        Hot = 0,
+                        Pinyin = RegexServer.RegGroupsX<string>(iteminfo, "data-pinyin=\"(?<x>.*?)\""),
+                        MoblieLogo ="http:"+ RegexServer.RegGroupsX<string>(iteminfo, "data-src=\"(?<x>.*?)\""),
+
+                    };
+                    string imgpath = "AutoHomeBrandImg\\";
+                    string pic = new ImageServer().DoloadImg(brand.MoblieLogo, Server.MapPath("/") + imgpath);
+                    brand.MoblieLogo = imgpath + pic;
+                    brands.Add(brand);
+                }
+                db.AddBandInfo(brands);
+            }
             //new CnAreaCodeDb().AddCnAreaCode();
             //var Item = new CarDetialInfo();
             //Item.BianShuQi = "ddd";
