@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using Commons;
 using Entitys;
 using ServiceStack.OrmLite;
@@ -55,8 +56,29 @@ namespace DataBase
                     LogServer.WriteLog(ex, "DBError");
                 }
             }
+        }
 
-
+        public List<AutoHomeBrand> GetALlbrand()
+        {
+          
+            int error = 0;
+            do
+            {
+                try
+                {
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+                        return db.Select<AutoHomeBrand>();
+                    }
+                }
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(10000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+                }
+            } while (error < 4);
+            return null;
         }
     }
 }

@@ -18,46 +18,56 @@ namespace WebInfo
         private List<BandInfo> brandList;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            //addBrandType(new AutoHomeBrand {CountryCode = "33"});
+            //return;
+            
+            //var db = new BrandFullDb();
+            //var list = db.GetALlbrand();
+            //foreach (var brand in list)
+            //{
+            //    addBrandType(brand);
+            //}
             //var json = DocumentServer.ReadFileInfo(@"F:\getonelevelbrand.json");
 
 
             //m.che168.com/zhejiang/list/  m.che168.com/carlist/FilterSeries.aspx?brandid=33&prov=330000&safe=0&v=20170302184056
-            var page = HtmlAnalysis.Gethtmlcode("http://m.che168.com/china/list/");
-            var conten = RegexServer.RegGroupsX<string>(page, "<h3 id=\"brand-jump-all\"(?<x>.*?)</section>");
+            //var page = HtmlAnalysis.Gethtmlcode("http://m.che168.com/china/list/");
+            //var conten = RegexServer.RegGroupsX<string>(page, "<h3 id=\"brand-jump-all\"(?<x>.*?)</section>");
 
-            var area = RegexServer.RegGroupCollection(conten, "<h3(?<x>.*?)</ul>");
-            var db = new BrandFullDb();
-            foreach (Match match in area)
-            {
-                var info = match.Groups["x"].Value;
-                var latter = RegexServer.RegGroupsX<string>(info, "data-tips=\"(?<x>.*?)\"");
-                var templist = RegexServer.RegGroupCollection(info, "<li(?<x>.*?)</li>");
-                var brands = new List<AutoHomeBrand>();
-                foreach (Match item in templist)
-                {
-                    var iteminfo = item.Groups["x"].Value;
-                    AutoHomeBrand brand = new AutoHomeBrand
-                    {
-                        Pid = 0,
-                        Level = 0,
-                        Title = RegexServer.RegGroupsX<string>(iteminfo, "title=\"(?<x>.*?)\""),
-                        Letter = latter,
-                        CountryCode = "brandid="+ RegexServer.RegGroupsX<string>(iteminfo, "data-brandid=\"(?<x>.*?)\""),
-                   
-                        CarType = "",
-                        Logo = "",
-                        Hot = 0,
-                        Pinyin = RegexServer.RegGroupsX<string>(iteminfo, "data-pinyin=\"(?<x>.*?)\""),
-                        MoblieLogo ="http:"+ RegexServer.RegGroupsX<string>(iteminfo, "data-src=\"(?<x>.*?)\""),
+            //var area = RegexServer.RegGroupCollection(conten, "<h3(?<x>.*?)</ul>");
+            //var db = new BrandFullDb();
+            //foreach (Match match in area)
+            //{
+            //    var info = match.Groups["x"].Value;
+            //    var latter = RegexServer.RegGroupsX<string>(info, "data-tips=\"(?<x>.*?)\"");
+            //    var templist = RegexServer.RegGroupCollection(info, "<li(?<x>.*?)</li>");
+            //    var brands = new List<AutoHomeBrand>();
+            //    foreach (Match item in templist)
+            //    {
+            //        var iteminfo = item.Groups["x"].Value;
+            //        AutoHomeBrand brand = new AutoHomeBrand
+            //        {
+            //            Pid = 0,
+            //            Level = 0,
+            //            Title = RegexServer.RegGroupsX<string>(iteminfo, "title=\"(?<x>.*?)\""),
+            //            Letter = latter,
+            //            CountryCode = "brandid="+ RegexServer.RegGroupsX<string>(iteminfo, "data-brandid=\"(?<x>.*?)\""),
 
-                    };
-                    string imgpath = "AutoHomeBrandImg\\";
-                    string pic = new ImageServer().DoloadImg(brand.MoblieLogo, Server.MapPath("/") + imgpath);
-                    brand.MoblieLogo = imgpath + pic;
-                    brands.Add(brand);
-                }
-                db.AddBandInfo(brands);
-            }
+            //            CarType = "",
+            //            Logo = "",
+            //            Hot = 0,
+            //            Pinyin = RegexServer.RegGroupsX<string>(iteminfo, "data-pinyin=\"(?<x>.*?)\""),
+            //            MoblieLogo ="http:"+ RegexServer.RegGroupsX<string>(iteminfo, "data-src=\"(?<x>.*?)\""),
+
+            //        };
+            //        string imgpath = "AutoHomeBrandImg\\";
+            //        string pic = new ImageServer().DoloadImg(brand.MoblieLogo, Server.MapPath("/") + imgpath);
+            //        brand.MoblieLogo = imgpath + pic;
+            //        brands.Add(brand);
+            //    }
+            //    db.AddBandInfo(brands);
+            //}
             //new CnAreaCodeDb().AddCnAreaCode();
             //var Item = new CarDetialInfo();
             //Item.BianShuQi = "ddd";
@@ -111,6 +121,53 @@ namespace WebInfo
             //}
 
 
+        }
+
+
+        private void addBrandType(AutoHomeBrand brand)
+        {
+            string url =string.Format("http://m.che168.com/carlist/FilterSeries.aspx?brandid={0}&prov=0&safe=0&v=20170302184056",brand.CountryCode.Replace("brandid=", ""));
+            var page = HtmlAnalysis.Gethtmlcode(url);
+            var brands = new List<AutoHomeBrand>();
+            var ulList = RegexServer.RegGroupCollection(page, "</ul>(?<x>.*?)</ul>");
+            var db = new BrandFullDb();
+            foreach (var ul in ulList)
+            {
+                var cartype = RegexServer.RegGroupsX<string>(ul.ToString(), "<h3>(?<x>.*?)</h3>").Trim();
+
+                var lilist = RegexServer.RegGroupCollection(ul.ToString(), "<li(?<x>.*?)</li>");
+
+                foreach (var li in lilist)
+                {
+                    try
+                    {
+                        var content = li.ToString();
+
+                        var pinyin = RegexServer.RegGroupsX<string>(content, "data-pinyin=\"(?<x>.*?)\"");
+                        AutoHomeBrand brandType = new AutoHomeBrand
+                        {
+                            Pid = brand.Id,
+                            Level = 2,
+                            Hot = 0,
+                            CarType = cartype,
+                            Letter = pinyin.Length > 0 ? pinyin.Substring(0, 1) : "",
+                            Pinyin = pinyin,
+                            Title = RegexServer.RegGroupsX<string>(content, "class=\"carseries\".*?>(?<x>.*?)</span>").Trim()
+                        };
+                        brands.Add(brandType);
+                    }
+                    catch (Exception)
+                    {
+                        
+                        continue;
+                    }
+
+          
+
+                }
+
+            }
+            db.AddBandInfo(brands);
         }
 
         private void addCar(prolog item)
