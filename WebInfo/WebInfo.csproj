@@ -66,6 +66,7 @@
     <Content Include="Index.aspx" />
     <Content Include="Item.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="regsuccess.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="ShopCheck.aspx" />
     <Content Include="static\css\base.css" />
@@ -167,6 +168,13 @@
       <DependentUpon>procedata.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="regsuccess.aspx.cs">
+      <DependentUpon>regsuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="regsuccess.aspx.designer.cs">
+      <DependentUpon>regsuccess.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
