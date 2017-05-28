@@ -23,14 +23,14 @@ namespace WebInfo
             var method = "";
             if (context.Request.Form["method"] == null)
             {
-                if (string.IsNullOrEmpty(method))
+                if (!string.IsNullOrEmpty(context.Request.QueryString["method"]))
                 {
                     method = context.Request.QueryString["method"];
                 }
             }
             else
             {
-                method = context.Request.Form["method"].ToString();
+                method = context.Request.Form["method"];
             }
             if (method != "user")
             {
@@ -139,7 +139,7 @@ namespace WebInfo
             var userid = context.Session["userid"].ToString();
             string filepath = context.Server.MapPath("/") + "carimg\\load\\"+ userid +"\\";
             string filepath2 = context.Server.MapPath("/") + "carimg\\small\\" + userid + "\\";
-            string shuiyinpath= context.Server.MapPath("/") + "static\\img\\" ;
+
 
             string fileName = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             fileName += new Random().Next(99).ToString("00") + ".jpg";

@@ -67,6 +67,7 @@ namespace WebInfo
         private List<CarDetialInfo> GetDbData(HttpRequest Request, out int TotalRecord,out int TotalPage)
         {           
             List<CarDetialInfo> ls = new List<CarDetialInfo>();
+
             StringBuilder sb = new StringBuilder();
             var str = Request["ac"];
             if (!string.IsNullOrEmpty(str))
@@ -157,11 +158,11 @@ namespace WebInfo
             switch (str)
             {
                 case "1":
-                    order = "CreateTime";
+                    order = "shangpaitime";
                     orderby = 1;
                     break;
                 case "2":
-                    order = "CreateTime";
+                    order = "shangpaitime";
                     orderby = 0;
                     break;
 

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 <title>91二手车登录</title>
-<meta name="keywords" content="91二手车 二手车交易信息网">
+<meta name="keywords" content="91二手车 二手车商内部信息平台 二手车交易信息网 ">
 <meta name="description" content="91二手车 二手车交易信息网">
 
 <style type="text/css">
@@ -56,5 +56,14 @@ function set_favorite(title, url) {
                 <div class="error"><%=msg %></div>
                </form>
     <div class="d1" ><img src="\static\img\loginbj.jpg" style="z-index: 1;" width="100%" height="100%"/></div>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?fa019c75e209624ca7c5b230a84e25d6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 </body>
 </html>

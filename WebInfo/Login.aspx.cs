@@ -38,6 +38,11 @@ namespace WebInfo
                 msg = "用户名或密码错误";
                 return;
             }
+            if (shopitem.start == 0)
+            {
+                msg = "帐号待审核请联系客服";
+                return;
+            }
 
             Session["userid"] = shopitem.Id;
             Session["ShopNum"] = shopitem.ShopNum;

@@ -12,7 +12,7 @@
 <!--品牌关键词-->
 <script type="text/javascript">
     var show = "text";
-    var order = "1";
+    var order = "0";
     var winfo = "<%=winfo%>";
     var page = "1";
     var r = 0, p = 0;

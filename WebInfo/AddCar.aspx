@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserCenter.Master" AutoEventWireup="true" CodeBehind="AddCar.aspx.cs" Inherits="WebInfo.AddCar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="/static/css/dealer_user.css" rel="stylesheet" />
-    <link href="static/uploadify/uploadify.css" rel="stylesheet" />
+
+        <link href="static/webuploader/webuploader.css" rel="stylesheet" />
      <script src="static/js/common.js"></script>
-    <script src="static/js/jquery-1.7.1.js"></script>
-    <script src="static/uploadify/jquery.uploadify.min.js"></script>
+
+
 
 
 </asp:Content>
@@ -15,36 +16,7 @@
 
 		        			<script type="text/javascript">
 
-		        			    $(document).ready(function () {
-
-		        			        $(function () {
-		        			            $("#upimgfile").uploadify({
-		        			                buttonText: '上传文件',
-		        			                auto: true,
-		        			                multi: true,
-		        			                fileDesc: '支持格式:jpg,gif,jpeg,png,bmp',
-		        			                fileExt: '*.jpg;*.gif;*.jpeg;*.png;*.bmp;*.JPG;*.GIF;*.JPEG;*.PNG;*.BMP;',
-		        			                height: 20,
-		        			                width: 58,
-		        			                swf: 'static/uploadify/uploadify.swf',
-		        			                uploader: 'WebApi.ashx',
-		        			                uploadLimit:15,
-		        			                onUploadSuccess: function (file, data, response) {
-		        			                    data = JSON.parse(data);
-		        			                    if (data.Error != null) {
-		        			                        alert('The file ' + file.name + ' ' + response + ':' + data.Error);
-		        			                    } else {
-		        			                        var tempid = data.img.substring(data.img.lastIndexOf('/') + 1, data.img.indexOf('.'));
-		        			                        var li = "<li id='" + tempid + "'><img name='p_pics' src='" + data.img + "' /><p><a href=\"javascript:delimg('" + tempid + "')\" > 删除</a></p></li>";
-		        			                        $("#piclist").append(li);
-		        			                    }
-
-
-		        			                }
-		        			            });
-		        			        });
-		        			    });
-
+		     
 		    
 
 		        			    function delimg(tempid) {
@@ -94,6 +66,7 @@ function checknull()
 		return false;
 		}
 	else {
+	    debugger;
 	    var imgid = "";
 	    $("#piclist li").each(function(a, b) {
 
@@ -171,9 +144,9 @@ function isSubmit()
                             
 						</div>
                      
-                        	<div  style=" height:20px; clear:both">
-                                
-    <input type="button" id="upimgfile" value="上传图片" />
+                        	<div  style=" height:40px; clear:both">
+                                 <div id="upimgfile" style="height:20px;">选择图片</div>
+
                                 <input type="hidden" value="0" id="imgcount" />
                        </div>
 
@@ -276,5 +249,9 @@ function isSubmit()
 			
 		</form>
 	</div>
-</div>        				        														   
+</div>
+          <script src="static/js/jquery-1.7.1.js"></script>
+    <script src="static/webuploader/webuploader.min.js"></script>
+    <script src="static/webuploader/getting-started.js"></script>
+        				        														   
     </asp:Content>

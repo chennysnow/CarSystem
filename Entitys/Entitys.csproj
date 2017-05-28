@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrandFull.cs" />
+    <Compile Include="CnAreaCode.cs" />
     <Compile Include="BandInfo.cs" />
     <Compile Include="CarDetialInfo.cs" />
     <Compile Include="CarTypeInfo.cs" />

@@ -61,8 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BandInfoDb.cs" />
+    <Compile Include="BrandFullDb.cs" />
     <Compile Include="CarDetialInfoDB.cs" />
     <Compile Include="CarTypeInfoDb.cs" />
+    <Compile Include="CnAreaCodeDb.cs" />
     <Compile Include="OrmLiteFactory.cs" />
     <Compile Include="prologDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
