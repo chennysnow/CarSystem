@@ -15,16 +15,16 @@ namespace WebInfo
         public string winfo = "";
         public string rd = "";
         public string pg = "";
-public string carsort = "";
-public string p_no          = "";
-public string p_brand       = "";
-public string p_subbrand    = "";
-public string startprice    = "";
-public string endprice      = "";
-public string startage      = "";
-public string endage        = "";
-public string p_transmission= "";
-public string keywords = "";
+        public string carsort = "";
+        public string p_no = "";
+        public string p_brand = "";
+        public string p_subbrand = "";
+        public string startprice = "";
+        public string endprice = "";
+        public string startage = "";
+        public string endage = "";
+        public string p_transmission = "";
+        public string keywords = "";
         public int year = 2017;
         public List<BandInfo> mlist = new List<BandInfo>();
         public List<BandInfo> clist = new List<BandInfo>();
@@ -50,10 +50,10 @@ public string keywords = "";
 
             var binfo = new BandInfoDb();
             mlist = binfo.GetBandInfoByParentNum("0");
-            if (p_brand!="")
-                clist= binfo.GetBandInfoByParentNum(p_brand);
+            if (p_brand != "")
+                clist = binfo.GetBandInfoByParentNum(p_brand);
             var carinfo = new CarTypeInfoDb();
-            tlist = carinfo.GetCarinfoList("0");           
+            tlist = carinfo.GetCarinfoList("0");
             blist = carinfo.GetCarinfoList("1");
 
             sb.Append("ac=");
@@ -72,7 +72,7 @@ public string keywords = "";
         }
         private List<CarDetialInfo> GetDbData(out int TotalRecord, out int TotalPage)
         {
-            List<CarDetialInfo> ls=null;
+            List<CarDetialInfo> ls = null;
             StringBuilder sb = new StringBuilder();
             var str = Request["ac"];
             if (!string.IsNullOrEmpty(str))
@@ -85,15 +85,15 @@ public string keywords = "";
 
             }
             str = Request["carsort"];
-            if (!string.IsNullOrEmpty(str) && str!="0" )
+            if (!string.IsNullOrEmpty(str) && str != "0")
             {
-                sb.Append(" randInfoKey='"+str+"' and");
+                sb.Append(" randInfoKey='" + str + "' and");
             }
             str = Request["p_no"];
             if (!string.IsNullOrEmpty(str))
             {
                 // SellerName
-                sb.Append(" SellerName='" + str+"' and");
+                sb.Append(" SellerName='" + str + "' and");
 
             }
             str = Request["p_brand"];
@@ -129,9 +129,9 @@ public string keywords = "";
 
 
             str = Request["p_transmission"];
-            if (!string.IsNullOrEmpty(str) && str!="0")
+            if (!string.IsNullOrEmpty(str) && str != "0")
             {
-                 sb.Append(" BianShuQi ='" + str + "' and");
+                sb.Append(" BianShuQi ='" + str + "' and");
             }
             str = Request["keywords"];
             if (!string.IsNullOrEmpty(str))
@@ -139,7 +139,7 @@ public string keywords = "";
                 sb.Append(" BianShuQi ='" + str + "' and");
             }
             str = Request["s_type"];
-            if (!string.IsNullOrEmpty(str) && str!="1")
+            if (!string.IsNullOrEmpty(str) && str != "1")
             {
 
             }
@@ -182,7 +182,7 @@ public string keywords = "";
             }
             if (sb.Length > 3)
                 sb.Remove(sb.Length - 3, 3);
-            var ls1 = new CarDetialInfoDb().Exec(sb.ToString(), 1, 25, order, orderby, out TotalRecord, out  TotalPage);
+            var ls1 = new CarDetialInfoDb().Exec(sb.ToString(), 1, 25, order, orderby, out TotalRecord, out TotalPage);
             foreach (var l in ls1)
                 ls.Add(l);
             return ls;
