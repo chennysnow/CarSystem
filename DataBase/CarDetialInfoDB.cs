@@ -6,6 +6,7 @@ using ServiceStack.OrmLite;
 using System.Collections.Generic;
 using ServiceStack.OrmLite.Dapper;
 using System.Data;
+using ServiceStack;
 
 namespace DataBase
 {
@@ -251,5 +252,70 @@ namespace DataBase
 
         }
 
+       public List<CarDetialInfo> GetCarList(string carType,string brandNum,string brandType,string carColor,string bianShuQi,decimal minBaojia,decimal maxBaojia,int pageid,int pagecount,string sortKey,string sortType)
+       {
+            int error = 0;
+            do
+            {
+                try
+                {
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+                        var query= db.From<CarDetialInfo>();
+                        if (!string.IsNullOrEmpty(carType))
+                        {
+                            query = query.Where(c => c.CarType == carType);
+                        }
+                        if (!string.IsNullOrEmpty(brandNum))
+                        {
+                            query= query.Where(c => c.BrandInfoKey == brandNum);
+                        }
+                        if (!string.IsNullOrEmpty(brandType))
+                        {
+                            query = query.Where(c => c.BrandTypeKey == brandType);
+                        }
+                        if(!string.IsNullOrEmpty(carColor))
+                            query = query.Where(c => c.CarColor == carColor);
+                        if (!string.IsNullOrEmpty(bianShuQi))
+                            query = query.Where(c => c.BianShuQi == bianShuQi);
+
+                        if (minBaojia > 0)
+                        {
+                            query = query.Where(c => c.baojia>=minBaojia);
+                        }
+                        if (maxBaojia > minBaojia)
+                        {
+                            query = query.Where(c => c.baojia <= maxBaojia);
+                        }
+                        switch (sortKey)
+                        {
+                            case "ShangPaiYear":
+                                query = sortType == "desc" ? query.OrderByDescending(c => c.ShangPaiYear) : query.OrderBy(c => c.ShangPaiYear);
+                                break;
+                            case "BrandInfoKey":
+                                query = sortType == "desc" ? query.OrderByDescending(c => c.BrandInfoKey) : query.OrderBy(c => c.BrandInfoKey);
+                                break;
+                            case "baojia":
+                                query = sortType == "desc" ? query.OrderByDescending(c => c.baojia) : query.OrderBy(c => c.baojia);
+                                break;
+                            default:
+                                query = query.OrderByDescending(c => c.Id);
+                                break;
+
+                        }
+                        query = query.Skip(pageid).Take(pagecount);
+                        return db.Select(query); 
+                    }
+
+                }
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(3000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+                }
+            } while (error < 4);
+            return null;
+        }
     }
 }

@@ -123,6 +123,12 @@
     <Compile Include="AddCar.aspx.designer.cs">
       <DependentUpon>AddCar.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Api\BrandApi.ashx.cs">
+      <DependentUpon>BrandApi.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Api\SearchApi.ashx.cs">
+      <DependentUpon>SearchApi.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -248,6 +254,8 @@
     <Content Include="procedata.ashx" />
     <Content Include="GetCarinfo.ashx" />
     <Content Include="UserCenter.Master" />
+    <Content Include="Api\BrandApi.ashx" />
+    <Content Include="Api\SearchApi.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -271,7 +279,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="carImg\" />
     <Folder Include="static\js\skin\" />
   </ItemGroup>
   <PropertyGroup>

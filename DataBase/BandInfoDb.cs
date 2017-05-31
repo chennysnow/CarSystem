@@ -128,5 +128,28 @@ namespace DataBase
             } while (error < 4);
             return null;
         }
+
+        public List<BandInfo> GetAllBrandBuyParentId(string parentId)
+        {
+            int error = 0;
+            do
+            {
+                try
+                {
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+                        return db.Select<BandInfo>(p => p.ParentBrandNum == parentId);
+                    }
+
+                }
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(10000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+                }
+            } while (error < 4);
+            return null;
+        }
     }
 }
