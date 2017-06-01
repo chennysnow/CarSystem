@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using DataBase;
+using Entitys;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -20,6 +22,8 @@ namespace WebInfo.Api
             public string BrandName { get; set; }
 
             public string BrandNum { get; set; }
+
+            public string LogoImg { get; set; }
         }
 
         public void ProcessRequest(HttpContext context)
@@ -31,24 +35,36 @@ namespace WebInfo.Api
             context.Response.AppendHeader("Access-Control-Allow-Headers", string.IsNullOrEmpty(requestHeaders) ? "*" : requestHeaders);
             context.Response.AppendHeader("Access-Control-Allow-Methods", "POST");
             context.Response.ContentType = "text/Json";
+            context.Response.HeaderEncoding = Encoding.UTF8;
             int pid = 0;
             if (context.Request.Params["pid"] != null)
             {
                 int.TryParse(context.Request.Params["pid"], out pid);
             }
-
+            int total = 0;
             var list = new BandInfoDb().GetAllBrandBuyParentId(pid.ToString());
-
-             List< Tempbrand> blist = new List<Tempbrand>();
-            foreach (var bandInfo in list)
+            if (list != null)
+                total = list.Count;
+            ApiLogInfo log = new ApiLogInfo
             {
-                var item = new Tempbrand {FirstChart = bandInfo.FirstChart, BrandName = bandInfo.BrandName,BrandNum = bandInfo.BrandNum };
-                blist.Add(item);
+                LogType = "BrandApi",
+                UserAgent = context.Request.UserAgent,
+                Referer = context.Request.UrlReferrer == null ? "" : context.Request.UrlReferrer.ToString(),
+                UserIp = getip(),
+                Remark ="result count"+ total
+
+            };
+            new ApiLogInfoDb().AddApiLogo(log);
+            if (total == 0)
+            {
+                context.Response.Write("empty");
+                return;
             }
+
+            var blist = list.OrderBy(c => c.FirstChart).Select(bandInfo => new Tempbrand {FirstChart = bandInfo.FirstChart, BrandName = bandInfo.BrandName, BrandNum = bandInfo.BrandNum, LogoImg = bandInfo.LogoImg}).ToList();
 
             string result = JsonConvert.SerializeObject(blist);
             context.Response.Write(result);
-            //context.Response.Write("Hello World");
         }
 
         public string getip()

@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiLogInfoDb.cs" />
     <Compile Include="BandInfoDb.cs" />
     <Compile Include="BrandFullDb.cs" />
     <Compile Include="CarDetialInfoDB.cs" />

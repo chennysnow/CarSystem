@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using DataBase;
+using Entitys;
 using Newtonsoft.Json;
 
 namespace WebInfo.Api
@@ -21,7 +23,7 @@ namespace WebInfo.Api
             context.Response.AppendHeader("Access-Control-Allow-Headers", string.IsNullOrEmpty(requestHeaders) ? "*" : requestHeaders);
             context.Response.AppendHeader("Access-Control-Allow-Methods", "POST");
             context.Response.ContentType = "text/Json";
-
+            context.Response.HeaderEncoding=Encoding.UTF8;
             string CarType = context.Request.Params["CarType"];
             if (string.IsNullOrEmpty(CarType))
             {
@@ -120,14 +122,44 @@ namespace WebInfo.Api
 
             var list = new CarDetialInfoDb().GetCarList(CarType, brandNum, BrandType, CarColor, BianShuQi, minBaojia, maxBaojia,
                 pageid, pageCount, sortKey, sortType);
+            int total = 0;
+            if (list != null)
+                total = list.Count;
+            ApiLogInfo log = new ApiLogInfo
+            {
+                LogType = "SearchApi",
+                UserAgent = context.Request.UserAgent,
+                Referer = context.Request.UrlReferrer == null ? "" : context.Request.UrlReferrer.ToString(),
+                UserIp = Gsetip(),
+                Remark = "result count" + total
+
+            };
+            new ApiLogInfoDb().AddApiLogo(log);
+
             if (list != null && list.Count > 0)
             {
-                string result = JsonConvert.SerializeObject(pageid);
+                string result = JsonConvert.SerializeObject(list);
                 context.Response.Write(result);
             }
 
 
         }
+        public string Gsetip()
+        {
+            string ip;
+            if (HttpContext.Current.Request.ServerVariables["HTTP_VIA"] != null) //获取用户内部ip
+            {
+                ip = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"] ??
+                     HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+            }
+            else
+            {
+                ip = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"]; //发出请求的远程主机的IP地址
+            }
+            return ip;
+
+        }
+
 
         public bool IsReusable
         {
@@ -136,5 +168,6 @@ namespace WebInfo.Api
                 return false;
             }
         }
+
     }
 }

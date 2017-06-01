@@ -21,6 +21,13 @@ namespace Entitys
         public string ParentBrandNum { get; set; }
 
         public string DisplayName { get; set; }
+
+        public string LogoImg { get; set; }
+
+        public string Pinyin { get; set; }
+        public string CarType { get; set; }
+        public string CountryCode { get; set; }
+        
         public DateTime CreateTime { get; set; }
     }
 }
