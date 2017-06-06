@@ -19,31 +19,12 @@ namespace WebInfo
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Session["userid"] == null || Session["userid"].ToString()!= "2")
+            if (Session["userid"] == null || Session["userid"].ToString()!= "23")
             {
-                Response.Redirect("Login.aspx");
+                string url = HttpContext.Current.Request.Url.PathAndQuery;
+                Response.Redirect("Login.aspx?url="+url);
             }
 
-                var pages = Request["page"];
-            int page;
-            int.TryParse(pages, out page);
-            Ppage = page > 1 ? page-- : 1;
-            Npage = page >= TotalPage ? TotalPage : page++;
-            Shoplist =new ShopInfoDb().ExecDB("",page, 200, "id", 1, out TotalRecord, out TotalPage).ToList();
-            if (Shoplist == null)
-                Shoplist = new List<ShopInfo>();
-            var del = Request["del"];
-            var chk= Request["chk"];
-            if (string.IsNullOrEmpty(del) == false)
-            {
-
-            }
-            else if (string.IsNullOrEmpty(chk) == false)
-            {
-
-            }
-
-            
         }
     }
 }

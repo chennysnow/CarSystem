@@ -54,6 +54,7 @@ function set_favorite(title, url) {
   <area shape="rect" coords="360,140,437,175" href ="Default.aspx"  style="z-index: 4;"/>
     </map>  
                 <div class="error"><%=msg %></div>
+                <input type="hidden" id="url" name="url" value="<%=backurl %>"/>
                </form>
     <div class="d1" ><img src="\static\img\loginbj.jpg" style="z-index: 1;" width="100%" height="100%"/></div>
     <script>

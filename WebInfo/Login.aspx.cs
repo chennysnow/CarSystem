@@ -13,6 +13,7 @@ namespace WebInfo
     public partial class Login : System.Web.UI.Page
     {
         public string msg = "";
+        public string backurl = "";
         [WebMethod(EnableSession = true)]
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,6 +22,13 @@ namespace WebInfo
 
             Session["userid"] = null;
             Session["ShopNum"] = null;
+
+            if (Request.QueryString["url"] != null)
+            {
+                backurl=Request.QueryString["url"];
+            
+            }
+
 
             if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(username))
                 return;
@@ -47,7 +55,15 @@ namespace WebInfo
             Session["userid"] = shopitem.Id;
             Session["ShopNum"] = shopitem.ShopNum;
 
-            Response.Redirect("Search.aspx");
+            if (Request.Form["url"] != null)
+            {
+                Response.Redirect(Request.Form["url"]);
+            }
+            else
+            {
+                Response.Redirect("Search.aspx");
+
+            }
 
         }
     }

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
+using Commons;
 using DataBase;
 using Entitys;
 using Newtonsoft.Json;
@@ -14,7 +16,6 @@ namespace WebInfo.Api
     /// </summary>
     public class SearchApi : IHttpHandler
     {
-
         public void ProcessRequest(HttpContext context)
         {
             string origin = context.Request.Headers["Origin"];
@@ -135,7 +136,17 @@ namespace WebInfo.Api
 
             };
             new ApiLogInfoDb().AddApiLogo(log);
-
+            string filepath = context.Server.MapPath("/");
+            //picchange(list, filepath);
+            foreach (var car in list)
+            {
+                string[] pic = car.Images.Split(';');
+                foreach (var img in pic)
+                {
+                    picchange(filepath + img.Replace("/","\\").TrimStart('\\'));
+                }
+              
+            }
             if (list != null && list.Count > 0)
             {
                 string result = JsonConvert.SerializeObject(list);
@@ -144,6 +155,36 @@ namespace WebInfo.Api
 
 
         }
+
+        private void picchange( string file)
+        {
+           // file = @"D:\github\CarSystem\WebInfo\carImg\small\131\2017052406381964996.jpg";
+            if(!file.Contains("small"))
+                return;
+            file = file.Replace("small", "load");
+
+            if(!File.Exists(file))
+                return;
+
+            var fileName = file.Replace("load", "px640");
+            var fileName1 = file.Replace("load", "px270");
+
+            var imgserver = new ImageServer();
+            if (!File.Exists(fileName))
+            {
+                imgserver.MakeThumbnail(file, fileName, 640, 640, "W");
+            }
+
+            if (!File.Exists(fileName1))
+            {
+                imgserver.MakeThumbnail(file, fileName1, 270, 200, null);
+            }
+
+ 
+
+
+        }
+
         public string Gsetip()
         {
             string ip;
@@ -159,7 +200,6 @@ namespace WebInfo.Api
             return ip;
 
         }
-
 
         public bool IsReusable
         {

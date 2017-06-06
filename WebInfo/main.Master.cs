@@ -13,7 +13,8 @@ namespace WebInfo
         {
             if (Session["userid"] == null)
             {
-                Response.Redirect("Login.aspx");
+                string url = HttpContext.Current.Request.Url.PathAndQuery;
+                Response.Redirect("Login.aspx?url=" + url);
             }
         }
     }

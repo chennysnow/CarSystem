@@ -303,7 +303,8 @@ namespace DataBase
                                 break;
 
                         }
-                        query = query.Skip(pageid).Take(pagecount);
+                        int skip = (pageid - 1)*pagecount;
+                        query = query.Skip(skip).Take(pagecount);
                         return db.Select(query); 
                     }
 
