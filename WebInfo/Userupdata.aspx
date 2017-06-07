@@ -64,6 +64,16 @@ function disppic(src) {
                                         <div></div>
                     </td>
                 </tr>
+            
+                         <tr>
+                    <td width="80" height="40" align="right">城市：</td>
+                    <td align="left">
+                        <select><option></option> </select>
+                        <input name="CompanyAddress" id="CompanyAddress" size="30" value="<%=shop.CompanyAddress %>" />
+                        *
+                                        <div></div>
+                    </td>
+                </tr>
                          <tr>
                     <td width="80" height="40" align="right">公司地址：</td>
                     <td align="left">

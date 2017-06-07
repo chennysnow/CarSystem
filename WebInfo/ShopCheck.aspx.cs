@@ -24,28 +24,62 @@ namespace WebInfo
                 Response.Redirect("Login.aspx?url="+url);
             }
 
+            var oldnum = Request.Form["oldnumber"];
+            var newnum = Request.Form["newnumber"];
 
-            brandList = new BandInfoDb().GetBandInfoByParentNum("0");
 
-            foreach (var bandInfo in brandList)
+            if (!string.IsNullOrEmpty(oldnum) && !string.IsNullOrEmpty(newnum))
             {
-                brandReg += bandInfo.BrandName + "|";
-            }
-            brandReg = brandReg.TrimEnd('|');
-
-            var list = new prologDb().GetproLogById(0, 100);
-            foreach (var item in list)
-            {
-                try
+                var list = new prologDb().GetproLogById(oldnum.Trim());
+                if (list.Count == 0)
                 {
-                    addCar(item);
+                    return;
                 }
-                catch (Exception ex)
+                brandList = new BandInfoDb().GetBandInfoByParentNum("0");
+
+                foreach (var bandInfo in brandList)
                 {
-                    LogServer.WriteLog("proid:" + item.proid + "error" + ex.Message, "jiexi");
+                    brandReg += bandInfo.BrandName + "|";
+                }
+                brandReg = brandReg.TrimEnd('|');
+
+                foreach (var item in list)
+                {
+                    try
+                    {
+                        addCar(item);
+                    }
+                    catch (Exception ex)
+                    {
+                        LogServer.WriteLog("proid:" + item.proid + "error" + ex.Message, "jiexi");
+                    }
+
                 }
 
             }
+
+
+            //brandList = new BandInfoDb().GetBandInfoByParentNum("0");
+
+            //foreach (var bandInfo in brandList)
+            //{
+            //    brandReg += bandInfo.BrandName + "|";
+            //}
+            //brandReg = brandReg.TrimEnd('|');
+
+            //var list = new prologDb().GetproLogById(0, 100);
+            //foreach (var item in list)
+            //{
+            //    try
+            //    {
+            //        addCar(item);
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        LogServer.WriteLog("proid:" + item.proid + "error" + ex.Message, "jiexi");
+            //    }
+
+            //}
 
         }
 

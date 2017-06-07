@@ -20,31 +20,28 @@ namespace DataBase
                 db.CreateTable<CnAreaCode>();
             }
         }
-        public void AddCnAreaCode()
+
+        public List<CnAreaCode> getAllProvince()
         {
-            var mmbdb= new OrmLiteConnectionFactory("Data Source=115.238.147.232,7188;Initial Catalog=mmb;Persist Security Info=True;User ID=mmbtools;Password=mmb189p@ssw0rd.188", SqlServerDialect.Provider);
-            var list = new List<CnAreaCode>();
-            using (var db = mmbdb.OpenDbConnection())
+            int error = 0;
+            do
             {
-                list = db.SqlList<CnAreaCode>("select AreaCode ,Province as ProvinceName,City as CityName,County as CountyName,Zone,[Enable] from ST_AreaCode");
-            }
-            using (var db = _dbFactory.OpenDbConnection())
-            {
-                WordCenter server =new WordCenter();
-
-                foreach (var areaCode in list)
+                try
                 {
-                    areaCode.CityPy = server.GetPyString(areaCode.CityName);
-                    areaCode.ProvincePy = server.GetPyString(areaCode.ProvinceName);
-                    areaCode.CountyPy = server.GetPyString(areaCode.CountyName);
+                    using (var db = _dbFactory.OpenDbConnection())
+                    {
+                        var query = db.From<CnAreaCode>().Where(c => c.AreaCode.Contains("0000"));
+                        return db.Select(query);
+                    }
                 }
-
-                  db.InsertAll(list);
-            }
-
-
+                catch (Exception ex1)
+                {
+                    error++;
+                    Thread.Sleep(10000);
+                    LogServer.WriteLog(ex1.Message, "DBError");
+                }
+            } while (error < 4);
+            return null;
         }
-
-
     }
 }

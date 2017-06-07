@@ -118,7 +118,7 @@ namespace DataBase
             } while (num < 4);
         }
 
-        public List<prolog> GetproLogById(int id ,int count)
+        public List<prolog> GetproLogById(string shopnum)
         {
             int num = 0;
             do
@@ -127,7 +127,7 @@ namespace DataBase
                 {
                     using (IDbConnection connection = _dbFactory.OpenDbConnection())
                     {
-                        var q =connection.From<prolog>().Where(c => c.Id > id).Take(count).OrderBy(c=>c.Id);
+                        var q =connection.From<prolog>().Where(c => c.shopNumber == shopnum);
                       
                         var list= connection.Select(q);
                         
