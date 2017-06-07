@@ -46,7 +46,8 @@ namespace WebInfo
                         prolog prolog = new prolog
                         {
                             proid = token2["proid"].Value<string>(),
-                            proName = token2["proname"].Value<string>()
+                            proName = token2["proname"].Value<string>(),
+                            state=0
                         };
                         item.Add(prolog);
                     }

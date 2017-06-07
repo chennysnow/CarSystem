@@ -15,6 +15,7 @@ namespace Entitys
         public string proid { get; set; }
 
         public string proName { get; set; }
+        public int state { get; set; }
 
     }
 }
