@@ -14,10 +14,10 @@ namespace WebInfo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["userid"] == null)
-            {
-                Response.Redirect("Login.aspx");
-            }
+            //if (Session["userid"] == null)
+            //{
+            //    Response.Redirect("Login.aspx");
+            //}
 
             if (Request.Form["method"] == "gettask")
             {
@@ -47,7 +47,8 @@ namespace WebInfo
                         {
                             proid = token2["proid"].Value<string>(),
                             proName = token2["proname"].Value<string>(),
-                            state=0
+                            shopNumber = token2["shopid"].Value<string>().Trim(),
+                            state =0
                         };
                         item.Add(prolog);
                     }
@@ -58,7 +59,7 @@ namespace WebInfo
                     var proid = token["id"].Value<string>();
                     var content = token["content"].ToString().Replace("\r","").Replace("\n", "");
 
-                    new prologDb().Updateprolog(new prolog {proid =proid,proName = content});
+                    new prologDb().Updateprolog(new prolog {proid =proid,proName = content,state = 1});
                 }
            
             }
