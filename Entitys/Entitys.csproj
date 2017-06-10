@@ -48,6 +48,7 @@
     <Compile Include="BandInfo.cs" />
     <Compile Include="CarDetialInfo.cs" />
     <Compile Include="CarTypeInfo.cs" />
+    <Compile Include="Info.cs" />
     <Compile Include="JifenAccent.cs" />
     <Compile Include="prolog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

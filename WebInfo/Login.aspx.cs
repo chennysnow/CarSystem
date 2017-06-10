@@ -55,7 +55,7 @@ namespace WebInfo
             Session["userid"] = shopitem.Id;
             Session["ShopNum"] = shopitem.ShopNum;
 
-            if (Request.Form["url"] != null)
+            if (string.IsNullOrEmpty(Request.Form["url"] as string) != null)
             {
                 Response.Redirect(Request.Form["url"]);
             }

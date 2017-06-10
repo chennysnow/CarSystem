@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="carimage.aspx.cs" Inherits="WebInfo.carimage" %>

@@ -62,12 +62,137 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddCar.aspx" />
+    <Content Include="carimage.aspx" />
+    <Content Include="context.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Index.aspx" />
+    <Content Include="index1.aspx" />
     <Content Include="Item.aspx" />
+    <Content Include="jscss\assets\css\admin.css" />
+    <Content Include="jscss\assets\css\amazeui.datetimepicker.css" />
+    <Content Include="jscss\assets\css\amazeui.flat.min.css" />
+    <Content Include="jscss\assets\css\amazeui.min.css" />
+    <Content Include="jscss\assets\css\amazeui1.css" />
+    <Content Include="jscss\assets\css\app.css" />
+    <Content Include="jscss\assets\img\32.jpg" />
+    <Content Include="jscss\assets\img\43.jpg" />
+    <Content Include="jscss\assets\img\a1.png" />
+    <Content Include="jscss\assets\img\a10.png" />
+    <Content Include="jscss\assets\img\a2.png" />
+    <Content Include="jscss\assets\img\a3.png" />
+    <Content Include="jscss\assets\img\a4.png" />
+    <Content Include="jscss\assets\img\a5.png" />
+    <Content Include="jscss\assets\img\a6.png" />
+    <Content Include="jscss\assets\img\a7.png" />
+    <Content Include="jscss\assets\img\a8.png" />
+    <Content Include="jscss\assets\img\a9.png" />
+    <Content Include="jscss\assets\img\lbbg.png" />
+    <Content Include="jscss\assets\img\logo.png" />
+    <Content Include="jscss\assets\img\syncfusion-icons-white.png" />
+    <Content Include="jscss\assets\img\user01.png" />
+    <Content Include="jscss\assets\img\user02.png" />
+    <Content Include="jscss\assets\img\user03.png" />
+    <Content Include="jscss\assets\img\user04.png" />
+    <Content Include="jscss\assets\img\user05.png" />
+    <Content Include="jscss\assets\img\user06.png" />
+    <Content Include="jscss\assets\img\user07.png" />
+    <Content Include="jscss\assets\i\app-icon72x72%402x.png" />
+    <Content Include="jscss\assets\i\examples\admin-chrome.png" />
+    <Content Include="jscss\assets\i\examples\admin-firefox.png" />
+    <Content Include="jscss\assets\i\examples\admin-ie.png" />
+    <Content Include="jscss\assets\i\examples\admin-opera.png" />
+    <Content Include="jscss\assets\i\examples\admin-safari.png" />
+    <Content Include="jscss\assets\i\examples\adminPage.png" />
+    <Content Include="jscss\assets\i\examples\blogPage.png" />
+    <Content Include="jscss\assets\i\examples\landing.png" />
+    <Content Include="jscss\assets\i\examples\landingPage.png" />
+    <Content Include="jscss\assets\i\examples\loginPage.png" />
+    <Content Include="jscss\assets\i\examples\sidebarPage.png" />
+    <Content Include="jscss\assets\i\favicon.png" />
+    <Content Include="jscss\assets\i\startup-640x1096.png" />
+    <Content Include="jscss\assets\js\amazeui.min.js" />
+    <Content Include="jscss\assets\js\app.js" />
+    <Content Include="jscss\assets\js\echarts.min.js" />
+    <Content Include="jscss\assets\js\iscroll.js" />
+    <Content Include="jscss\assets\js\jquery.min.js" />
+    <Content Include="jscss\css\public.css" />
+    <Content Include="jscss\css\site.css" />
+    <Content Include="jscss\css\site.min.css" />
+    <Content Include="jscss\css\sStyle.css" />
+    <Content Include="jscss\css\Style.css" />
+    <Content Include="jscss\favicon.ico" />
+    <Content Include="jscss\images\1.png" />
+    <Content Include="jscss\images\banner1.svg" />
+    <Content Include="jscss\images\banner2.svg" />
+    <Content Include="jscss\images\banner3.svg" />
+    <Content Include="jscss\images\banner4.svg" />
+    <Content Include="jscss\images\position-bg.png" />
+    <Content Include="jscss\images\x1.png" />
+    <Content Include="jscss\js\amazeui.datetimepicker.min.js" />
+    <Content Include="jscss\js\layer.js" />
+    <Content Include="jscss\js\locales\amazeui.datetimepicker.zh-CN.js" />
+    <Content Include="jscss\js\public.js" />
+    <Content Include="jscss\js\site.js" />
+    <Content Include="jscss\js\site.min.js" />
+    <Content Include="jscss\js\skin\default\icon-ext.png" />
+    <Content Include="jscss\js\skin\default\icon.png" />
+    <Content Include="jscss\js\skin\default\layer.css" />
+    <Content Include="jscss\js\skin\default\loading-0.gif" />
+    <Content Include="jscss\js\skin\default\loading-1.gif" />
+    <Content Include="jscss\js\skin\default\loading-2.gif" />
+    <Content Include="jscss\lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="jscss\lib\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="jscss\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="jscss\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="jscss\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="jscss\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="jscss\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="jscss\lib\bootstrap\dist\js\npm.js" />
+    <Content Include="jscss\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="jscss\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Include="jscss\lib\jquery-validation\dist\additional-methods.js" />
+    <Content Include="jscss\lib\jquery-validation\dist\additional-methods.min.js" />
+    <Content Include="jscss\lib\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="jscss\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="jscss\lib\jquery\dist\jquery.js" />
+    <Content Include="jscss\lib\jquery\dist\jquery.min.js" />
+    <Content Include="jscss\lib\jquery\LICENSE.txt" />
+    <Content Include="jscss\Temp-images\1.jpg" />
+    <Content Include="jscss\Temp-images\2.jpg" />
+    <Content Include="jscss\Temp-images\3.jpg" />
+    <Content Include="jscss\Temp-images\4.jpg" />
+    <Content Include="jscss\Temp-images\ad2.png" />
+    <Content Include="jscss\Temp-images\b1.png" />
+    <Content Include="jscss\Temp-images\b2.jpg" />
+    <Content Include="jscss\Temp-images\bb1.jpg" />
+    <Content Include="jscss\Temp-images\bb2.jpg" />
+    <Content Include="jscss\Temp-images\bb3.jpg" />
+    <Content Include="jscss\Temp-images\bb4.jpg" />
+    <Content Include="jscss\Temp-images\btnlogo.png" />
+    <Content Include="jscss\Temp-images\cc.jpg" />
+    <Content Include="jscss\Temp-images\dd.jpg" />
+    <Content Include="jscss\Temp-images\ee.jpg" />
+    <Content Include="jscss\Temp-images\face.jpg" />
+    <Content Include="jscss\Temp-images\face1.jpg" />
+    <Content Include="jscss\Temp-images\face2.jpg" />
+    <Content Include="jscss\Temp-images\face3.jpg" />
+    <Content Include="jscss\Temp-images\face4.jpg" />
+    <Content Include="jscss\Temp-images\face5.jpg" />
+    <Content Include="jscss\Temp-images\face6.jpg" />
+    <Content Include="jscss\Temp-images\hd01.png" />
+    <Content Include="jscss\Temp-images\lins.png" />
+    <Content Include="jscss\Temp-images\s1.png" />
+    <Content Include="jscss\Temp-images\star.png" />
+    <Content Include="jscss\Temp-images\tad1.png" />
+    <Content Include="jscss\Temp-images\tad2.png" />
+    <Content Include="jscss\Temp-images\tad3.png" />
+    <Content Include="jscss\Temp-images\tempnews.png" />
+    <Content Include="jscss\Temp-images\zbf.png" />
     <Content Include="Login.aspx" />
+    <Content Include="logout.aspx" />
     <Content Include="regsuccess.aspx" />
     <Content Include="Search.aspx" />
+    <Content Include="Searchs.aspx" />
     <Content Include="ShopCheck.aspx" />
     <Content Include="static\css\base.css" />
     <Content Include="static\css\dealer_common.css" />
@@ -129,6 +254,20 @@
     <Compile Include="Api\SearchApi.ashx.cs">
       <DependentUpon>SearchApi.ashx</DependentUpon>
     </Compile>
+    <Compile Include="carimage.aspx.cs">
+      <DependentUpon>carimage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="carimage.aspx.designer.cs">
+      <DependentUpon>carimage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="context.aspx.cs">
+      <DependentUpon>context.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="context.aspx.designer.cs">
+      <DependentUpon>context.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,6 +288,13 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="index1.aspx.cs">
+      <DependentUpon>index1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index1.aspx.designer.cs">
+      <DependentUpon>index1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Item.aspx.cs">
       <DependentUpon>Item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -163,12 +309,27 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="main.Master.cs">
       <DependentUpon>main.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="main.Master.designer.cs">
       <DependentUpon>main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="model\Valuecs.cs" />
+    <Compile Include="NewMain.Master.cs">
+      <DependentUpon>NewMain.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewMain.Master.designer.cs">
+      <DependentUpon>NewMain.Master</DependentUpon>
     </Compile>
     <Compile Include="procedata.ashx.cs">
       <DependentUpon>procedata.ashx</DependentUpon>
@@ -187,6 +348,14 @@
     </Compile>
     <Compile Include="Search.aspx.designer.cs">
       <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="model\SearchWhere.cs" />
+    <Compile Include="Searchs.aspx.cs">
+      <DependentUpon>Searchs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Searchs.aspx.designer.cs">
+      <DependentUpon>Searchs.aspx</DependentUpon>
     </Compile>
     <Compile Include="ShopCheck.aspx.cs">
       <DependentUpon>ShopCheck.aspx</DependentUpon>
@@ -256,6 +425,27 @@
     <Content Include="UserCenter.Master" />
     <Content Include="Api\BrandApi.ashx" />
     <Content Include="Api\SearchApi.ashx" />
+    <Content Include="NewMain.Master" />
+    <Content Include="jscss\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="jscss\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="jscss\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="jscss\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="jscss\assets\fonts\FontAwesome.otf" />
+    <Content Include="jscss\lib\bootstrap\.bower.json" />
+    <Content Include="jscss\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="jscss\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <Content Include="jscss\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="jscss\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="jscss\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="jscss\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="jscss\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="jscss\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="jscss\lib\bootstrap\LICENSE" />
+    <Content Include="jscss\lib\jquery-validation-unobtrusive\.bower.json" />
+    <Content Include="jscss\lib\jquery-validation\.bower.json" />
+    <Content Include="jscss\lib\jquery-validation\LICENSE.md" />
+    <Content Include="jscss\lib\jquery\.bower.json" />
+    <Content Include="jscss\lib\jquery\dist\jquery.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
