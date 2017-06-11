@@ -35,11 +35,21 @@
         n = $("#my_price_n").val();
         m = $("#my_price_m").val();
         if(n!="")
-            n = "n" + $("#my_price_n").val();
+            n = "n"+ n;
         if (m != "")
-          m = "m" + $("#my_price_m").val();
+          m = "m" + m;
         window.location.href = "/searchs.aspx?s=" + u + n + m;
     }
+    <% if (isnlogin == false)
+    { %>
+    function findbh(u) {
+        var q="";
+        q = $("#my_bh").val();
+        if(q!="")
+            q = "q" +q;
+        window.location.href = "/searchs.aspx?s=" + u + q ;
+    }
+    <% }%>
 </script>
 </asp:Content>
 
@@ -206,6 +216,21 @@
                                     </div>
                                 </dd>
                           <% } %> 
+                         <% if (isnlogin == false)
+                             { %>
+                             <dd class="hoverWidget">
+                                    <div class="hoverWidget-bn"><%
+    string bh = "";
+    Model.swhere.where.TryGetValue("q", out bh);
+    where = Model.swhere.searchtxt("");
+                                                                %>
+                                      <label>
+                                       <input type="text" value="<%=bh %>"  size="10" class="js-end" maxlength="10" id="my_bh" name="q">
+                                        </label>
+                                        <label><a  href="javascript:void(0);" class="input-btn js-btn" onclick="findbh('<%=where%>')">查找编号</a></label>
+                                    </div>              
+                                </dd>
+                        <%} %>
                     </dl>
                 </div>
                 <div class="sel-menu clearfix">

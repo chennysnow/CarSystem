@@ -35,18 +35,15 @@ namespace WebInfo
                 id = "";
             Vindexdata vdata = new Vindexdata();
             vdata.bandinfo = new BandInfoDb().GetBandInfoByParentNum("0");
-            vdata.swhere = new SearchWhere(id);
+            vdata.swhere = new SearchWhere(id,!isnlogin);
             var ss = vdata.swhere.Getwhere();
             if (string.IsNullOrWhiteSpace(ss) == false)
                 ss = " where " + ss;
             var order= setlist(orderfd);
             vdata.Cardetialinfo = new CarDetialInfoDb().Exec(ss, page, 24, order, dd, out TotalRecord, out TotalPage).ToList();
             vdata.TotalPage = TotalPage;
-            vdata.TotalRecord = TotalRecord;
-            
+            vdata.TotalRecord = TotalRecord;            
             Model = vdata;
-           
-
         }
         private string setlist(string d)
         {

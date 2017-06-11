@@ -20,7 +20,7 @@ namespace WebInfo
         public string ppname = "";
         public string ppvalue = "";
         //public string ppz = "";
-        public SearchWhere(string id)
+        public SearchWhere(string id,bool islogin=true)
         {
             string key, value;
             Init();
@@ -36,10 +36,12 @@ namespace WebInfo
                 {
                     key = id[mc[i].Index - 1].ToString();
                     value = mc[i].ToString();
-                    if (value != "0" && string.IsNullOrEmpty(value) == false)
+                    if (value != "0" && string.IsNullOrEmpty(value) == false )
                         where.Add(key, value);
                 }
             }
+            if (!islogin)
+                where.Remove("q");
 
             string name = Getname("a");
             if (string.IsNullOrEmpty(name) && where.TryGetValue("a", out string num))
@@ -115,6 +117,8 @@ namespace WebInfo
             Carwhere.Add("n", dic);
             dic = new Dictionary<string, string> { {  "-1", "价格{0}元止"  } };
             Carwhere.Add("m", dic);
+            dic = new Dictionary<string, string> { {  "-1", "编号{0}"  } };
+            Carwhere.Add("q", dic);
         }
         public string Getname(string key)
         {
@@ -246,6 +250,9 @@ namespace WebInfo
             }
             #endregion
 
+          
+
+
 
             #region  //行驶里程
             if (where.TryGetValue("g", out str))
@@ -320,6 +327,13 @@ namespace WebInfo
                     if (k.Value == str)
                         str = k.Key;
                 sb.Append($" CarColor='{str}' and");
+            }
+            #endregion
+
+            #region  //编号
+            if (where.TryGetValue("q", out str))
+            {
+                sb.Append($" SellerNumber ='{str}' and");
             }
             #endregion
             if (sb.Length > 4)
