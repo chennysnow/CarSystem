@@ -197,12 +197,13 @@
                    <%foreach (var v in Model.infolist)
                     { %>
                      <li>
-                    <div class="am-gallery-item">
-                       <%=v.title %>
+                    <div class="am-gallery-item padding-none am-text-truncate">
+                     <a href="listinfo.aspx?id=d<%=v.id %>" target="_blank"> <%=v.title %></a>
                     </div>
                 </li>               
                     <%} %>                
             </ul>
+            <a href="ListInfo.aspx"  class="infomore">more »</a>
         </div>
     </div>
 </div>
@@ -216,7 +217,7 @@
                 新增汽车
             </h2>
             <nav class="am-titlebar-nav">
-                <a href="#more">more &raquo;</a>
+                <a href="searchs.aspx">more &raquo;</a>
             </nav>
         </div>
 
@@ -274,7 +275,7 @@
                 轿车
             </h2>
             <nav class="am-titlebar-nav">
-                <a href="#more">more &raquo;</a>
+                <a href="searchs.aspx?s=e4">more &raquo;</a>
             </nav>
         </div>
         <div data-am-widget="list_news" class="am-list-news am-list-news-default right-bg" data-am-scrollspy="{animation:'fade'}">
@@ -307,7 +308,7 @@
                 SUV
             </h2>
             <nav class="am-titlebar-nav">
-                <a href="#more">more &raquo;</a>
+                <a href="searchs.aspx?s=e29">more &raquo;</a>
             </nav>
         </div>
 
@@ -341,7 +342,7 @@
                 跑车
             </h2>
             <nav class="am-titlebar-nav">
-                <a href="#more">more &raquo;</a>
+                <a href="searchs.aspx?s=e28">more &raquo;</a>
             </nav>
         </div>
 

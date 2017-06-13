@@ -7,6 +7,7 @@ html,body{
 
 .padding-none{
     padding: 0px;
+    font-size:0.9em;
 }
 .dn{
     display: none;
@@ -637,4 +638,42 @@ footer a:hover{
     .hoverWidget-bn input {
         height: 20px;
         margin-top: -3px;
-    }   
+    }
+
+.infomore {
+    margin-right: 20px;
+    margin-left: 20rem;
+    color: #dddddd;
+    position: absolute;
+    padding-top: 11.4rem;
+}
+.infomore {
+    margin-right: 20px;
+    margin-left: 20rem;
+    color: #dddddd;
+    position: absolute;
+    bottom: 0;
+
+}
+
+.infomore a{
+    color: #dddddd;
+}
+    .infomore :hover {
+        color: #999;
+    }
+    .infomore :link {
+        color: #999;
+    }
+.padding-none li{
+    margin:0px;
+}
+    .padding-none li a:hover {
+        color: #999;
+    }
+.padding-none li a:link {
+    color: #999;
+}
+    .padding-none li a {
+        color: #222222
+    }

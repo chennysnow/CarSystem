@@ -66,7 +66,8 @@
 <p class="car_details">
 	<span>车况说明：</span><asp:Literal ID="yangqing" runat="server"></asp:Literal>
 </p>	</div>
-
+                <%if (isnlogin == false)
+                    { %>
 				<div class="detailtitle contacttitle mt15">联系方式</div>
 				<div class="car_detail02 mt10">
 					<ul class="clearfix">
@@ -74,6 +75,7 @@
 						<li style="width:300px;"><span>看车地址：</span><asp:Literal ID="Address" runat="server"></asp:Literal></li><li style="width:300px;"> 
                             <span>联系电话：</span><asp:Literal ID="tel" runat="server"></asp:Literal></li>					</ul>
 				</div>	
+                <%} %>
 				<!--车源详细说明结束-->
 			</div>
 		</div>

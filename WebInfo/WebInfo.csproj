@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddCar.aspx" />
+    <Content Include="AddInfo.aspx" />
     <Content Include="carimage.aspx" />
     <Content Include="context.aspx" />
     <Content Include="Default.aspx" />
@@ -188,6 +189,7 @@
     <Content Include="jscss\Temp-images\tad3.png" />
     <Content Include="jscss\Temp-images\tempnews.png" />
     <Content Include="jscss\Temp-images\zbf.png" />
+    <Content Include="ListInfo.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="logout.aspx" />
     <Content Include="regsuccess.aspx" />
@@ -233,10 +235,13 @@
     <Content Include="static\webuploader\webuploader.css" />
     <Content Include="static\webuploader\webuploader.min.js" />
     <Content Include="UserCarList.aspx" />
+    <Content Include="UserInfoList.aspx" />
     <Content Include="Userupdata.aspx" />
     <Content Include="UserUpdataPwd.aspx" />
     <Content Include="ValidCode.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="WebApi.aspx" />
     <Content Include="WebTest.aspx" />
   </ItemGroup>
@@ -247,6 +252,13 @@
     </Compile>
     <Compile Include="AddCar.aspx.designer.cs">
       <DependentUpon>AddCar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddInfo.aspx.cs">
+      <DependentUpon>AddInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddInfo.aspx.designer.cs">
+      <DependentUpon>AddInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Api\BrandApi.ashx.cs">
       <DependentUpon>BrandApi.ashx</DependentUpon>
@@ -301,6 +313,13 @@
     </Compile>
     <Compile Include="Item.aspx.designer.cs">
       <DependentUpon>Item.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListInfo.aspx.cs">
+      <DependentUpon>ListInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListInfo.aspx.designer.cs">
+      <DependentUpon>ListInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -377,6 +396,13 @@
     </Compile>
     <Compile Include="UserCenter.Master.designer.cs">
       <DependentUpon>UserCenter.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserInfoList.aspx.cs">
+      <DependentUpon>UserInfoList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInfoList.aspx.designer.cs">
+      <DependentUpon>UserInfoList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Userupdata.aspx.cs">
       <DependentUpon>Userupdata.aspx</DependentUpon>

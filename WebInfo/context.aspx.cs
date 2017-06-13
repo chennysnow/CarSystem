@@ -17,7 +17,7 @@ namespace WebInfo
         protected void Page_Load(object sender, EventArgs e)
         {
             (this.Master as NewMain).Setmenu(4);
-            isnlogin = (this.Master as NewMain).isnlogin;
+            isnlogin = Session["userid"] == null ? true : false;
             var id = Request["id"];
             var ids = 0;
             int.TryParse(id, out ids);

@@ -1,4 +1,5 @@
 ﻿using DataBase;
+using Entitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,17 @@ namespace WebInfo
             vdata.Suvlist = new CarDetialInfoDb().Exec(" where CarType = '29'", 1, 8, order, orderby, out TotalRecord, out TotalPage).ToList();
             vdata.Paochelist = new CarDetialInfoDb().Exec(" where CarType = '28'", 1, 8, order, orderby, out TotalRecord, out TotalPage).ToList();
             vdata.piclist = new InfoDb().getAllInfo(4, 0);
-            vdata.infolist = new InfoDb().getAllInfo(10, 1);
+
+            var infodb = new InfoDb();
+            List<Info> topinfolist = infodb.getAllInfo(3, 2);
+            int ii = topinfolist == null ? 0:topinfolist.Count;
+            var ls = infodb.getAllInfo(10-ii, 1); //
+            vdata.infolist = new List<Info>();
+            if (topinfolist != null)
+                vdata.infolist.AddRange(topinfolist);
+            if (ls != null)
+                vdata.infolist.AddRange(ls);
+
             Model = vdata;
           //  Model.clearlianxi((this.Master as NewMain).isnlogin);
         }
