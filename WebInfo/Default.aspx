@@ -7,8 +7,12 @@
     <title>二手车会员资料提交</title>
 
     <link href="static/css/default.css" rel="stylesheet" />
+            <link href="static/webuploader/webuploader.css" rel="stylesheet" />
      <script src="static/js/jquery-1.7.1.js"></script>
         <script src="static/js/ajaxfileupload.js"></script>
+    <style>
+        .webuploader-pick{padding:0 5px;}
+    </style>
 </head>
 <script type="text/javascript">
     function check_add() {
@@ -111,17 +115,18 @@
                 <tr>
                     <td width="160" height="40" align="right">法人身份证上传：</td>
                     <td align="left">
-                        <input type="file" class="input" name="pic1" id="pic1" size="30"  />
-                        *
+            
+                        <div id="pic1" style="height:20px; float:left">选择图片</div> <label style=" padding-left:5px; " id="lblpic1">*</label>
+                        
                                         <div></div>
                     </td>
                 </tr>
                 <tr>
                     <td width="80" height="40" align="right">营业执照上传：</td>
                     <td align="left">
-                        <input type="file" class="input" name="pic2" id="pic2" size="30"   />
-
-                        <div></div>
+        
+                          <div id="pic2" style="height:20px; float:left">选择图片</div>
+                        <div> <label style=" padding-left:5px; " id="lblpic2">*</label></div>
                     </td>
                 </tr>
                 <tr>
@@ -176,6 +181,91 @@
      
 
     </div>
-   
+       <script src="static/webuploader/webuploader.min.js"></script>
+    <script>
+        // 图片上传demo
+        jQuery(function () {
+            var $ = jQuery,
+                //$list = $('#fileList'),
+                //// 优化retina, 在retina下这个值是2
+                //ratio = window.devicePixelRatio || 1,
+
+                // 缩略图大小
+                //thumbnailWidth = 100 * ratio,
+                //thumbnailHeight = 100 * ratio,
+
+                // Web Uploader实例
+
+
+            // 初始化Web Uploader
+            uploader = WebUploader.create({
+
+                // 自动上传。
+                auto: true,
+
+                // swf文件路径
+                swf: 'static/webuploader/Uploader.swf',
+
+                server: 'WebApi.ashx?method=user',
+
+                // 选择文件的按钮。可选。
+                // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+
+                pick: '#pic1',
+                fileNumLimit: 15,
+
+                // 只允许选择文件，可选。
+                accept: {
+                    title: 'Images',
+                    extensions: 'gif,jpg,jpeg,bmp,png',
+                    mimeTypes: 'image/*'
+                }
+            });
+            uploader1 = WebUploader.create({
+                auto: true,
+
+                swf: 'static/webuploader/Uploader.swf',
+                server: 'WebApi.ashx?method=user',
+                pick: '#pic2',
+                fileNumLimit: 15,
+
+                // 只允许选择文件，可选。
+                accept: {
+                    title: 'Images',
+                    extensions: 'gif,jpg,jpeg,bmp,png',
+                    mimeTypes: 'image/*'
+                }
+            });
+            uploader1.on('uploadSuccess', function (file, data) {
+         
+              
+                if (data.Error != null) {
+                    alert(data.Error);
+                } else {
+         
+                    $("#CompanyLisent").val(data.img);
+                    $("#lblpic2").text("营业执照上传成功");
+                }
+
+                //$( '#'+file.id ).addClass('upload-state-done');
+            });
+
+            uploader.on('uploadSuccess', function (file, data) {
+  
+
+                if (data.Error != null) {
+                    alert(data.Error);
+                } else {
+
+                    $("#userCompany").val(data.img);
+                    $("#lblpic1").text("身份证上传成功");
+                }
+
+                //$( '#'+file.id ).addClass('upload-state-done');
+            });
+            uploader;
+            uploader1;
+        });
+    </script>
 </body>
 </html>
