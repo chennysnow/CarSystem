@@ -134,6 +134,8 @@ $(function(){
          
                 <li><a href="/AddCar.aspx?method=add" class="orange01 f14">添加车源</a></li>
                 <li><a href="UserCarList.aspx" class="orange01">管理车源</a></li>
+                <li><a href="/Addinfo.aspx" class="orange01 f14">添加信息</a></li>
+                <li><a href="UserInfoList.aspx" class="orange01">管理信息</a></li>
             </ul>
         </div>
 		        <div class="usermenu" style="display:none">

@@ -3,6 +3,7 @@ using Entitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
@@ -15,6 +16,8 @@ namespace WebInfo
     {
         private string brandReg = "";
         private List<BandInfo> brandList;
+        public string msg = "";
+        public string list = "";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -26,13 +29,32 @@ namespace WebInfo
 
             var oldnum = Request.Form["oldnumber"];
             var newnum = Request.Form["newnumber"];
+            var method = Request.Form["method"];
 
+            if (method == "2"&& !string.IsNullOrEmpty(oldnum)) 
+            {
+                // 查询
+                StringBuilder items = new StringBuilder();
+                var list = new prologDb().GetproLogById(oldnum.Trim());
+                string head= " <table cellspacing ='0' cellpadding = '0' width = '100%' class='listtable'><tbody><tr><th>编号</th><th>名称</th></tr>";
 
+                items.Append(head);
+                foreach (var car in list)
+                {
+                    items.AppendFormat("<tr><td>{0}</td><td><a target='_blank' href='http://www.nb77.cn/dealer/index.php?mod=user&amp;ac=refresh&amp;id={2}&page=1'>{1}</a></td></tr>", car.shopNumber, car.proName, car.proid);
+                    
+                }
+                items.Append("</table>");
+
+                return;
+            }
             if (!string.IsNullOrEmpty(oldnum) && !string.IsNullOrEmpty(newnum))
             {
+            
                 var list = new prologDb().GetproLogById(oldnum.Trim());
                 if (list.Count == 0)
                 {
+                    msg = "没有找到任何车辆信息";
                     return;
                 }
                 brandList = new BandInfoDb().GetBandInfoByParentNum("0");
@@ -55,6 +77,7 @@ namespace WebInfo
                     }
 
                 }
+                msg = "导入完毕共导入"+Items.Count+"条信息";
 
             }
 
@@ -173,6 +196,8 @@ namespace WebInfo
             pro.SellerName = proNum.Split(' ')[0];
             pro.CarSellAddress = selleradress;
             new CarDetialInfoDb().AddCarinfo(pro);
+            item.state = 2;
+            new prologDb().Updateprolog(item);
         }
     }
 }

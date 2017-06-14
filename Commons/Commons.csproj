@@ -49,6 +49,12 @@
     <Compile Include="ValidateCodeHelper.cs" />
     <Compile Include="WordCenter.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entitys\Entitys.csproj">
+      <Project>{c52642c6-bfa7-452b-8d57-7a5ce7a8daa9}</Project>
+      <Name>Entitys</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

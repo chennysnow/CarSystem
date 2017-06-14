@@ -8,6 +8,7 @@ using Commons;
 using Entitys;
 using ServiceStack.OrmLite;
 using ServiceStack.OrmLite.Dapper;
+using ServiceStack.Text.Pools;
 
 namespace DataBase
 {
@@ -60,9 +61,9 @@ namespace DataBase
                        var currobj= connection.Single<prolog>(c => c.proid == proid);
                         if (currobj == null)
                             return null;
-                        return connection.Single<prolog>(c => c.Id > currobj.Id);
+                        return connection.Single<prolog>(c => c.Id > currobj.Id && c.state==0);
                     }
-                    break;
+            
                 }
                 catch (Exception exception)
                 {
@@ -83,7 +84,7 @@ namespace DataBase
                 {
                     using (IDbConnection connection = _dbFactory.OpenDbConnection())
                     {
-                        connection.Update<prolog>(new { item.proName }, p => p.proid == item.proid);
+                        connection.Update<prolog>(new { item.proName,item.state }, p => p.proid == item.proid);
                     }
                     break;
                 }
@@ -99,12 +100,32 @@ namespace DataBase
         public void Addprolog(List<prolog> item)
         {
             int num = 0;
+            if(item==null||item.Count==0)
+                return;
+            
             do
             {
                 try
                 {
+                    StringBuilder proids = new StringBuilder();
+                    foreach (var prolog in item)
+                    {
+                        proids.Append(prolog.proid);
+                        proids.Append(",");
+                    }
+
                     using (IDbConnection connection = _dbFactory.OpenDbConnection())
                     {
+                        var oldlist = connection.Select<prolog>("select * from prolog where proid in ("+proids.ToString().TrimEnd(',')+")");
+                        if (oldlist.Count > 0)
+                        {
+                            foreach (var olditem in oldlist)
+                            {
+                                var tempitem = item.FirstOrDefault(c => c.proid == olditem.proid);
+                                item.Remove(tempitem);
+                            }
+                        }
+                        if(item.Count>0)
                         connection.InsertAll<prolog>(item);
                     }
                     break;
