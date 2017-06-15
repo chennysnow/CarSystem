@@ -94,7 +94,14 @@
                     %>
                     信息致顶
                     <% break;
-    } %></td>
+case 3:
+                                %>买车<%
+                                          break;
+ case 4:
+                                               %>卖车<%break;
+ case 5: %>预约看车<%break;
+
+                                      } %></td>
                 <td align="center"><%=string.Format("{0:yyyy-MM-dd}", v.cdate)%></td>
                                  
                 <td align="center" class="opmenu"><%if (ismanager) { %><a href="UserInfoList.aspx?act=<%=v.start%>&id=<%=v.id %>&pageid=<%=currentPage %>"><%=(v.start == 0 ? "审核" : "取消") %></a>|<%} %><a href="AddInfo.aspx?method=edit&id=<%=v.id %>">编辑</a>|<a href="javascript:delpro(<%=v.id %>);" title="如果该车已卖出，从列表中移除">删除</a><span ></span>

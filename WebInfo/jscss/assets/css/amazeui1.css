@@ -3093,7 +3093,7 @@ fieldset[disabled] .am-checkbox-inline {
 }
 @media only screen and (max-width:640px) {
   .am-topbar {
-    min-height: 50px;
+    min-height: 60px;
   }
 }
 .am-topbar:before,

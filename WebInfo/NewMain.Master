@@ -73,6 +73,9 @@
                         </ul>
                     </li>
                 </ul>
+                <div class="" style=" padding-top: 20px; padding-left: 11px; float: left;">
+                    <a href="Listinfo.aspx"> 信息广场</a>
+                </div>
                 <%if (isnlogin == false)
                         { %>
                 <div class="am-topbar-right logininfo">

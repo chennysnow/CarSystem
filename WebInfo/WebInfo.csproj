@@ -307,6 +307,9 @@
     <Compile Include="index1.aspx.designer.cs">
       <DependentUpon>index1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="InfoApi.ashx.cs">
+      <DependentUpon>InfoApi.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Item.aspx.cs">
       <DependentUpon>Item.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -472,6 +475,7 @@
     <Content Include="jscss\lib\jquery-validation\LICENSE.md" />
     <Content Include="jscss\lib\jquery\.bower.json" />
     <Content Include="jscss\lib\jquery\dist\jquery.min.map" />
+    <Content Include="InfoApi.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

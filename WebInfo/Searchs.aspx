@@ -50,6 +50,25 @@
         window.location.href = "/searchs.aspx?s=" + u + q ;
     }
     <% }%>
+    function kanche(id) {
+        $('#my-confirm').modal({
+            relatedTarget: this,
+            onConfirm: function (options) {
+                var tel = $("#tel").val();
+                var lxr = $("#lxr").val();
+                $.get("infoapi.ashx", { id: id,tel:tel,lxr:lxr }, function (ret) {
+                    if (ret == "ok")
+                    {
+                        alert("预约完成");
+                    }
+
+                });
+            },
+            onCancel: function () {
+
+            }
+        });
+    }
 </script>
 </asp:Content>
 
@@ -316,7 +335,9 @@
                                        <%=v.baojia.ToString("#0.00") %><span>万</span>
                                     </div><!-- <div class="new-price">新车指导价：<span></span>万</div>-->
                                 </div>
-                            </a> <div class="schedule btn-base btn-wireframe">
+                            </a> <div class="yykanche btn-base btn-wireframe">
+                               <a href="javascript:void(0);" onclick="kanche('<%=v.Id %>')">  预约看车</a>
+                            </div><div class="schedule btn-base btn-wireframe">
                                  <%=(isnlogin?"":v.ProNum)%>
                             </div>
                         </li>
@@ -371,4 +392,34 @@
   </ul>
          </div>
          </div>
+
+    <div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm" style="top:40%">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">预约看车</div>
+        <div class="am-g tpl-amazeui-form">
+              <form class="am-form am-form-horizontal" action="listinfo.aspx" method="POST" >
+                        <div class="am-u-sm-12 am-u-md-12"> 
+                                <div class="am-form-group">
+                                    <label for="tel" class="am-u-sm-2 am-form-label">电话</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text"  name="tel" id="tel" placeholder="输入你电话号码">
+                                    </div>
+                                </div>
+                                <div class="am-form-group">
+                                    <label for="lxr" class="am-u-sm-2 am-form-label">联系人</label>
+                                    <div class="am-u-sm-10">
+                                        <input type="text" id="lxr" name="lxr" placeholder="输入你称呼 Twitter">
+                                    </div>
+                                </div>  
+                        </div>
+                  </form>
+        </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+      <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+    </div>
+  </div>
+</div>
+
+
 </asp:Content>
