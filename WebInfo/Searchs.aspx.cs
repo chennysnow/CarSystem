@@ -19,7 +19,7 @@ namespace WebInfo
         public bool isnlogin = true;
         protected void Page_Load(object sender, EventArgs e)
         {
-            (this.Master as NewMain).Setmenu(2);
+            (this.Master as NewMain).Setmenu(1);
             isnlogin = Session["userid"] == null ? true : false;
             var id = Request["s"];
             var mpage = Request["p"];

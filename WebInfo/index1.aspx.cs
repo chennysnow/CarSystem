@@ -22,7 +22,7 @@ namespace WebInfo
             int TotalPage1;
             var orderby = 1;
             isnlogin = Session["userid"] == null?true:false;
-            (this.Master as NewMain).Setmenu(1);
+            (this.Master as NewMain).Setmenu(0);
             Vindexdata vdata = new Vindexdata();
             vdata.swhere = new SearchWhere("");
             vdata.bandinfo = new BandInfoDb().GetBandInfoByParentNum("0");

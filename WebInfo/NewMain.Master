@@ -59,23 +59,23 @@
 
             <div class="am-collapse am-topbar-collapse" id="collapse-head">
                 <ul class="am-nav am-nav-pills am-topbar-nav">
-                    <li class="<%=indexcss %>"><a href="/index1.aspx">首页</a></li>
-                    <li class="<%=searchcss %>"><a href="/searchs.aspx">二手车信息</a></li>
-                    <li class="<%=usercss %>"><a href="UserCarList.aspx">会员管理</a></li>
+                    <li class="<%=css[0] %>"><a href="/index1.aspx">首页</a></li>
+                    <li class="<%=css[1] %>"><a href="/searchs.aspx">二手车信息</a></li>
+                    <li class="<%=css[2] %>"><a href="UserCarList.aspx">会员管理</a></li>
+                    <li class="<%=css[3] %>"><a href="Listinfo.aspx">信息广场</a></li>
                     <li class="am-dropdown" data-am-dropdown>
                         <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-                            违章查询 <span class="am-icon-caret-down"></span>
+                            小工具 <span class="am-icon-caret-down"></span>
                         </a>
                         <ul class="am-dropdown-content">
                             <li class="am-dropdown-header">违章查询</li>
                             <li><a href="http://ngb.122.gov.cn:9080/violation_query.html" target="_blank">宁波违章查询</a></li>
                             <li><a href="http://www.zjsgat.gov.cn:8087/was/portals/car_lllegal_query.jsp" target="_blank"> 浙江违章查询</a></li>
+                            <li class="am-dropdown-header">网络视屏</li>
+                            <li><a href="http://www.912sc.com/viptv.html" target="_blank">网络视屏</a></li>
                         </ul>
                     </li>
                 </ul>
-                <div class="" style=" padding-top: 20px; padding-left: 11px; float: left;">
-                    <a href="Listinfo.aspx"> 信息广场</a>
-                </div>
                 <%if (isnlogin == false)
                         { %>
                 <div class="am-topbar-right logininfo">
@@ -87,8 +87,9 @@
                 <% }
                         else
                         { %>
-                <div class="am-topbar-right">
+                <div class="am-topbar-right">                   
                     <button class="am-btn am-btn-danger am-topbar-btn am-btn-sm" onclick="window.location.href='/login.aspx?url=<%=path %>'"><span class="am-icon-user"></span> 登陆</button>
+                     <button class="am-btn am-btn-danger am-topbar-btn am-btn-sm" onclick="window.location.href='/default.aspx'"><span class="am-icon-user"></span> 注册</button>
                 </div>
                <% } %>
 

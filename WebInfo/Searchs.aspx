@@ -274,7 +274,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="context" runat="server">
     <div class="am-g am-container newatype">
-    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12 oh" >
+    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12 oh" style=" font-size: 1rem;" >
         <div   class="am-titlebar " style=" margin-top: 0px;    height: 22px;    font-size: 100%;">
             <div class="seqBox clearfix">
           <p class="fr seqtype">共找到<b><%=Model.TotalRecord %></b>辆</p>
