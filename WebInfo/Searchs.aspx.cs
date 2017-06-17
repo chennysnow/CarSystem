@@ -29,7 +29,8 @@ namespace WebInfo
             int.TryParse(mpage, out page);
             if (page == 0)
                 page = 1;
-            int.TryParse(orderfd, out int dd);
+            int dd;
+            int.TryParse(orderfd, out  dd);
             dd = dd % 2;
             if (string.IsNullOrEmpty(id))
                 id = "";

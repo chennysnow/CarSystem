@@ -69,7 +69,8 @@ namespace WebInfo
                 if (string.IsNullOrEmpty(pic) == false)
                     info.image = $"/carimg/small/{userid}/{pic}.jpg";
                 var tmp = Request.Form["type"] as string;
-                int.TryParse(tmp, out int val);
+                int val;
+                int.TryParse(tmp, out  val);
                 info.type = val;
                 tmp = Request.Form["topday"] as string;
                 int.TryParse(tmp, out  val);
