@@ -64,7 +64,9 @@ namespace WebInfo.Api
             var blist = list.OrderBy(c => c.FirstChart).Select(bandInfo => new Tempbrand {FirstChart = bandInfo.FirstChart, BrandName = bandInfo.BrandName, BrandNum = bandInfo.BrandNum, LogoImg = bandInfo.LogoImg}).ToList();
 
             string result = JsonConvert.SerializeObject(blist);
-            context.Response.Write(result);
+
+            var tempitem = "{ret:1, data:"+ result + ",msg: 'sucessed'}";
+            context.Response.Write(tempitem);
         }
 
         public string getip()
