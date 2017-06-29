@@ -33,6 +33,7 @@ namespace WebInfo
         {
             var carlist = new CarTypeInfoDb().GetCarinfoList("0");
             title.Text = c.ProTitle;
+            Page.Title = c.ProTitle;
             Literal1.Text = c.baojia.ToString("#0.00");
             huanjia.Text = "（还价不多）";
             sellnumber.Text = c.SellerNumber;
