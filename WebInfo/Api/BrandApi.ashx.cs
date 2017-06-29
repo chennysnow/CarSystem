@@ -36,6 +36,12 @@ namespace WebInfo.Api
             context.Response.AppendHeader("Access-Control-Allow-Methods", "POST");
             context.Response.ContentType = "text/Json";
             context.Response.HeaderEncoding = Encoding.UTF8;
+            StringBuilder logParams = new StringBuilder();
+
+            foreach (var item in context.Request.Params.AllKeys)
+            {
+                logParams.AppendFormat("{0}:{1},", item, context.Request[item]);
+            }
             int pid = 0;
             if (context.Request.Params["pid"] != null)
             {
@@ -51,18 +57,18 @@ namespace WebInfo.Api
                 UserAgent = context.Request.UserAgent,
                 Referer = context.Request.UrlReferrer == null ? "" : context.Request.UrlReferrer.ToString(),
                 UserIp = getip(),
-                Remark ="result count"+ total
+                Remark = "param:" + logParams + " result count" + total
 
             };
             new ApiLogInfoDb().AddApiLogo(log);
             if (total == 0)
             {
-                context.Response.Write("empty");
+                context.Response.Write("{ret:0, data:[],msg: 'empty'}");
                 return;
             }
 
             var blist = list.OrderBy(c => c.FirstChart).Select(bandInfo => new Tempbrand {FirstChart = bandInfo.FirstChart, BrandName = bandInfo.BrandName, BrandNum = bandInfo.BrandNum, LogoImg = bandInfo.LogoImg}).ToList();
-
+           
             string result = JsonConvert.SerializeObject(blist);
 
             var tempitem = "{ret:1, data:"+ result + ",msg: 'sucessed'}";

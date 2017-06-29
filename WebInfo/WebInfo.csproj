@@ -66,8 +66,8 @@
     <Content Include="carimage.aspx" />
     <Content Include="context.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="Index.aspx" />
-    <Content Include="index1.aspx" />
+    <Content Include="Index2.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="Item.aspx" />
     <Content Include="jscss\assets\css\admin.css" />
     <Content Include="jscss\assets\css\amazeui.datetimepicker.css" />
@@ -293,19 +293,19 @@
     <Compile Include="GetCarinfo.ashx.cs">
       <DependentUpon>GetCarinfo.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Index2.aspx.cs">
+      <DependentUpon>Index2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Index2.aspx.designer.cs">
+      <DependentUpon>Index2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="index1.aspx.cs">
-      <DependentUpon>index1.aspx</DependentUpon>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index1.aspx.designer.cs">
-      <DependentUpon>index1.aspx</DependentUpon>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="InfoApi.ashx.cs">
       <DependentUpon>InfoApi.ashx</DependentUpon>

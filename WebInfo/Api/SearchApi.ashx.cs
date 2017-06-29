@@ -161,6 +161,11 @@ namespace WebInfo.Api
                 var tempitem = "{ret:1, data:" + result + ",msg: 'sucessed'}";
                 context.Response.Write(tempitem);
             }
+            else
+            {
+                var tempitem = "{ret:0, data[],msg: 'empty'}";
+                context.Response.Write(tempitem);
+            }
 
 
         }

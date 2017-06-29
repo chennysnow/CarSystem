@@ -24,7 +24,7 @@ namespace Entitys
         public string country { get; set; }
         
         public string BianShuQi { get; set; }
-        public string LiCheng { get; set; }
+        public decimal LiCheng { get; set; }
         public string PaiFangBiaoZhun { get; set; }
         public string RanYou { get; set; }
         public string Remark { get; set; }

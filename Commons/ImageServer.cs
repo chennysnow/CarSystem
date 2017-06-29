@@ -199,20 +199,20 @@ namespace Commons
         }
 
 
-        public string DoloadImg(string surl, string picurlDir)
+        public string DownloadImg(string surl, string picurlDir)
         {
 
-            String wlDir = picurlDir;
-            String wlDir2 = picurlDir + "/Thumb";
+            string wlDir = picurlDir;
+            //String wlDir2 = picurlDir + "/Thumb";
 
             if (!Directory.Exists(wlDir))
             {
                 Directory.CreateDirectory(wlDir);
             }
-            if (!Directory.Exists(wlDir2))
-            {
-                Directory.CreateDirectory(wlDir2);
-            }
+            //if (!Directory.Exists(wlDir2))
+            //{
+            //    Directory.CreateDirectory(wlDir2);
+            //}
 
             string filePath = DateTime.Now.ToString("yyyyMMddHHmmssfff");
             filePath += new Random().Next(99).ToString("00");
@@ -220,8 +220,52 @@ namespace Commons
 
             try
             {
-                String sfile = filePath + ".jpg";
-                String wlfile = wlDir + "\\" + sfile;
+                var sfile = filePath + ".jpg";
+                var wlfile = wlDir + "\\" + sfile;
+                WebClient myWebClient = new WebClient();
+                myWebClient.DownloadFile(surl, wlfile);
+
+                //int[] list = { 32, 60, 80, 100, 160, 220, 360 };
+                //foreach (var type in list)
+                //{
+                //    String wlfile2 = wlDir2 + "\\" + type + sfile;
+                //    myGetThumbnailImage(wlfile, wlfile2, type, type, null);
+                //}
+
+                return sfile;
+            }
+            catch
+            {
+                return "";
+            }
+
+
+        }
+
+
+        public string DownloadSouceImg(string surl, string picurlDir)
+        {
+
+            string wlDir = picurlDir;
+            //String wlDir2 = picurlDir + "/Thumb";
+
+            if (!Directory.Exists(wlDir))
+            {
+                Directory.CreateDirectory(wlDir);
+            }
+            //if (!Directory.Exists(wlDir2))
+            //{
+            //    Directory.CreateDirectory(wlDir2);
+            //}
+
+            string filePath = DateTime.Now.ToString("yyyyMMddHHmmssfff");
+            filePath += new Random().Next(99).ToString("00");
+
+
+            try
+            {
+                var sfile = filePath + ".jpg";
+                var wlfile = wlDir + "\\" + sfile;
                 WebClient myWebClient = new WebClient();
                 myWebClient.DownloadFile(surl, wlfile);
 

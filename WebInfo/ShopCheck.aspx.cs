@@ -184,7 +184,7 @@ namespace WebInfo
             pro.mianimg = "1";
             pro.baojia = decimal.Parse(p_price);
             pro.CarColor = p_color;
-            pro.LiCheng = p_kilometre;
+            pro.LiCheng = decimal.Parse(p_kilometre);
             pro.PaiLiang = p_gas;
             pro.country = p_country;
             pro.BianShuQi = p_transmission;

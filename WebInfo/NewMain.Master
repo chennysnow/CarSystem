@@ -59,7 +59,7 @@
 
             <div class="am-collapse am-topbar-collapse" id="collapse-head">
                 <ul class="am-nav am-nav-pills am-topbar-nav">
-                    <li class="<%=css[0] %>"><a href="/index1.aspx">首页</a></li>
+                    <li class="<%=css[0] %>"><a href="/index.aspx">首页</a></li>
                     <li class="<%=css[1] %>"><a href="/searchs.aspx">二手车信息</a></li>
                     <li class="<%=css[2] %>"><a href="UserCarList.aspx">会员管理</a></li>
                     <li class="<%=css[3] %>"><a href="Listinfo.aspx">信息广场</a></li>

@@ -120,7 +120,7 @@ namespace WebInfo
                 p_color = proinfo.CarColor;
                 p_name = proinfo.OtherParam;
                 p_price = proinfo.baojia.ToString("0.00");
-                p_kilometre = proinfo.LiCheng;
+                p_kilometre = proinfo.LiCheng.ToString("0.00");
                 p_gas = proinfo.PaiLiang;
                 p_details = proinfo.Remark.Replace("\n","");
                 if (proinfo.country=="进口")
@@ -318,7 +318,7 @@ namespace WebInfo
             pro.mianimg = mainpic;
             pro.baojia = decimal.Parse(p_price);
             pro.CarColor = p_color;
-            pro.LiCheng = p_kilometre;
+            pro.LiCheng = decimal.Parse(p_kilometre);
             pro.PaiLiang = p_gas;
             pro.country = p_country;
             pro.BianShuQi = p_transmission;

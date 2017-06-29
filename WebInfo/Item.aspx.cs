@@ -22,7 +22,7 @@ namespace WebInfo
             cinfo = new CarDetialInfoDb().GetCarinfo(ids);
             if (cinfo == null)
             {
-                Response.Redirect("Search.aspx");
+                Response.Redirect("Searchs.aspx");
             }
             piclist = cinfo.Images.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             disp(cinfo);
@@ -42,7 +42,7 @@ namespace WebInfo
             CarColor.Text = c.CarColor;
             PaiLiang.Text = c.PaiLiang;
             BianShuQi.Text = c.BianShuQi;
-            LiCheng.Text = c.LiCheng;
+            LiCheng.Text = c.LiCheng.ToString("0.00");
             PaiFangBiaoZhun.Text = c.PaiFangBiaoZhun;
             RanYou.Text = c.RanYou;
             cdate.Text = c.CreateTime.ToShortDateString();

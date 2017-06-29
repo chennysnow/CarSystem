@@ -9,6 +9,8 @@ using DataBase;
 using Entitys;
 using Commons;
 using Newtonsoft.Json.Linq;
+using System.Net;
+using System.IO;
 
 namespace WebInfo
 {
@@ -19,9 +21,11 @@ namespace WebInfo
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            loadCarImg();
+           // loadShopImg();
             //addBrandType(new AutoHomeBrand {CountryCode = "33"});
             //return;
-            
+
             //var db = new BrandFullDb();
             //var list = db.GetALlbrand();
             //foreach (var brand in list)
@@ -121,6 +125,112 @@ namespace WebInfo
             //}
 
 
+        }
+
+        private void loadShopImg()
+        {
+            var list = new ShopInfoDb().GetAllShopinfo();
+            WebClient myWebClient = new WebClient();
+            string path = Server.MapPath("/");
+            foreach (var item in list)
+            {
+
+                string file1 = "http://www.912sc.com/" + item.IdCart.TrimStart('/');
+                string file2 = "http://www.912sc.com/" + item.BusinessLicense.TrimStart('/');
+
+               
+
+                    string newfile = path + item.IdCart.TrimStart('/').Replace("/", "\\");
+                string newfile2 = path + item.BusinessLicense.TrimStart('/').Replace("/", "\\");
+                if (File.Exists(newfile))
+                    continue;
+                try
+                {
+                    myWebClient.DownloadFile(file1, newfile);
+                }
+                catch (Exception ex)
+                {
+
+                    LogServer.WriteLog(ex.Message+ "item"+ item.Id+"\t"+ file1);
+                }
+                try
+                {
+                    myWebClient.DownloadFile(file2, newfile2);
+                }
+                catch (Exception ex)
+                {
+
+                    LogServer.WriteLog(ex.Message + "item" + item.Id + "\t" + file2);
+                }
+
+
+
+
+            }
+        }
+
+        private void loadCarImg()
+        {
+            var list = new CarDetialInfoDb().getAllCar();
+            WebClient myWebClient = new WebClient();
+            string path = Server.MapPath("/");
+            foreach (var item in list)
+            {
+               
+
+                if (string.IsNullOrEmpty(item.Images))
+                    continue;
+                var imgs = item.Images.Split(';');
+                foreach (var img in imgs)
+                {
+                    string file1 = "http://www.912sc.com/" + img.TrimStart('/').Replace("small", "load");
+                    string newfile = path + img.TrimStart('/').Replace("/", "\\").Replace("small", "load");
+                    //string newfile2 = path + img.TrimStart('/').Replace("/", "\\");
+                    if (File.Exists(newfile))
+                        continue;
+                 string path1= newfile.Substring(0,newfile.LastIndexOf("\\"));
+                    try
+                    {
+                        if (!Directory.Exists(path1))
+                        {
+                            Directory.CreateDirectory(path1);
+                        }
+                        myWebClient.DownloadFile(file1, newfile);
+                    }
+                    catch (Exception ex)
+                    {
+
+                        LogServer.WriteLog(ex.Message + "item" + item.Id + "\t" + file1);
+                    }
+                    string file2 = "http://www.912sc.com/" + img.TrimStart('/');
+                    string newfile2 = path + img.TrimStart('/').Replace("/", "\\");
+                    string path2= newfile2.Substring(0, newfile2.LastIndexOf("\\"));
+                    try
+                    {
+                        if (!Directory.Exists(path2))
+                        {
+                            Directory.CreateDirectory(path2);
+                        }
+                        myWebClient.DownloadFile(file2, newfile2);
+                    }
+                    catch (Exception ex)
+                    {
+
+                        LogServer.WriteLog(ex.Message + "item" + item.Id + "\t" + file2);
+                    }
+
+                }
+
+                //string file1 = "http://www.912sc.com/" + item.IdCart.TrimStart('/');
+                //string file2 = "http://www.912sc.com/" + item.BusinessLicense.TrimStart('/');
+
+
+
+
+
+
+
+            }
         }
 
 
@@ -247,7 +357,7 @@ namespace WebInfo
             pro.mianimg = "1";
             pro.baojia = decimal.Parse(p_price);
             pro.CarColor = p_color;
-            pro.LiCheng = p_kilometre;
+            pro.LiCheng = decimal.Parse(p_kilometre); 
             pro.PaiLiang = p_gas;
             pro.country = p_country;
             pro.BianShuQi = p_transmission;
