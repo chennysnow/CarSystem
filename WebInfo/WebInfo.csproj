@@ -201,6 +201,7 @@
     <Content Include="static\css\dealer_user.css" />
     <Content Include="static\css\default.css" />
     <Content Include="static\css\login.css" />
+    <Content Include="static\css\medium_page_cars.css" />
     <Content Include="static\css\skygq_valid.css" />
     <Content Include="static\img\cancel.png" />
     <Content Include="static\img\foot_banner.jpg" />
@@ -234,6 +235,7 @@
     <Content Include="static\webuploader\Uploader.swf" />
     <Content Include="static\webuploader\webuploader.css" />
     <Content Include="static\webuploader\webuploader.min.js" />
+    <Content Include="test1.aspx" />
     <Content Include="UserCarList.aspx" />
     <Content Include="UserInfoList.aspx" />
     <Content Include="Userupdata.aspx" />
@@ -385,6 +387,13 @@
     </Compile>
     <Compile Include="ShopCheck.aspx.designer.cs">
       <DependentUpon>ShopCheck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test1.aspx.cs">
+      <DependentUpon>test1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test1.aspx.designer.cs">
+      <DependentUpon>test1.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserCarList.aspx.cs">
       <DependentUpon>UserCarList.aspx</DependentUpon>

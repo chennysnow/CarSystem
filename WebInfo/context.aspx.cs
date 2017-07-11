@@ -16,7 +16,7 @@ namespace WebInfo
         public bool isnlogin = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-            (this.Master as NewMain).Setmenu(-1);
+      
             isnlogin = Session["userid"] == null ? true : false;
             var id = Request["id"];
             var ids = 0;
