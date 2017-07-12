@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
 <title>车源管理 </title>
 
-<meta name="keywords" content=" 奥迪A6L(已定）私家一手车 二手车 2016年7月 2.0T 外黑内棕">
-<meta name="description" content="车况说明：已定，私家车，国五飘全国，现为一手车，谁要过谁名下， 外黑内棕，最时尚的配色，爱惜的不得了，全程4S店保养，新车出厂膜很多都没有撕掉，里外成色实在太新了，就是一辆新车，错过机会不再有。车在江东，看车方便">
+<meta name="keywords" content="  二手车商联盟，二手车交易内部平台，二手车信息网 912二手车商联盟">
+<meta name="description" content="912二手车 二手车商联盟，二手车交易内部平台，二手车信息网 912二手车商联盟">
     <link href="static/css/base.css" rel="stylesheet" />
 
     <link href="static/css/dealer_common.css" rel="stylesheet" />
@@ -108,12 +108,13 @@ $(function(){
 </div>
 <div class="topmenu clearfix">
 	<ul class="clearfix">
-		<li><a href="/" class="here">首页</a></li>
-		<li><a href="Search.aspx">二手车信息</a></li>
+		<li><a href="/index.aspx" class="here">首页</a></li>
+		<li><a href="/searchs.aspx">二手车信息</a></li>
 		<li><a href="UserCarList.aspx">会员管理</a></li>
   
 		<li class="wzcx"><a href="#">违章查询</a><div class="wzcxlist hide" style="position:absolute;z-index:999999;background:#62ab00;top:38;width:100px;"><a href="http://ngb.122.gov.cn:9080/violation_query.html" target="_blank">宁波违章查询</a><a href="http://www.zjsgat.gov.cn:8087/was/portals/car_lllegal_query.jsp" target="_blank">浙江违章查询</a></div></li>
 			<li style="float: right;"><a href="Login.aspx">安全退出</a></li>
+        <li><a href="/vipTv.html">vip电影</a></li>
 	<%--	<div class="toplogin" style="*width:300px;">
 			<form name="loginform" id="loginform" method="post" action="/dealer/index.php?mod=userlogin">
 			<span><input type="text" name="username" style="color:#ccc" value="输入账号" onfocus="if(this.value=='输入账号'){this.value=''};this.style.color='black';" onblur="if(this.value==''||this.value=='输入账号'){this.value='输入账号';this.style.color='#ccc';}" class="inp01"/></span> 

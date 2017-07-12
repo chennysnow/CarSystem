@@ -44,7 +44,8 @@ namespace WebInfo
                 where.Remove("q");
 
             string name = Getname("a");
-            if (string.IsNullOrEmpty(name) && where.TryGetValue("a", out string num))
+            string num = "";
+            if (string.IsNullOrEmpty(name) && where.TryGetValue("a", out  num))
             {
                 //var ls1 = new CarDetialInfoDb().Exec(sb.ToString(), 1, 25, order, orderby, out TotalRecord, out TotalPage);
                 var band = new BandInfoDb().getBrandByKey(num);
@@ -123,7 +124,8 @@ namespace WebInfo
         public string Getname(string key)
         {
            var dic =Carwhere[key];
-            if (where.TryGetValue(key, out string tj))
+            string tj;
+            if (where.TryGetValue(key, out  tj))
             {
                 foreach (var k in dic)
                 {
@@ -207,9 +209,12 @@ namespace WebInfo
                 n = str;
             if (where.TryGetValue("m", out str))
                 m = str;
-            if (decimal.TryParse(m, out decimal tmp) == false)
+            decimal tmp;
+            decimal tmp1;
+            if (decimal.TryParse(m, out  tmp) == false)
                 m = "";
-            if (decimal.TryParse(n, out decimal tmp1) == false)
+            
+            if (decimal.TryParse(n, out  tmp1) == false)
                 n = "";
             if (!string.IsNullOrEmpty(m))
                 sb.Append($" baojia<{m} and");
@@ -380,7 +385,8 @@ namespace WebInfo
                     dics[1].Add(k.Key, k.Value);
                 }
             }//
-            if(where.TryGetValue("b",out string str))
+            string str;
+            if (where.TryGetValue("b",out  str))
             {
                 if (dics[1] != null)
                 {

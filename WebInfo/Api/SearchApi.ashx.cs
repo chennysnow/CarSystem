@@ -26,6 +26,13 @@ namespace WebInfo.Api
             context.Response.ContentType = "text/Json";
             context.Response.HeaderEncoding=Encoding.UTF8;
             string CarType = context.Request.Params["CarType"];
+            StringBuilder logParams = new StringBuilder();
+
+            foreach (var item in context.Request.Params.AllKeys)
+            {
+                logParams.AppendFormat("{0}:{1},", item, context.Request[item]);
+            }
+
             if (string.IsNullOrEmpty(CarType))
             {
                 CarType = "";
@@ -132,7 +139,7 @@ namespace WebInfo.Api
                 UserAgent = context.Request.UserAgent,
                 Referer = context.Request.UrlReferrer == null ? "" : context.Request.UrlReferrer.ToString(),
                 UserIp = Gsetip(),
-                Remark = "result count" + total
+                Remark ="param:"+ logParams +" result count" + total
 
             };
             new ApiLogInfoDb().AddApiLogo(log);
@@ -150,7 +157,14 @@ namespace WebInfo.Api
             if (list != null && list.Count > 0)
             {
                 string result = JsonConvert.SerializeObject(list);
-                context.Response.Write(result);
+
+                var tempitem = "{ret:1, data:" + result + ",msg: 'sucessed'}";
+                context.Response.Write(tempitem);
+            }
+            else
+            {
+                var tempitem = "{ret:0, data[],msg: 'empty'}";
+                context.Response.Write(tempitem);
             }
 
 

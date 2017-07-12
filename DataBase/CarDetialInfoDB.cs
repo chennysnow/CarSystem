@@ -22,6 +22,15 @@ namespace DataBase
                 db.CreateTable<CarDetialInfo>();
             }
         }
+
+        public List<CarDetialInfo> getAllCar()
+        {
+            using (var db = _dbFactory.OpenDbConnection())
+            {
+               return db.Select<CarDetialInfo>();
+            }
+        }
+
         /// <summary>
         /// 修改商户防部的信息的短号
         /// </summary>

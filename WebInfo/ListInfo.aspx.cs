@@ -21,7 +21,7 @@ namespace WebInfo
         {
             var usname = "";
            string where = "";
-            (this.Master as NewMain).Setmenu(4);
+            (this.Master as NewMain).Setmenu(3);
             int userid = 0;
             if (Session["userid"] != null)
                 userid = (int)Session["userid"];

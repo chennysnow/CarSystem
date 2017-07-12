@@ -47,6 +47,13 @@ namespace DataBase
 
         }
 
+        public List<ShopInfo> GetAllShopinfo()
+        {
+            using (var db = _dbFactory.OpenDbConnection())
+            {
+                return db.Select<ShopInfo>();
+            }
+        }
 
         public ShopInfo Login(string number, string pwd)
         {

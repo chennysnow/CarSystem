@@ -1,14 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NewMain.Master" AutoEventWireup="true" CodeBehind="context.aspx.cs" Inherits="WebInfo.context" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/main.Master" AutoEventWireup="true" CodeBehind="context.aspx.cs" Inherits="WebInfo.context" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
         <link href="static/css/base.css" rel="stylesheet" />
 
     <link href="static/css/dealer_common.css" rel="stylesheet" />
 <link href="http://www.nb77.cn/static/css/medium/medium_page_cars.css" rel="stylesheet" type="text/css"/>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="banner" runat="server">
 
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="context" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
       <div class="main mt10" style="background:#fff;" id="TOP">

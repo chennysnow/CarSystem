@@ -62,7 +62,7 @@ namespace WebInfo
             }
             else
             {
-                Response.Redirect("Search.aspx");
+                Response.Redirect("Searchs.aspx");
 
             }
 

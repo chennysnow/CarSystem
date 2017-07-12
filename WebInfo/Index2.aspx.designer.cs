@@ -10,6 +10,6 @@
 namespace WebInfo {
     
     
-    public partial class index1 {
+    public partial class Index {
     }
 }

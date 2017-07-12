@@ -16,7 +16,7 @@ namespace WebInfo
         public bool isnlogin = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-            (this.Master as NewMain).Setmenu(4);
+      
             isnlogin = Session["userid"] == null ? true : false;
             var id = Request["id"];
             var ids = 0;
@@ -24,7 +24,7 @@ namespace WebInfo
             cinfo = new CarDetialInfoDb().GetCarinfo(ids);
             if (cinfo == null)
             {
-                Response.Redirect("Search.aspx");
+                Response.Redirect("Searchs.aspx");
             }
             piclist = cinfo.Images.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries).ToList();
             disp(cinfo);
@@ -33,6 +33,7 @@ namespace WebInfo
         {
             var carlist = new CarTypeInfoDb().GetCarinfoList("0");
             title.Text = c.ProTitle;
+            Page.Title = c.ProTitle;
             Literal1.Text = c.baojia.ToString("#0.00");
             huanjia.Text = "（还价不多）";
             sellnumber.Text = c.SellerNumber;
@@ -44,7 +45,7 @@ namespace WebInfo
             CarColor.Text = c.CarColor;
             PaiLiang.Text = c.PaiLiang;
             BianShuQi.Text = c.BianShuQi;
-            LiCheng.Text = c.LiCheng;
+            LiCheng.Text = c.LiCheng.ToString();
             PaiFangBiaoZhun.Text = c.PaiFangBiaoZhun;
             RanYou.Text = c.RanYou;
             cdate.Text = c.CreateTime.ToShortDateString();

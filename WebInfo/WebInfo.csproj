@@ -66,8 +66,8 @@
     <Content Include="carimage.aspx" />
     <Content Include="context.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="Index.aspx" />
-    <Content Include="index1.aspx" />
+    <Content Include="Index2.aspx" />
+    <Content Include="index.aspx" />
     <Content Include="Item.aspx" />
     <Content Include="jscss\assets\css\admin.css" />
     <Content Include="jscss\assets\css\amazeui.datetimepicker.css" />
@@ -201,6 +201,7 @@
     <Content Include="static\css\dealer_user.css" />
     <Content Include="static\css\default.css" />
     <Content Include="static\css\login.css" />
+    <Content Include="static\css\medium_page_cars.css" />
     <Content Include="static\css\skygq_valid.css" />
     <Content Include="static\img\cancel.png" />
     <Content Include="static\img\foot_banner.jpg" />
@@ -234,6 +235,7 @@
     <Content Include="static\webuploader\Uploader.swf" />
     <Content Include="static\webuploader\webuploader.css" />
     <Content Include="static\webuploader\webuploader.min.js" />
+    <Content Include="test1.aspx" />
     <Content Include="UserCarList.aspx" />
     <Content Include="UserInfoList.aspx" />
     <Content Include="Userupdata.aspx" />
@@ -293,19 +295,19 @@
     <Compile Include="GetCarinfo.ashx.cs">
       <DependentUpon>GetCarinfo.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Index2.aspx.cs">
+      <DependentUpon>Index2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Index2.aspx.designer.cs">
+      <DependentUpon>Index2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="index1.aspx.cs">
-      <DependentUpon>index1.aspx</DependentUpon>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index1.aspx.designer.cs">
-      <DependentUpon>index1.aspx</DependentUpon>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="InfoApi.ashx.cs">
       <DependentUpon>InfoApi.ashx</DependentUpon>
@@ -385,6 +387,13 @@
     </Compile>
     <Compile Include="ShopCheck.aspx.designer.cs">
       <DependentUpon>ShopCheck.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="test1.aspx.cs">
+      <DependentUpon>test1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="test1.aspx.designer.cs">
+      <DependentUpon>test1.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserCarList.aspx.cs">
       <DependentUpon>UserCarList.aspx</DependentUpon>

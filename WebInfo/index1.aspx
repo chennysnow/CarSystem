@@ -200,7 +200,7 @@
                     <%foreach (var v in Model.piclist)
                         { %>
                     <li>
-                        <a href="javascript:void(0);"><img src="<%=v.image %>"" style="height:340px"></a>
+                        <a href="javascript:void(0);"><img src="<%=v.image.Replace("small","load") %>"" style="height:340px"></a>
                         <div class="am-slider-desc"><%=v.title %></div>
 
                     </li>                   
